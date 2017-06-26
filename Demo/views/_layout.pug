@@ -1,0 +1,52 @@
+doctype html
+html(lang='en')
+  head
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='style/style.css')
+  body
+    nav.navbar.navbar-inverse(style='padding-bottom: 12px; padding-top: 12px;')
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-2')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.text-menu(href='/', style='font-size: 25px;')
+            strong MRMW
+        #bs-example-navbar-collapse-2.collapse.navbar-collapse
+          ul.nav.navbar-nav()
+            li
+              a.text-menu(href='#' style='font-size: 17px;')
+                strong GENRES
+            li
+              a.text-menu(href='#' style='font-size: 17px;')
+                strong DISCOVER
+            li
+              a.text-menu(href='#' style='font-size: 17px;')
+                strong NEW RELEASES
+            li
+              a.text-menu(href='#' style='font-size: 17px;') 
+                strong FEATURED
+          form.navbar-form.navbar-right(role='search')
+            .form-group
+              input.form-control.input-searcher(type='text', placeholder='Search')
+            .form-group
+              a.btn.btn-default.btn-success.btn-round.btn-round-login(type='submit' href="/login" style='margin-left:3px;') Log In
+            .form-group
+              a.btn.btn-default.btn-info.btn-round(type='submit' href="/signup" style='margin-left:3px;') Sing up
+    block content
+
+    br
+    footer.footer.text-center.footer-body
+      .container-fluid
+        .footer-header
+          p.navbar-center
+            | Web Applications with Node.js © 2017 
+            a(href='https://telerikacademy.com/') Telerik Academy
+          p.navbar-center
+            | Application by 
+            a(href='https://github.com/The-Wise', target='_blanc') The Wise Team
+    
+    script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')

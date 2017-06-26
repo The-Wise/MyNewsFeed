@@ -1,0 +1,37 @@
+body {
+    background-color: black;
+}
+
+ul.nav.navbar-nav {
+    margin-left: 170px;
+}
+
+
+a.navbar-brand.text-menu :hover {
+    color: #2ebd59;
+}
+
+.text-menu :hover {
+    color: #2ebd59;
+}
+
+.btn-round {
+    border-radius: 17px;
+}
+
+.input-searcher {
+    border-radius: 17px;
+    margin-right: 70px;
+}
+
+.btn-round-login {
+    margin-right: 5px;
+}
+
+.form-group {
+    color: white;
+}
+
+.title {
+    color: white;
+}

@@ -1,0 +1,27 @@
+extends _layout
+block content
+ .container
+  .row.main
+    .panel-heading
+     .panel-title.text-center
+       h1.title Вход
+       hr
+    .main-login.main-center
+      form.form-horizontal(method="post", action='/login')
+        .form-group
+          label.cols-sm-2.control-label(for='username') Потребителско име
+                                                        <span class="red">*</span>
+          .cols-sm-10
+            .input-group
+              span.input-group-addon
+                i.fa.fa-users.fa(aria-hidden='true')
+              input#username.form-control(type='text', name='username', placeholder='Въведете вашето потребителско име')
+        .form-group
+          label.cols-sm-2.control-label(for='password') Парола
+          .cols-sm-10
+            .input-group
+              span.input-group-addon
+                i.fa.fa-lock.fa-lg(aria-hidden='true')
+              input#password.form-control(type='password', name='password', placeholder='Въведете парола')
+        .form-group
+          button.btn.btn-primary.btn-lg.btn-block.login-button Вход
