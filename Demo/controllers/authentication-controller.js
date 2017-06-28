@@ -15,10 +15,13 @@ module.exports = function() {
                 email = req.body.email,
                 name = req.body.name,
                 password = req.body.password;
-
-            console.log('asdasd');
             
-            data.createUser(username, name, email, password);
-        }   
+            data.createUser(req.body);
+        },
+
+        logIn(req, res) {
+            res.redirect('/');
+        }
+
     }
 }
