@@ -12,7 +12,7 @@ module.exports = function() {
 
             conn.then(db => {
                 db.collection('users')
-                  .insert(user)
+                  .save(user)
                   .catch(err => console.log(err));
                 
                 console.log('THE USER IS CREATED');
@@ -35,7 +35,7 @@ module.exports = function() {
                              throw 'User not found';
                          }
                      
-                         resolve(user);
+                         resolve(user[0]);
                        });
                      });
                  });

@@ -1,8 +1,9 @@
-var express = require('express'),
+const express = require('express'),
     expressSession = require('express-session'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
     flash = require('connect-flash'),
+    { Router } = require('express'),
     port = '8080';
 
 module.exports = function() {
@@ -14,15 +15,16 @@ module.exports = function() {
 
     app.use(cookieParser('mrmw'));
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json({ limit: '10mb' }));
-    app.use(expressSession({ secret: 'mrmw', resave: true,  saveUninitialized: true}));
+    app.use(bodyParser.json());
+    app.use(expressSession({ secret: 'mrmw', resave: true, saveUninitialized: false, cookie: {  secure: false }}));
     app.use(flash());
 
     // passport config
     require('./passport/passport.js')(app);
 
     // load routes
-    require('../routes/routes-loader.js')(app);
+    require('../routes/routes-loader.js')(Router, app);
+
 
     return app;
 };

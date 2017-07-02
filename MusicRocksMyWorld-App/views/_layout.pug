@@ -31,10 +31,15 @@ html(lang='en')
           form.navbar-form.navbar-right(role='search')
             .form-group
               input.form-control.input-searcher(type='text', placeholder='Search')
-            .form-group
-              a.btn.btn-default.btn-success.btn-round.btn-round-login(type='submit' href="/login" style='margin-left:3px;') Log In
-            .form-group
-              a.btn.btn-default.btn-info.btn-round(type='submit' href="/signup" style='margin-left:3px;') Sing up
+            if !isAuthenticated
+              .form-group
+                a.btn.btn-default.btn-success.btn-round.btn-round-login(type='submit' href="/login" style='margin-left:3px;') Log In
+              .form-group
+                a.btn.btn-default.btn-info.btn-round(type='submit' href="/signup" style='margin-left:3px;') Sing up
+            else
+              .form-group
+                a.btn.btn-default.btn-success.btn-round.btn-round-login(type='submit' href="/logout" style='margin-left:3px;') Log out
+    
     block content
 
     br

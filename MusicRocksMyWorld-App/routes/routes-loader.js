@@ -1,4 +1,8 @@
-module.exports = function(app) {
-    require('./home-routes.js')(app);
-    require('./authentication-routes.js')(app);
+module.exports = function(Router, app) {
+    var router = new Router();
+
+    require('./authentication-routes.js')(router);
+    require('./home-routes.js')(router);
+
+    app.use('/', router);
 }

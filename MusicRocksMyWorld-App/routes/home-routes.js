@@ -1,5 +1,5 @@
-module.exports = function(app) {
-    app.get('/', (req, res) => {
-        res.render('_layout.pug');
-    });
+const homeController = require('../controllers/home-controller.js')();
+
+module.exports = function(router) {
+    router.get('/', homeController.loadHomePage);
 }

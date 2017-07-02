@@ -1,26 +1,26 @@
-const LocalStrategy = require('passport-local');
+const LocalStrategy = require('passport-local').Strategy;
 
 module.exports = function(passport, data) {
-    passport.use('local-login', new LocalStrategy({
-        username: 'username',
-        password: 'password',
+    passport.use(new LocalStrategy({ 
+        usernameField: 'username', 
+        passwordField: 'password',
         passReqToCallback: true
-    }, function(req, username, password, done) {
-        data.findUserByUsername(username)
-            .then(user => {
-                 if (!user) {
-                    return done(null, false, req.flash('signupMessage', 'Невалидно потребителско име'));
-                }
-                console.log(user);
-                return done(null, user);
-            })
-            .catch((err) => {
-                console.log(err);
+        },
+        function(req, username, password, done) {
 
-                done(null, false, {
-                    success: false,
-                    message: "Incorrect username"
-                });
-            });;
-    }));
+           data.findUserByUsername(username)
+               .then(user => {
+
+                    return done(null, user);
+               })
+               .catch((err) => {
+
+                  return done(null, false, {
+                       success: false,
+                       message: "Incorrect username"
+                   });
+
+               });;
+            
+        }));
 };
