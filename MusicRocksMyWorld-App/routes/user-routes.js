@@ -1,3 +1,2 @@
-module.exports = function(router) {
-    router.get('/username'r);
+module.exports = function (router) {
 };

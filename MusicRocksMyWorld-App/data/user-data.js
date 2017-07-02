@@ -1,60 +1,51 @@
 const conn = require('./database-connection.js')();
 
-module.exports = function() {
-    return {
-        createUser(username, name, email, password) {
-            let user = {
-                username: username,
-                name: name,
-                email: email,
-                password: password
-            };
+module.exports = function () {
+  return {
+    createUser(username, name, email, password) {
+      const user = {
+        username,
+        name,
+        email,
+        password,
+      };
 
-            conn.then(db => {
-                db.collection('users')
-                  .save(user)
-                  .catch(err => console.log(err));
-                
-                console.log('THE USER IS CREATED');
+      conn.then(db => {
+        db.collection('users')
+          .save(user)
+          .catch(err => console.log(err));
+      });
+    },
 
-                // db.collection('users')
-                //   .find({ email: user.email })
-                //    .toArray((err, user) => {
-                //     console.log(user);
-                //   });
+    findUserById(id) {
+      return new Promise((resolve, reject) => {
+        conn.then(db => {
+          db.collection('users')
+            .find({ _id: id })
+            .toArray((err, user) => {
+              if (err) {
+                reject('User not found');
+              }
+              resolve(user[0]);
             });
-        },
+        });
+      });
+    },
 
-        findUserById(id) {
-          return new Promise((resolve, reject) => {
-                 conn.then(db => {
-                     db.collection('users')
-                       .find({ _id: id })
-                       .toArray((err, user) => {
-                         if (err) {
-                             throw 'User not found';
-                         }
-                     
-                         resolve(user[0]);
-                       });
-                     });
-                 });
-        },
+    findUserByUsername(username) {
+      return new Promise((resolve, reject) => {
+        conn.then(db => {
+          db.collection('users')
+            .find({ username })
+            .toArray((err, user) => {
+              if (err) {
+                reject('User not found');
+              }
 
-        findUserByUsername(username) {
-            return new Promise((resolve, reject) => {
-                   conn.then(db => {
-                       db.collection('users')
-                         .find({ username: username })
-                         .toArray((err, user) => {
-                           if (err) {
-                               throw 'User not found';
-                           }
-                       
-                           resolve(user[0]);
-                         });
-                       });
-                   });
-        }
-    }
+              resolve(user[0]);
+            });
+        });
+      });
+    },
+  };
 };
