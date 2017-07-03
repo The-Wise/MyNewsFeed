@@ -43,3 +43,11 @@ a.navbar-brand.text-menu :hover {
 .register-button {
     border-radius: 20px;
 }
+
+.username {
+    border-radius: 20px;
+}
+
+.user-toggle {
+    border-radius: 20px;
+}

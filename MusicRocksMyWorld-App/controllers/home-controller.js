@@ -11,7 +11,10 @@ module.exports = function () {
 
   return {
     loadHomePage(req, res) {
-      res.render('_layout.pug', { isAuthenticated: isAuthenticated() });
+      res.render('_layout.pug', {
+        isAuthenticated: isAuthenticated(),
+        username: localStorage.getItem('username'),
+      });
     },
   };
 };

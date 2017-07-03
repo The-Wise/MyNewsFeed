@@ -1,7 +1,7 @@
 doctype html
 html(lang='en')
   head
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://bootswatch.com/cyborg/bootstrap.min.css')
     link(rel='stylesheet', href='style/home-style.css')
   body
     nav.navbar.navbar-inverse(style='padding-bottom: 12px; padding-top: 12px;')
@@ -38,7 +38,18 @@ html(lang='en')
                 a.btn.btn-default.btn-info.btn-round(type='submit' href="/signup" style='margin-left:3px;') Sing up
             else
               .form-group
-                a.btn.btn-default.btn-success.btn-round.btn-round-login(type='submit' href="/logout" style='margin-left:3px;') Log out
+                .btn-group
+                    a.btn.btn-primary.username(href='#') 
+                      = username
+                    a.btn.btn-primary.dropdown-toggle.user-toggle(href='#', data-toggle='dropdown')
+                      span.caret
+                    ul.dropdown-menu
+                      li
+                        a(href='#') Details
+                      li.divider
+                      li
+                        a(href='/logout') Log out
+
     
     block content
 
