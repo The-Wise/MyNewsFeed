@@ -51,3 +51,11 @@ a.navbar-brand.text-menu :hover {
 .user-toggle {
     border-radius: 20px;
 }
+
+.user-info {
+    font-size: 20px;
+}
+
+.home-page {
+    margin-left: 400px;
+}

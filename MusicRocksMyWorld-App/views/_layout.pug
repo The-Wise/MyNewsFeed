@@ -2,7 +2,7 @@ doctype html
 html(lang='en')
   head
     link(rel='stylesheet', href='https://bootswatch.com/cyborg/bootstrap.min.css')
-    link(rel='stylesheet', href='style/home-style.css')
+    link(rel='stylesheet', href='/static/style/home-style.css')
   body
     nav.navbar.navbar-inverse(style='padding-bottom: 12px; padding-top: 12px;')
       .container-fluid
@@ -40,12 +40,12 @@ html(lang='en')
               .form-group
                 .btn-group
                     a.btn.btn-primary.username(href='#') 
-                      = username
+                      = user.username
                     a.btn.btn-primary.dropdown-toggle.user-toggle(href='#', data-toggle='dropdown')
                       span.caret
                     ul.dropdown-menu
                       li
-                        a(href='#') Details
+                        a(href='/' + username + '/profile') Profile
                       li.divider
                       li
                         a(href='/logout') Log out

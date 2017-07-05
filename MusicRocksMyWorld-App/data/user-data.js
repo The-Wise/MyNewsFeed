@@ -1,4 +1,7 @@
-const conn = require('./database-connection.js')();
+const dbc = require('./database-connection.js')(),
+  conn = dbc.connect(),
+  ObjectID = dbc.ObjectID;
+
 
 module.exports = function () {
   return {
@@ -19,13 +22,16 @@ module.exports = function () {
 
     findUserById(id) {
       return new Promise((resolve, reject) => {
+        const userObjectId = new ObjectID(id);
+
         conn.then(db => {
           db.collection('users')
-            .find({ _id: id })
+            .find({ _id: userObjectId })
             .toArray((err, user) => {
               if (err) {
                 reject('User not found');
               }
+
               resolve(user[0]);
             });
         });

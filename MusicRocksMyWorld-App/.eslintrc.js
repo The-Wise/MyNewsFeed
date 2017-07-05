@@ -8,6 +8,7 @@ module.exports = {
         "global-require": 0,
         "one-var": 0,
         "import/no-extraneous-dependencies": 0,
-        "import/no-absolute-path": 0
+        "import/no-absolute-path": 0,
+        "prefer-template": 0
     }
 };

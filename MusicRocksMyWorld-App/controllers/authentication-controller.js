@@ -1,19 +1,6 @@
 const data = require('../data/user-data.js')();
-const localStorage = require('localStorage');
 
 module.exports = function () {
-  function saveUserToLocalStоrage(username, name, email) {
-    localStorage.setItem('username', username);
-    localStorage.setItem('name', name);
-    localStorage.setItem('email', email);
-  }
-
-  function removeUserFromTheLocalStorage() {
-    localStorage.removeItem('username');
-    localStorage.removeItem('name');
-    localStorage.removeItem('email');
-  }
-
   return {
     loadLoginPage(req, res) {
       res.render('login.pug');
@@ -35,14 +22,10 @@ module.exports = function () {
     },
 
     login(req, res) {
-      saveUserToLocalStоrage(req.user.username, req.user.name, req.user.email);
-
       res.redirect('/');
     },
 
     logout(req, res) {
-      removeUserFromTheLocalStorage();
-
       req.logout();
       res.redirect('/');
     },

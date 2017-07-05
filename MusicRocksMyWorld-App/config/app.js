@@ -14,7 +14,14 @@ module.exports = function () {
   app.use(cookieParser('mrmw'));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-  app.use(expressSession({ secret: 'mrmw', resave: true, saveUninitialized: false, cookie: { secure: false } }));
+  app.use(expressSession({
+    secret: 'mrmw',
+    cookie: { maxAge: 60 * 60 * 60 * 1000 },
+    rolling: true,
+    resave: true,
+    saveUninitialized: false,
+  }));
+
   app.use(flash());
 
     // passport config
@@ -22,7 +29,6 @@ module.exports = function () {
 
     // load routes
   require('../routes/routes-loader.js')(Router, app);
-
 
   return app;
 };
