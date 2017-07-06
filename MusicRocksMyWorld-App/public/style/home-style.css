@@ -56,6 +56,6 @@ a.navbar-brand.text-menu :hover {
     font-size: 20px;
 }
 
-.home-page {
-    margin-left: 400px;
+.row {
+    margin-left: 300px;
 }

@@ -29,8 +29,6 @@ html(lang='en')
               a.text-menu(href='#' style='font-size: 17px;') 
                 strong FEATURED
           form.navbar-form.navbar-right(role='search')
-            .form-group
-              input.form-control.input-searcher(type='text', placeholder='Search')
             if !isAuthenticated
               .form-group
                 a.btn.btn-default.btn-success.btn-round.btn-round-login(type='submit' href="/login" style='margin-left:3px;') Log In
