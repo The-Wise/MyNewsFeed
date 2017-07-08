@@ -14,6 +14,7 @@ module.exports = function () {
   app.use(cookieParser('mrmw'));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
+  app.use(flash());
   app.use(expressSession({
     secret: 'mrmw',
     cookie: { maxAge: 60 * 60 * 60 * 1000 },
@@ -21,8 +22,6 @@ module.exports = function () {
     resave: true,
     saveUninitialized: false,
   }));
-
-  app.use(flash());
 
     // passport config
   require('./passport/passport.js')(app);

@@ -2,10 +2,22 @@ const authenticationController = require('../controllers/authentication-controll
   passport = require('passport');
 
 module.exports = function (router) {
+  function isAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      next();
+    } else {
+      throw new Error('Not Authenticated');
+    }
+  }
+
   router.get('/login', authenticationController.loadLoginPage)
        .get('/signup', authenticationController.loadSignupPage)
-       .get('/logout', authenticationController.logout)
+       .get('/logout', isAuthenticated, authenticationController.logout)
        .post('/signup', authenticationController.signup)
-       .post('/login', passport.authenticate('local', { session: true }),
-                       authenticationController.login);
+       .post('/login', passport.authenticate('local', {
+         failureRedirect: '/login',
+         passReqToCallback: true,
+         failureFlash: true,
+       }),
+          authenticationController.login);
 };

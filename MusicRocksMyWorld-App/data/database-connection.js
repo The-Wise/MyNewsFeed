@@ -1,5 +1,6 @@
-const mongoClient = require('mongodb').MongoClient,
-  ObjectId = require('mongodb').ObjectID,
+const mongodb = require('mongodb'),
+  mongoClient = mongodb.MongoClient,
+  ObjectId = mongodb.ObjectID,
   connectionString = 'mongodb://localhost:27017/MusicRocksMyWorld-Db';
 
 module.exports = () => ({

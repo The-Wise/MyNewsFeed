@@ -1,5 +1,13 @@
 const userController = require('../controllers/user-controller.js')();
 
 module.exports = function (router) {
-  router.get('/:username/profile', userController.getUserProfile);
+  function isAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      next();
+    } else {
+      throw new Error('Not Authenticated');
+    }
+  }
+
+  router.get('/:username/profile', isAuthenticated, userController.getUserProfile);
 };

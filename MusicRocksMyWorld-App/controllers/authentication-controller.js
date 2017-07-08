@@ -3,7 +3,7 @@ const data = require('../data/user-data.js')();
 module.exports = function () {
   return {
     loadLoginPage(req, res) {
-      res.render('login.pug');
+      res.render('login.pug', { message: req.flash('loginMessage') });
     },
 
     loadSignupPage(req, res) {

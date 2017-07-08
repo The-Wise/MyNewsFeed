@@ -9,6 +9,8 @@ module.exports = {
         "one-var": 0,
         "import/no-extraneous-dependencies": 0,
         "import/no-absolute-path": 0,
-        "prefer-template": 0
+        "prefer-template": 0,
+        "no-path-concat": 0,
+        "no-console": 0
     }
 };

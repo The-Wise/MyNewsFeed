@@ -10,10 +10,14 @@ module.exports = function (passport, data) {
     data.findUserByUsername(username)
         .then(user => {
           if (!user) {
-            done(null, false);
+            return done(null, false, req.flash('loginMessage', 'No user found.'));
           }
 
-          done(null, user);
+          if (password !== user.password) {
+            return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+          }
+
+          return done(null, user);
         })
         .catch((err) => done(null, false, {
           success: false,
@@ -21,5 +25,5 @@ module.exports = function (passport, data) {
         }));
   });
 
-  passport.use(localStrategy);
+  passport.use('local', localStrategy);
 };
