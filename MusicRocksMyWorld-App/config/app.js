@@ -31,3 +31,6 @@ module.exports = function () {
 
   return app;
 };
+
+// API key for News api
+// 2a69d47406c043479bdf3cb50e0f477f

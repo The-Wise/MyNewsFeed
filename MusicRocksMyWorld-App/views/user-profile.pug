@@ -12,7 +12,7 @@ block content
                p
                  p.user-info Name: 
                    strong 
-                    = user.name
+                    = user.fullName
                p
                  p.user-info Email: 
                    strong
@@ -21,5 +21,11 @@ block content
                  p.user-info User Id: 
                    strong
                     = user._id
+               p
+                 p.user-info You joined in: 
+                   strong
+                    = user.userJoined
+                
              .col-xs-12.col-sm-4.text-center
-               p Profile Picture: 
+                p Picture: 
+                img.center-block.img-circle.img-responsive(src='' + user.urlProfilePicture, alt='')

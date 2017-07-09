@@ -12,11 +12,12 @@ module.exports = function () {
 
     signup(req, res) {
       const username = req.body.username,
-        name = req.body.name,
+        fullname = req.body.name,
         email = req.body.email,
-        password = req.body.password;
+        password = req.body.password,
+        urlProfilePicture = req.body.urlProfilePicture;
 
-      data.createUser(username, name, email, password);
+      data.createUser(fullname, username, email, password, urlProfilePicture);
 
       res.redirect('/login');
     },

@@ -1,17 +1,15 @@
 const dbc = require('./database-connection.js')(),
+  User = require('../models/user-model.js'),
   conn = dbc.connect(),
   ObjectID = dbc.ObjectID;
 
 
 module.exports = function () {
   return {
-    createUser(username, name, email, password) {
-      const user = {
-        username,
-        name,
-        email,
-        password,
-      };
+    createUser(fullName, username, email, password, urlProfilePicture) {
+      const currentDate = new Date().toDateString();
+      const user = new User(fullName, username, email, password, urlProfilePicture, currentDate)
+                           .toObject();
 
       conn.then(db => {
         db.collection('users')
