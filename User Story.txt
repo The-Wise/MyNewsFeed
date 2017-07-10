@@ -1,0 +1,12 @@
+USER NOT LOGGED IN:
+  menu shows: HOME / MY FEEDS / NEWS / TECH / DESIGN / SPORT / … 
+  HOME  - shows a selection from the 5 categories  - newest 5 articles  from each category (the newest article from each feed)
+  MY FEEDS - shows message to log in or register
+  NEWS / TECH / DESIGN / SPORT / … - show each of its feeds newest articles in a row or column
+
+USER LOGGED IN:
+  show a SIDEBAR with his personal feeds:
+    categories
+    saved articles
+    button to add a custom feed
+  User can go to the different feed categories and add each feed to his feeds choosing a custom category(current category)
