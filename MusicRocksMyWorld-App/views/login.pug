@@ -22,4 +22,9 @@ block content
           .cols-sm-10
             input#password.form-control(type='password', name='password', placeholder='Въведете парола')
         .form-group
-          button.btn.btn-primary.btn-lg.btn-block.login-button.btn-login(type='submit') Submit
+          table(style='width:100%')
+            tr
+              td 
+                a.btn.btn-danger.btn-lg.btn-block(href='/') Cancel
+              td  
+                button.btn.btn-primary.btn-lg.btn-block(type="submit") Submit

@@ -12,7 +12,7 @@ block content
           .alert.alert-danger.alert-dismissable
             a.close(href='#', data-dismiss='alert', aria-label='close') ×
             strong Warning!
-            span= " " +err.msg 
+            span= " " + err.msg 
     .main-login.main-center
       form.form-horizontal(method='post', action='/signup')
         .form-group
@@ -35,9 +35,14 @@ block content
           label.cols-sm-2.control-label(for='confirm') Confirm Password
           .cols-sm-10
             input#confirm.form-control(type='password', name='confirm')
-          .form-group
+        .form-group
           label.cols-sm-2.control-label(for='confirm') URL profile picture
           .cols-sm-10
             input#confirm.form-control(type='password', name='urlProfilePicture')
         .form-group
-          button.btn.btn-primary.btn-lg.btn-block.register-button(type="submit") Submit
+          table(style='width:100%')
+            tr
+              td 
+                a.btn.btn-danger.btn-lg.btn-block(href='/') Cancel
+              td  
+                button.btn.btn-primary.btn-lg.btn-block(type="submit") Submit
