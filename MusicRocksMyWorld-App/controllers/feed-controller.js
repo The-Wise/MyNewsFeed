@@ -3,9 +3,9 @@ const request = require('request'); // for fetching the feed
 
 const feed = [];
 
-const loadFeed = (res, req) => {
-  req.render('page-feed.pug', feed);
-};
+// const loadFeed = (res, req) => {
+//   req.render('page-feed.pug', feed);
+// };
 
 const getFeed = (url) => {
   const req = request(url);
@@ -41,10 +41,12 @@ const getFeed = (url) => {
       feed.push(item);
       console.log(item);
     }
-    loadFeed();
+   // loadFeed();
   });
 };
 
 module.exports = {
   getFeed,
 };
+
+getFeed('	http://feeds.reuters.com/reuters/USVideoBreakingviews');

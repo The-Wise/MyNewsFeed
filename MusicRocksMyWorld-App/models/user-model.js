@@ -1,11 +1,12 @@
 class User {
-  constructor(fullName, username, email, password, urlProfilePicture, userJoined) {
+  constructor(fullName, username, email, password, urlProfilePicture, userJoined, admin) {
     this.fullName = fullName;
     this.username = username;
     this.email = email;
     this.password = password;
     this.urlProfilePicture = urlProfilePicture;
     this.userJoined = userJoined;
+    this.admin = admin;
   }
 
   get fullName() {
@@ -56,6 +57,14 @@ class User {
     this._userJoined = date;
   }
 
+  get admin() {
+    return this._admin;
+  }
+
+  set admin(isAdmin) {
+    this._admin = isAdmin;
+  }
+
   toObject() {
     return {
       fullName: this.fullName,
@@ -64,6 +73,7 @@ class User {
       password: this.password,
       urlProfilePicture: this.urlProfilePicture,
       userJoined: this.userJoined,
+      admin: this.admin
     };
   }
 }

@@ -15,11 +15,13 @@
     "cookie-session": "^2.0.0-beta.2",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
+    "feed-parser": "^1.0.19",
     "localStorage": "^1.0.3",
     "mongodb": "^2.2.29",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "pug": "^2.0.0-rc.2"
+    "pug": "^2.0.0-rc.2",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "eslint": "^3.19.0",

@@ -4,6 +4,7 @@ module.exports = function () {
       res.render('user-profile.pug', {
         isAuthenticated: req.isAuthenticated(),
         user: req.user,
+        isAdmin: req.user.admin
       });
     },
   };

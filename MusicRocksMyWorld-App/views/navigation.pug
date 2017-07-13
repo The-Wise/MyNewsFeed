@@ -31,7 +31,11 @@ mixin nav()
                 a.btn.btn-default.btn-info.btn-round(type='submit' href="/signup" style='margin-left:3px;') Sing up
             else
               .form-group
+                if isAdmin()
+                  a.btn.btn-default.username(style='margin-right: 10px') Add feed
                 .btn-group
+                    if isAdmin() 
+                       a.btn.btn-default.username Admin
                     a.btn.btn-primary.username(href='#') 
                       = user.username
                     a.btn.btn-primary.dropdown-toggle.user-toggle(href='#', data-toggle='dropdown')

@@ -8,8 +8,8 @@ module.exports = function () {
   return {
     createUser(fullName, username, email, password, urlProfilePicture) {
       const currentDate = new Date().toDateString();
-      const user = new User(fullName, username, email, password, urlProfilePicture, currentDate)
-                           .toObject();
+      const user = new User(fullName, username, email, password, urlProfilePicture, currentDate, false)
+                          .toObject();
 
       conn.then(db => {
         db.collection('users')
