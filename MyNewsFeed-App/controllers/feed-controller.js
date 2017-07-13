@@ -49,4 +49,4 @@ module.exports = {
   getFeed,
 };
 
-getFeed('	http://feeds.reuters.com/reuters/USVideoBreakingviews');
+getFeed('http://www.bta.bg/en/rss/free');

@@ -2,4 +2,7 @@
 2. Signup cancel button and confirmation message
 3. Add models - User, Feed, Article etc
 4. Add signup validation on the front end
-5. :username 
+5. Add admin with feed submition form
+6. Add password hashing
+7. Move inline styles to css
+8. Move if !isAuthenticated to js
