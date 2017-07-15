@@ -12,5 +12,5 @@ module.exports = function (router, isAuthenticated) {
         passReqToCallback: true,
         failureFlash: true,
       }),
-          authenticationController.login);
+        authenticationController.login);
 };

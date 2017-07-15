@@ -9,5 +9,6 @@ module.exports = function (router) {
     }
   }
 
-  router.get('/:username/profile', isAuthenticated, userController.getUserProfile);
+  router.get('/:username/profile', isAuthenticated, userController.getUserProfile)
+        .get('/myFeeds', isAuthenticated, userController.getUserFeeds);
 };
