@@ -48,5 +48,3 @@ const getFeed = (url) => {
 module.exports = {
   getFeed,
 };
-
-// getFeed('http://www.bta.bg/en/rss/free');
