@@ -1,0 +1,31 @@
+extends _layout
+block content
+ .container
+   .row
+     .col-md-18
+       .panel.panel-default
+         .panel-body
+           .row
+             .col-xs-12.col-sm-8
+               h2
+                 = user.username
+               p
+                 p.user-info Name: 
+                   strong 
+                    = user.fullName
+               p
+                 p.user-info Email: 
+                   strong
+                    = user.email
+               p
+                 p.user-info User Id: 
+                   strong
+                    = user._id
+               p
+                 p.user-info You joined in: 
+                   strong
+                    = user.userJoined
+                
+             .col-xs-12.col-sm-4.text-center
+                p Picture: 
+                img.center-block.img-circle.img-responsive(src='' + user.urlProfilePicture, alt='')

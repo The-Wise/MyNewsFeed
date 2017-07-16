@@ -1,0 +1,8 @@
+mixin message()
+    if (message.length > 0)
+        .alert.alert-success.alert-dismissable
+            a.close(href='#', data-dismiss='alert', aria-label='close') ×
+            strong Success!
+            span= " " + message
+
+

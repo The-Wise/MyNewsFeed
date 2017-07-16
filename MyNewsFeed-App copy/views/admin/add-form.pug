@@ -1,0 +1,46 @@
+extends ../shared/_layout
+include ../shared/message
+
+
+block content
+    +message()
+    h2 Add category
+    form#admin-add-category.form-horizontal(method='post', action='/admin/edit/addcategory')
+        .form-group
+        label(for="category-title") Category title
+        br
+        input#category-title(type='text', name='category')
+        br
+        button.btn.btn-primary.btn-med(type='submit') Submit
+    br
+    br
+    h2 Add feed
+    form#admin-add-feed(method="post", action="/admin/edit/addfeed")
+        .form-group
+        label(for="feed-title") Feed Category
+        br
+        select#feed-category(name='category')
+            option
+            if categories 
+                each category in categories
+                    option= category
+            else
+                option you need to add a category first
+        br
+        label(for="feed-category") Feed Title
+        br
+        input#feed-title(name="title")
+        br
+        label(for="feed-url") Feed URL
+        br
+        input#feed-url(name="url")
+        br
+        label(for="feed-image") Feed image URL
+        br
+        input#feed-image(name="image")
+        br
+        label(for="feed-description") Feed description
+        br
+        input#feed-description(name="description")
+        br
+        button.btn.btn-primary.btn-med(type='submit') Submit
