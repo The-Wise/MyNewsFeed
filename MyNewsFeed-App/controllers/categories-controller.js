@@ -1,8 +1,9 @@
 const feedData = require('../data/feed-data');
 
-// const loadCategory = (req, res) => {
-//     const name = req.body.category-name;
-//     router.render('./category/:category', {
+// const loadCategoryPage = (req, res) => {
+//     const name = req.props.category;
+//     feedData.getAllCategoryNames()
+//     res.render('./category/:category', {
 //         feeds
 //     })
 // }
@@ -12,6 +13,5 @@ const feedData = require('../data/feed-data');
     // }
 
 module.exports = {
-    // loadCategory,
-    // addNewCategory,
+    // loadCategoryPage,
 };

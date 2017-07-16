@@ -12,19 +12,19 @@ mixin nav()
         #bs-example-navbar-collapse-2.collapse.navbar-collapse
           ul.nav.navbar-nav()
             li
-              a.text-menu(href='/news' style='font-size: 17px;')
+              a.text-menu(href='/myfeeds')
                 strong MY FEEDS
             li
-              a.text-menu(href='/news' style='font-size: 17px;')
+              a.text-menu(href='category/news')
                 strong NEWS
             li
-              a.text-menu(href='/sport' style='font-size: 17px;')
+              a.text-menu(href='category/sport')
                 strong SPORT
             li
-              a.text-menu(href='/tech' style='font-size: 17px;')
+              a.text-menu(href='category/tech')
                 strong TECH
             li
-              a.text-menu(href='/design' style='font-size: 17px;')
+              a.text-menu(href='category/design')
                 strong  DESIGN
           form.navbar-form.navbar-right(role='search')
             if !isAuthenticated
