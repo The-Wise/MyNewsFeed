@@ -1,4 +1,4 @@
-module.exports = function (Router, app) {
+module.exports = function(Router, app) {
   const router = new Router();
   function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
@@ -8,9 +8,12 @@ module.exports = function (Router, app) {
     }
   }
 
-  require('./user-routes.js')(router);
-  require('./authentication-routes.js')(router, isAuthenticated);
-  require('./home-routes.js')(router);
+  require('./user-routes')(router, isAuthenticated);
+  require('./authentication-routes')(router, isAuthenticated);
+  require('./home-routes')(router);
+  require('./feed-routes')(router);
+  require('./admin-routes')(router, isAuthenticated);
+  // require('./categories-routes')(router);
 
   app.use(router);
 };

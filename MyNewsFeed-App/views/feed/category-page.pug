@@ -1,0 +1,13 @@
+extends ../shared/_layout
+
+block content
+    if feeds
+        each feed in feeds
+            div.feed
+                img.feed-image(src=feed.image)
+                h2.feed-title
+                    =feed.title
+                p.feed-description
+                    =feed.description
+    else
+        h2 There are no feeds to dysplay in this category

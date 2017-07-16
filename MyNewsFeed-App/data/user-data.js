@@ -1,28 +1,29 @@
-const dbc = require('./database-connection.js')(),
-  User = require('../models/user-model.js'),
-  conn = dbc.connect(),
-  ObjectID = dbc.ObjectID;
+const dbc = require('./database-connection.js');
+const User = require('../models/user-model.js');
+const conn = dbc.connect();
+const ObjectId = dbc.ObjectId;
 
 
-module.exports = function () {
+module.exports = function() {
   return {
     createUser(fullName, username, email, password, urlProfilePicture) {
       const currentDate = new Date().toDateString();
-      const user = new User(fullName, username, email, password, urlProfilePicture, currentDate, false)
-                          .toObject();
+      const user = new User(fullName, username,
+          email, password, urlProfilePicture, currentDate)
+                .toObject();
 
-      conn.then(db => {
+      conn.then((db) => {
         db.collection('users')
           .save(user)
-          .catch(err => console.log(err));
+          .catch((err) => console.log(err));
       });
     },
 
     findUserById(id) {
       return new Promise((resolve, reject) => {
-        const userObjectId = new ObjectID(id);
+        const userObjectId = new ObjectId(id);
 
-        conn.then(db => {
+        conn.then((db) => {
           db.collection('users')
             .find({ _id: userObjectId })
             .toArray((err, user) => {
@@ -38,7 +39,7 @@ module.exports = function () {
 
     findUserByUsername(username) {
       return new Promise((resolve, reject) => {
-        conn.then(db => {
+        conn.then((db) => {
           db.collection('users')
             .find({ username })
             .toArray((err, user) => {

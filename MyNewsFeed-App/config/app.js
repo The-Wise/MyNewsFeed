@@ -1,11 +1,11 @@
-const express = require('express'),
-  expressSession = require('express-session'),
-  bodyParser = require('body-parser'),
-  cookieParser = require('cookie-parser'),
-  flash = require('connect-flash'),
-  { Router } = require('express');
+const express = require('express');
+const expressSession = require('express-session');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
+const { Router } = require('express');
 
-module.exports = function () {
+module.exports = function() {
   const app = express();
 
   app.set('view engine', 'pug');
@@ -14,7 +14,6 @@ module.exports = function () {
   app.use(cookieParser('mrmw'));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-  app.use(flash());
   app.use(expressSession({
     secret: 'mrmw',
     cookie: { maxAge: 60 * 60 * 60 * 1000 },
@@ -22,6 +21,7 @@ module.exports = function () {
     resave: true,
     saveUninitialized: false,
   }));
+  app.use(flash());
 
     // passport config
   require('./passport/passport.js')(app);

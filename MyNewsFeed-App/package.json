@@ -24,6 +24,7 @@
     "request": "^2.81.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-config-google": "^0.8.0",

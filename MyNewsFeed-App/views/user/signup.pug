@@ -1,4 +1,4 @@
-extends _layout
+extends ../shared/_layout
 block content
  .container
   .row.main
@@ -16,7 +16,7 @@ block content
     .main-login.main-center
       form.form-horizontal(method='post', action='/signup')
         .form-group
-          label.cols-sm-2.control-label(for='name') First Name, Second Name
+          label.cols-sm-2.control-label(for='name', autofocus) First Name, Second Name
           .cols-sm-10
             input#name.form-control(type='text', name='name')
         .form-group

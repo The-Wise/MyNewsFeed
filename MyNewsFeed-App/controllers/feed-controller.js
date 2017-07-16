@@ -1,11 +1,11 @@
-const FeedParser = require('feedparser');
+const FeedParser = require('feed-parser');
 const request = require('request'); // for fetching the feed
 
 const feed = [];
 
-// const loadFeed = (res, req) => {
-//   req.render('page-feed.pug', feed);
-// };
+const loadFeed = (res, req) => {
+  req.render('feed/feed-page.pug', feed);
+};
 
 const getFeed = (url) => {
   const req = request(url);
@@ -16,7 +16,7 @@ const getFeed = (url) => {
     console.log(error);
   });
 
-  req.on('response', function (res) {
+  req.on('response', function(res) {
     const stream = this; // `this` is `req`, which is a stream
 
     if (res.statusCode !== 200) {
@@ -49,4 +49,4 @@ module.exports = {
   getFeed,
 };
 
-getFeed('http://www.bta.bg/en/rss/free');
+// getFeed('http://www.bta.bg/en/rss/free');

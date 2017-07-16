@@ -1,7 +1,8 @@
-const authenticationController = require('../controllers/authentication-controller.js')(),
-  passport = require('passport');
+const authenticationController = require(
+      '../controllers/authentication-controller.js')();
+const passport = require('passport');
 
-module.exports = function (router, isAuthenticated) {
+module.exports = function(router, isAuthenticated) {
   router
       .get('/login', authenticationController.loadLoginPage)
       .get('/signup', authenticationController.loadSignupPage)

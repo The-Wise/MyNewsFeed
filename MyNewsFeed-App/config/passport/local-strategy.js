@@ -1,6 +1,6 @@
 const LocalStrategy = require('passport-local').Strategy;
 
-module.exports = function (passport, data) {
+module.exports = function(passport, data) {
   const localStrategy = new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
@@ -8,7 +8,7 @@ module.exports = function (passport, data) {
   },
   (req, username, password, done) => {
     data.findUserByUsername(username)
-        .then(user => {
+        .then((user) => {
           if (!user) {
             return done(null, false, req.flash('loginMessage', 'No user found.'));
           }
@@ -17,7 +17,7 @@ module.exports = function (passport, data) {
             return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
           }
 
-          return done(null, user);
+          return done(null, user, req.flash('loginMessage', 'Logged in!'));
         })
         .catch((err) => done(null, false, {
           success: false,

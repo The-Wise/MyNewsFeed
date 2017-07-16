@@ -1,5 +1,4 @@
-module.exports = function () {
-
+module.exports = function() {
   return {
     loadHomePage(req, res) {
       res.render('home-page.pug', {
@@ -9,7 +8,8 @@ module.exports = function () {
           if (req.user) {
             return req.user.admin;
           }
-        }
+        },
+        message: req.flash('loginMessage'),
       });
     },
   };

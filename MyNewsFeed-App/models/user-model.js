@@ -1,5 +1,6 @@
 class User {
-  constructor(fullName, username, email, password, urlProfilePicture, userJoined, admin) {
+  constructor(fullName, username, email,
+    password, urlProfilePicture, userJoined, admin) {
     this.fullName = fullName;
     this.username = username;
     this.email = email;
@@ -73,7 +74,7 @@ class User {
       password: this.password,
       urlProfilePicture: this.urlProfilePicture,
       userJoined: this.userJoined,
-      admin: this.admin
+      admin: true,
     };
   }
 }

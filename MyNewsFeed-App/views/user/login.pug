@@ -1,0 +1,28 @@
+extends ../shared/_layout
+include ../shared/message
+
+block content
+  +message()
+  .container 
+    .row.main
+      .panel-heading
+        .panel-title.text-center
+          h1.title Log In
+          hr
+      .main-login.main-center
+        form.form-horizontal(method="post", action='/login')
+          .form-group
+            label.cols-sm-2.control-label(for='username' ) Username
+            .cols-sm-10
+              input#username.form-control(type='text', name='username', placeholder='Въведете вашето потребителско име' autofocus)
+          .form-group
+            label.cols-sm-2.control-label(for='password') Password
+            .cols-sm-10
+              input#password.form-control(type='password', name='password', placeholder='Въведете парола')
+          .form-group
+            table(style='width:100%')
+              tr
+                td 
+                  a.btn.btn-danger.btn-lg.btn-block(href='/') Cancel
+                td  
+                  button.btn.btn-primary.btn-lg.btn-block(type="submit") Submit

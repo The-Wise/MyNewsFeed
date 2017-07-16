@@ -1,19 +1,21 @@
-module.exports = function () {
-  return {
-    getUserProfile(req, res) {
-      res.render('user-profile.pug', {
-        isAuthenticated: req.isAuthenticated(),
-        user: req.user,
-        isAdmin: () => req.user.admin
-      });
+const getUserProfile = (req, res) => {
+  res.render('./user/user-profile.pug', {
+    isAuthenticated: req.isAuthenticated(),
+    user: req.user,
+    isAdmin: () => {
+      return req.user.admin;
     },
+  });
+};
 
-    getUserFeeds(req, res) {
+const getUserFeeds = (req, res) => {
       res.render('not-implemented.pug', {
        isAuthenticated: req.isAuthenticated(),
        user: req.user,
-       isAdmin: () => req.user.admin
+       isAdmin: () => req.user.admin,
       });
-    } 
-  };
+};
+
+module.exports = {
+  getUserProfile,
 };

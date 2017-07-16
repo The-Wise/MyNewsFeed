@@ -1,0 +1,12 @@
+extends ../shared/_layout
+block layout
+    if feed
+        each article in feed
+            div.feed-article
+                img.feed-article-image(src=article.image)
+                h2.feed-article-title
+                    =article.title
+                p.feed-article-summary
+                    =article.summary
+    else
+        h2 There are no articles to display in this feed
