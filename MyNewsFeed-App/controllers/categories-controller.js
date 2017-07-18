@@ -6,6 +6,7 @@ const loadCategoryPage = (req, res) => {
     feedData.findCategoryByName(name)
     .then((category) => {
         res.render('./feed/category-page.pug', {
+        name: category.name,
         feeds: category.feeds,
     });
     });

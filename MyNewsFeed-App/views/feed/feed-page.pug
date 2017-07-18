@@ -1,11 +1,13 @@
 extends ../shared/_layout
-block layout
-    if feed
+block content
+    if feed.length > 0
         each article in feed
+            - const articleurl = encodeURIComponent(article.origlink + 'feed');
             div.feed-article
-                img.feed-article-image(src=article.image)
-                h2.feed-article-title
-                    =article.title
+                img.feed-article-image(src=article.image.url)
+                a.feed-article-title(href=baseurl + '/' + articleurl)
+                    h2
+                        =article.title
                 p.feed-article-summary
                     =article.summary
     else

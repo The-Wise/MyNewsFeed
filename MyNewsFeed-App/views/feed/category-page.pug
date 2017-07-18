@@ -3,12 +3,14 @@ extends ../shared/_layout
 block content
     if feeds.length > 0
         each feed in feeds
+            - const feedurl = encodeURIComponent(feed.feedUrl)
             div.feed
                 img.feed-image(src=feed.imageUrl)
-                h2.feed-title
-                    =feed.title
+                a.feed-title(href='/category/' + name + '/' + feed.title + '/' + feedurl)
+                    h2
+                        =feed.title
                 p.feed-description
                     =feed.description
                 button.btn.btn-primary.btn-med(type='button') Add to my feeds
     else
-        h2 There are no feeds to dysplay in this category
+        h3 There are no feeds to display in this category

@@ -16,7 +16,7 @@ class Feed {
         return this._feedUrl;
     }
     set feedUrl(feedUrl) {
-        this._feedUrl = feedUrl;
+        this._feedUrl = escape(feedUrl);
     }
     get imageUrl() {
         return this._imageUrl;
