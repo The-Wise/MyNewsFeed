@@ -7,7 +7,7 @@ mixin nav()
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand.text-menu(href='/', style='font-size: 25px;')
+          a.navbar-brand.text-menu(href='/')
             strong HOME
         #bs-example-navbar-collapse-2.collapse.navbar-collapse
           ul.nav.navbar-nav()
@@ -29,9 +29,9 @@ mixin nav()
           form.navbar-form.navbar-right(role='search')
             if !isAuthenticated
               .form-group
-                a.btn.btn-default.btn-success.btn-round.btn-round-login(type='submit' href="/login" style='margin-left:3px;') Log In
+                a.btn.btn-default.btn-success.btn-round.btn-round-login(type='submit', href="/login") Log In
               .form-group
-                a.btn.btn-default.btn-info.btn-round(type='submit' href="/signup" style='margin-left:3px;') Sing up
+                a.btn.btn-default.btn-info.btn-round(type='submit', href="/signup") Sing up
             else
               .form-group
                 if isAdmin()

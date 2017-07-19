@@ -1,14 +1,20 @@
 extends ../shared/_layout
 block content
+    button.btn.btn-primary.btn-med(type='button') Refresh feed
     if feed.length > 0
         each article in feed
-            - const articleurl = encodeURIComponent(article.origlink + 'feed');
+            - const articleurl = encodeURIComponent(article['wfw:commentrss']['#']);
             div.feed-article
                 img.feed-article-image(src=article.image.url)
                 a.feed-article-title(href=baseurl + '/' + articleurl)
-                    h2
+                    h4
                         =article.title
                 p.feed-article-summary
                     =article.summary
+                button.btn.btn-primary.btn-med(type="button") Mark as read
+                br
+                button.btn.btn-primary.btn-med(type="button") Save article
+                br
+                a.btn.btn-primary.btn-med(href=baseurl + '/' + articleurl) Read full article
     else
         h2 There are no articles to display in this feed

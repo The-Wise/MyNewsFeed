@@ -1,6 +1,16 @@
+extends ../shared/_layout
+
 block content
     if article
         div.article
-            !=article.description
+            h2 
+                =article.title
+            button.btn.btn-primary.btn-med(type='button') Read later
+            br
+            hr
+            br
+            div
+                !=article['content:encoded']['#']
+            a.btn.btn-primary.btn-med(href=article.link, target='_blanc') Read original article
     else
         h2 No article

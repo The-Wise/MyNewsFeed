@@ -17,6 +17,7 @@
     "express-session": "^1.15.3",
     "feed-parser": "^1.0.19",
     "feedparser": "^2.2.1",
+    "jquery": "^3.2.1",
     "localStorage": "^1.0.3",
     "mongodb": "^2.2.29",
     "passport": "^0.3.2",

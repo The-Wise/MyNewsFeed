@@ -6,9 +6,9 @@ ul.nav.navbar-nav {
     margin-left: 170px;
 }
 
-
 a.navbar-brand.text-menu :hover {
     color: #2ebd59;
+    font-size: 25px;
 }
 
 .text-menu :hover {
@@ -67,4 +67,26 @@ a.navbar-brand.text-menu :hover {
 
 a.text-menu {
     font-size: 17px;
+}
+
+.feed-image {
+    width: 200px;
+}
+
+.feed {
+    margin-bottom: 15px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+/*form validation */
+.valid {
+    font-size: 80%;
+    color: green;
+}
+.warning {
+    font-size: 80%;
+    color: red;
 }

@@ -1,4 +1,5 @@
 extends ../shared/_layout
+
 block content
  .container
   .row.main
@@ -16,33 +17,40 @@ block content
     .main-login.main-center
       form.form-horizontal(method='post', action='/signup')
         .form-group
-          label.cols-sm-2.control-label(for='name', autofocus) First Name, Second Name
+          label.cols-sm-2.control-label(for='name') First Name, Second Name
           .cols-sm-10
-            input#name.form-control(type='text', name='name')
+            input#name.form-control(type='text', name='name', autofocus)
         .form-group
-          label.cols-sm-2.control-label(for='email') Email
+          label.cols-sm-2.control-label(for='email') * Email
           .cols-sm-10
-              input#email.form-control(type='text', name='email')  
+              input#email.form-control(type='text', name='email', required)
+              .status#email-status
         .form-group
-          label.cols-sm-2.control-label(for='username') Username
+          label.cols-sm-2.control-label(for='username') * Username
           .cols-sm-10
-            input#username.form-control(type='text', name='username')  
+            input#username.form-control.invalid(type='text', name='username', placeholder="minimum 6 letters", required)
+            .status#username-status
         .form-group
-          label.cols-sm-2.control-label(for='password') Password
+          label.cols-sm-2.control-label(for='password') * Password
           .cols-sm-10
-             input#password.form-control(type='password', name='password')
+             input#password.form-control(type='password', name='password', minlength="4", maxlength="16", required)
         .form-group
-          label.cols-sm-2.control-label(for='confirm') Confirm Password
+          label.cols-sm-2.control-label(for='confirm') * Confirm Password
           .cols-sm-10
-            input#confirm.form-control(type='password', name='confirm')
+            input#confirm.form-control.invalid(type='password', name='confirm', placeholder="Enter again to validate", required)
+            .status#confirm-status
         .form-group
           label.cols-sm-2.control-label(for='confirm') URL profile picture
           .cols-sm-10
             input#confirm.form-control(type='password', name='urlProfilePicture')
+            .status.confirm-status
         .form-group
           table(style='width:100%')
             tr
               td 
                 a.btn.btn-danger.btn-lg.btn-block(href='/') Cancel
               td  
-                button.btn.btn-primary.btn-lg.btn-block(type="submit") Submit
+                button.btn.btn-primary.btn-lg.btn-block(type="button") Submit
+
+append scripts
+  script(src='static/js/utils/signup-validator.js')

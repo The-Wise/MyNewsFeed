@@ -7,10 +7,13 @@ block content
             div.feed
                 img.feed-image(src=feed.imageUrl)
                 a.feed-title(href='/category/' + name + '/' + feed.title + '/' + feedurl)
-                    h2
+                    h4
                         =feed.title
                 p.feed-description
-                    =feed.description
+                    !=feed.description
                 button.btn.btn-primary.btn-med(type='button') Add to my feeds
+                br
+                hr
+                br
     else
         h3 There are no feeds to display in this category

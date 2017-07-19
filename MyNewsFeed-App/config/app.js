@@ -1,15 +1,24 @@
+/* globals __dirname */
+
 const express = require('express');
 const expressSession = require('express-session');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const { Router } = require('express');
+const path = require('path');
 
 module.exports = function() {
   const app = express();
 
   app.set('view engine', 'pug');
   app.set('views', './views/');
+
+  const libsPath = path.join(__dirname, '../node_modules');
+  app.use('/libs', express.static(libsPath));
+
+  const staticsPath = path.join(__dirname, '../public');
+  app.use('/static', express.static(staticsPath));
 
   app.use(cookieParser('mrmw'));
   app.use(bodyParser.urlencoded({ extended: true }));

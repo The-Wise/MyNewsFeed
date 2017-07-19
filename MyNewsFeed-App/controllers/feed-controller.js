@@ -57,8 +57,10 @@ const getFeed = (url) => {
       // console.log(feed);
       if (feed.length === 1) {
         resolve(feed[0]);
+        console.log(feed);
       } else {
         resolve(feed);
+        console.log(feed);
       }
     });
   });
