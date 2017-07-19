@@ -10,7 +10,7 @@ function loadAddForm(req, res) {
       return req.user.admin;
     },
     categories,
-    message: req.flash('info'),
+    message: req.flash(),
     });
   });
 }
@@ -20,11 +20,11 @@ const addNewCategory = (req, res) => {
     feedData.findCategoryByName(name)
     .then((result) => {
         if (result) {
-        req.flash('info', 'Category already exists');
+        req.flash('error', 'Category already exists');
         res.redirect('/admin/edit');
     } else {
         feedData.addNewCategory(name);
-        req.flash('info', 'Category added');
+        req.flash('success', 'Category added');
         res.redirect('/admin/edit');
     }
     });
@@ -38,7 +38,7 @@ const addNewFeed = (req, res) => {
     const description = req.body.description;
     // validate
     feedData.addNewFeed(category, title, url, image, description);
-    req.flash('info', 'Feed added');
+    req.flash('success', 'Feed added');
     res.redirect('/admin/edit');
 };
 

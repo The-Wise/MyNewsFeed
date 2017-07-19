@@ -1,8 +1,13 @@
 mixin message()
-    if message
-        .alert.alert-success.alert-dismissable
-            a.close(href='#', data-dismiss='alert', aria-label='close') ×
-            strong Success!
-            span= " " + message
-
-
+    div.message
+        if typeof message != 'undefined'
+            if message.success
+                .alert.alert-success.alert-dismissable
+                    a.close(href='#', data-dismiss='alert', aria-label='close') ×
+                    strong Success!
+                    span= " " + message.success
+            if message.error
+                .alert.alert-danger.alert-dismissable
+                    a.close(href='#', data-dismiss='alert', aria-label='close') ×
+                    strong Error!
+                    span= " " + message.error

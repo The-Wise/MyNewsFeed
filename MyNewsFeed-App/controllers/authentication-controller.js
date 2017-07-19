@@ -3,7 +3,7 @@ const data = require('../data/user-data.js')();
 module.exports = function() {
   return {
     loadLoginPage(req, res) {
-      res.render('./user/login.pug', { message: req.flash('loginMessage') });
+      res.render('./user/login.pug', { message: req.flash() });
     },
 
     loadSignupPage(req, res) {
@@ -18,7 +18,7 @@ module.exports = function() {
       const urlProfilePicture = req.body.urlProfilePicture;
 
       data.createUser(fullname, username, email, password, urlProfilePicture);
-      req.flash('loginMessage', 'Signed in!');
+      req.flash('success', 'Registered!');
       res.redirect('/login');
     },
 
@@ -28,6 +28,7 @@ module.exports = function() {
 
     logout(req, res) {
       req.logout();
+      req.flash('success', 'Logged out!');
       res.redirect('/');
     },
   };

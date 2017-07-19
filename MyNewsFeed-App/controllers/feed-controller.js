@@ -15,7 +15,14 @@ const loadArticlePage = (req, res) => {
   getFeed(url)
     .then((article) => {
       console.log(article);
-      res.render('feed/article-page.pug', { article });
+      res.render('feed/article-page.pug', {
+        article,
+        isAuthenticated: req.isAuthenticated(),
+        user: req.user,
+        isAdmin: () => {
+        return req.user.admin;
+      },
+      });
     });
 };
 
@@ -54,7 +61,6 @@ const getFeed = (url) => {
       }
     });
     feedparser.on('end', () => {
-      // console.log(feed);
       if (feed.length === 1) {
         resolve(feed[0]);
         console.log(feed);

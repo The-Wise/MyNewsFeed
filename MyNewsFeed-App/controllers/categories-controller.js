@@ -8,6 +8,11 @@ const loadCategoryPage = (req, res) => {
         res.render('./feed/category-page.pug', {
         name: category.name,
         feeds: category.feeds,
+        isAuthenticated: req.isAuthenticated(),
+        user: req.user,
+        isAdmin: () => {
+        return req.user.admin;
+    },
     });
     });
 };

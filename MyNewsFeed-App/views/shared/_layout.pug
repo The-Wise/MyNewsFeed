@@ -1,4 +1,5 @@
 include navigation
+//- include message
 
 doctype html
 html(lang='en')
@@ -9,6 +10,18 @@ html(lang='en')
     link(rel='stylesheet', href='/static/css/home-style.css')
   body
     +nav()
+    div.message
+        if typeof message != 'undefined'
+            if message.success
+                .alert.alert-success.alert-dismissable
+                    a.close(href='#', data-dismiss='alert', aria-label='close') ×
+                    strong Success!
+                    span= " " + message.success
+            if message.error
+                .alert.alert-danger.alert-dismissable
+                    a.close(href='#', data-dismiss='alert', aria-label='close') ×
+                    strong Error!
+                    span= " " + message.error
     .container
       .row
         .col-lg-8

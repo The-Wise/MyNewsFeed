@@ -81,6 +81,10 @@ a:link {
     text-decoration: none;
 }
 
+.feed-article .btn {
+    margin-right: 10px;
+}
+
 /*form validation */
 .valid {
     font-size: 80%;
