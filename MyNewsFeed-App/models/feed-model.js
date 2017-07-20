@@ -1,6 +1,9 @@
+const { idGen } = require('../utils/id-generator');
+
 class Feed {
     constructor(title, feedUrl, imageUrl, description
     ) {
+        this._id = idGen();
         this._title = title;
         this._feedUrl = feedUrl;
         this._imageUrl = imageUrl;
@@ -32,6 +35,7 @@ class Feed {
     }
     toObject() {
         return {
+            id: this._id,
             title: this._title,
             feedUrl: this._feedUrl,
             imageUrl: this._imageUrl,

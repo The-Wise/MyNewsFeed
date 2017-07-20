@@ -3,8 +3,7 @@ include ../shared/message
 
 
 block content
-    +message()
-    h2 Add category
+    h4 Add category
     form#admin-add-category.form-horizontal(method='post', action='/admin/edit/addcategory')
         .form-group
         label(for="category-title") Category title
@@ -14,7 +13,7 @@ block content
         button.btn.btn-primary.btn-med(type='submit') Submit
     br
     br
-    h2 Add feed
+    h4 Add feed
     form#admin-add-feed(method="post", action="/admin/edit/addfeed")
         .form-group
         label(for="feed-title") Feed Category
@@ -23,7 +22,7 @@ block content
             option
             if categories 
                 each category in categories
-                    option= category
+                    option= category.name
             else
                 option you need to add a category first
         br
@@ -44,3 +43,26 @@ block content
         input#feed-description(name="description")
         br
         button.btn.btn-primary.btn-med(type='submit') Submit
+
+        each category in categories
+            h4= category.name
+            a.btn.btn-default.btn-small(href='/admin/edit/deletecategory/' + category._id) delete category
+            br
+            table.table-responsive
+                tr
+                    th ID
+                    th Feed name
+                    th Feed url
+                    th Feed image
+                    th Feed description
+                    th delete
+                each feed in category.feeds
+                    tr
+                        td= feed._id
+                        td= feed.title
+                        td= feed.feedUrl
+                        td= feed.imageUrl
+                        td= feed.description
+                        td 
+                            a.btn.btn-default.btn-small(href='/admin/edit/deletefeed/' + category._id + '/' + feed.id) delete feed
+            br
