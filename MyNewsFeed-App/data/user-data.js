@@ -3,10 +3,7 @@ const User = require('../models/user-model.js');
 const conn = dbc.connect();
 const ObjectId = dbc.ObjectId;
 
-
-module.exports = function() {
-  return {
-    createUser(fullName, username, email, password, urlProfilePicture) {
+const createUser = (fullName, username, email, password, urlProfilePicture) => {
       const currentDate = new Date().toDateString();
       const user = new User(fullName, username,
           email, password, urlProfilePicture, currentDate)
@@ -17,9 +14,9 @@ module.exports = function() {
           .save(user)
           .catch((err) => console.log(err));
       });
-    },
+};
 
-    findUserById(id) {
+const findUserById = (id) => {
       return new Promise((resolve, reject) => {
         const userObjectId = new ObjectId(id);
 
@@ -35,9 +32,9 @@ module.exports = function() {
             });
         });
       });
-    },
+};
 
-    findUserByUsername(username) {
+const findUserByUsername = (username) => {
       return new Promise((resolve, reject) => {
         conn.then((db) => {
           db.collection('users')
@@ -51,6 +48,13 @@ module.exports = function() {
             });
         });
       });
-    },
+};
+
+
+module.exports = function() {
+  return {
+    createUser,
+    findUserById,
+    findUserByUsername
   };
 };
