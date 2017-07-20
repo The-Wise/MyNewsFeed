@@ -1,5 +1,5 @@
 const authenticationController = require(
-      '../controllers/authentication-controller.js')();
+      '../controllers/authentication-controller.js');
 const passport = require('passport');
 
 module.exports = function(router, isAuthenticated) {
