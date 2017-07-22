@@ -11,9 +11,12 @@ block content
                         =feed.title
                 p.feed-description
                     !=feed.description
-                button.btn.btn-primary.btn-med(type='button') Add to my feeds
+                button.btn.btn-primary.btn-md(type='button') Add to my feeds
                 br
                 hr
                 br
     else
         h3 There are no feeds to display in this category
+
+append scripts
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')

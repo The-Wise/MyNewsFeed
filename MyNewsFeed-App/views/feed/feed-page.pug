@@ -1,18 +1,33 @@
 extends ../shared/_layout
+
 block content
     button.btn.btn-primary.btn-med(type='button') Refresh feed
-    if feed.length > 0
-        each article in feed
-            - const articleurl = encodeURIComponent(article['wfw:commentrss']['#']);
+    br
+    br
+    if articles.length > 0
+        each article in articles
+            //- - const articleurl = encodeURIComponent(article['wfw:commentrss']['#']);
+            - const date = article.date.toString().slice(0,11);
             div.feed-article
-                img.feed-article-image(src=article.image.url)
-                a.feed-article-title(href=baseurl + '/' + articleurl)
+                img.feed-article-image(src=article.imageUrl)
+                a.feed-article-title(href=originalurl + '/' + article.id)
                     h4
                         =article.title
+                p.feed-date
+                    =date
                 p.feed-article-summary
-                    =article.summary
-                button.btn.btn-primary.btn-med(type="button") Mark as read
-                button.btn.btn-primary.btn-med(type="button") Save article
-                a.btn.btn-primary.btn-med(href=baseurl + '/' + articleurl) Read full article
+                    !=article.summary
+                .feed-article-content.hidden
+                    !=article.description
+                br
+                button.btn.btn-primary.btn-md(type="button") Mark as read
+                button.btn.btn-primary.btn-md(type="button") Save article
+                a.btn.btn-primary.btn-med(href=baseurl + '/' + article.id) Read full article
+                br
+                hr
+                //- button.btn.btn-primary.btn-md.read-artcile(type='button') Read full article
     else
         h2 There are no articles to display in this feed
+
+//- append scripts
+//-     script(src='static/js/utils/read-article.js')

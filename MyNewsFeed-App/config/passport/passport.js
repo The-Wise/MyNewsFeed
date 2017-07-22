@@ -1,5 +1,5 @@
-const passport = require('passport'),
-  data = require('../../data/user-data.js')();
+const passport = require('passport');
+const data = require('../../data/user-data.js')();
 
 
 passport.serializeUser((user, done) => {
