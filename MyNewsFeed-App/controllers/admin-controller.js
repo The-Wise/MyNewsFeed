@@ -47,15 +47,20 @@ const addNewFeed = (req, res) => {
     const image = req.body.image;
     const description = req.body.description;
     // validate
-    feedData.addNewFeed(category, title, url, image, description)
-        .then((result) => {
-            req.flash('success', 'Feed added');
-            res.redirect('/admin/edit');
-        })
-        .catch((err) => {
-        req.flash('error', err);
-            res.redirect('/admin/edit');
-    });
+    feedData.findCategoryByName(category)
+    .then((cat) => {
+        feedData.addNewFeed(cat.name, cat._id, title, url, image, description)
+            .then((result) => {
+                req.flash('success', 'Feed added');
+                res.redirect('/admin/edit');
+            })
+            .catch((err) => {
+                console.log(err);
+                req.flash('error', 'Error');
+                res.redirect('/admin/edit');
+            });
+            }
+    );
 };
 
 const deleteCategoryFeed = (req, res) => {
@@ -64,13 +69,16 @@ const deleteCategoryFeed = (req, res) => {
     feedData.deleteItem(category, feed)
         .then((result) => {
             if (result === 1) {
+                req.flash('success', 'Category deleted!');
+                res.redirect('/admin/edit');
+            } else if (result > 1) {
                 req.flash('success', 'Feed deleted!');
                 res.redirect('/admin/edit');
             } else {
                 req.flash('error', 'Unsuccessful deletion!');
                 res.redirect('/admin/edit');
             }
-    });
+        });
 };
 
 module.exports = {

@@ -94,3 +94,20 @@ a:link {
     font-size: 80%;
     color: red;
 }
+
+/*table stiles  */
+table {
+    max-width: 10%;
+}
+td, th {
+    padding:10px; 
+}
+.td-inner {
+    height: 60px;
+    max-height: 60px;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}

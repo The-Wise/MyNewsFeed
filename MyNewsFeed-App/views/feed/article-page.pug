@@ -9,8 +9,15 @@ block content
             br
             hr
             br
+            img(src=article.imageUrl)
+            br
+            br
             div
-                !=article['content:encoded']['#']
-            a.btn.btn-primary.btn-med(href=article.link, target='_blanc') Read original article
+                if article.content
+                    !=article.content
+                else
+                    !=article.summary
+            br
+            a.btn.btn-primary.btn-med(href=article.articleUrl, target='_blanc') Read original article
     else
         h2 No article

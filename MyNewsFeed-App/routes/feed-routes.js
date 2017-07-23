@@ -6,6 +6,6 @@ module.exports = (router) => {
         .get('/category/:category', categoriesController.loadCategoryPage)
         .get('/category/:category/:feedname/:feedurl',
             feedContoller.loadFeedPage)
-        .get('/category/:category/:feedname/:feedurl/:articleurl',
+        .get('/category/:category/:feedname/:feedurl/:articleid',
             feedContoller.loadArticlePage);
 };
