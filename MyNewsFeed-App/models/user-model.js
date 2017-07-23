@@ -74,7 +74,7 @@ class User {
       password: this.password,
       urlProfilePicture: this.urlProfilePicture,
       userJoined: this.userJoined,
-      admin: true,
+      admin: false,
     };
   }
 }

@@ -1,4 +1,5 @@
-const data = require('../data/user-data.js')();
+const data = require('../data/user-data.js')(),
+      validator = require('../utils/validator.js');
 
 const loadLoginPage = (req, res) => {
       res.render('./user/login.pug', { message: req.flash() });
@@ -15,9 +16,19 @@ const signup = (req, res) => {
       const password = req.body.password;
       const urlProfilePicture = req.body.urlProfilePicture;
 
-      data.createUser(fullname, username, email, password, urlProfilePicture);
-      req.flash('success', 'Registered!');
-      res.redirect('/login');
+      var errors = validator.validateRegisterForm(req, res)
+
+      if (errors) {
+          return res.render("user/signup", {
+                errors
+          });
+      }
+
+      data.createUser(fullname, username, email, password, urlProfilePicture)
+          .then(() => {
+            req.flash('success', 'Registered!');
+            res.redirect('/login');
+          });
 };
 
 const login = (req, res) => {

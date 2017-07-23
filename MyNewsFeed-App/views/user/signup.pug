@@ -8,12 +8,11 @@ block content
         h1.title 
            strong Sign Up
         hr
-    if errors  
-        for err in errors
-          .alert.alert-danger.alert-dismissable
-            a.close(href='#', data-dismiss='alert', aria-label='close') ×
-            strong Warning!
-            span= " " + err.msg 
+    if errors
+      .alert.alert-danger.alert-dismissable
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        strong Warning!
+        span= " " + errors.msg 
     .main-login.main-center
       form.form-horizontal(method='post', action='/signup')
         .form-group

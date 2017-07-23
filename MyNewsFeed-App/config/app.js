@@ -5,6 +5,7 @@ const expressSession = require('express-session');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
+const expressValidator = require('express-validator');
 const { Router } = require('express');
 const path = require('path');
 
@@ -31,6 +32,7 @@ module.exports = function() {
     saveUninitialized: false,
   }));
   app.use(flash());
+  app.use(expressValidator());
 
     // passport config
   require('./passport/passport.js')(app);

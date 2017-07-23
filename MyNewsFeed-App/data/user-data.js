@@ -4,6 +4,7 @@ const conn = dbc.connect();
 const ObjectId = dbc.ObjectId;
 
 const createUser = (fullName, username, email, password, urlProfilePicture) => {
+  return new Promise((resolve, reject) => {
       const currentDate = new Date().toDateString();
       const user = new User(fullName, username,
           email, password, urlProfilePicture, currentDate)
@@ -14,6 +15,7 @@ const createUser = (fullName, username, email, password, urlProfilePicture) => {
           .save(user)
           .catch((err) => console.log(err));
       });
+   });  
 };
 
 const findUserById = (id) => {
