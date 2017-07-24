@@ -1,0 +1,33 @@
+mixin sidebar()
+    ul#slide-out.side-nav.fixed
+        li.no-padding
+            ul.collapsible.collapsible-accordion
+                li
+                    a.collapsible-header
+                        | My feeds
+                        i.material-icons arrow_drop_down
+                    .collapsible-body
+                    if feeds.length > 0
+                        ul
+                            each feed in feeds
+                            li
+                                a(href=feed.link) feed.name
+                    else
+                        p You are not following any feeds yet
+        li.no-padding
+            ul.collapsible.collapsible-accordion
+                li
+                    a.collapsible-header
+                        | My saved articles
+                        i.material-icons arrow_drop_down
+                    .collapsible-body
+                        if articles.length > 0
+                            ul
+                                each article in articles
+                                li
+                                    a(href=article.articleUrl) feed.name
+                        else
+                            p You have no saved articles yet
+    
+    a.button-collapse(href='#', data-activates='slide-out')
+        i.material-icons menu

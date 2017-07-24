@@ -1,0 +1,14 @@
+extends ../shared/_layout
+include sidebar
+
+block content
+    if isAuthenticated
+        +sidebar()
+        .row
+            .col.s12.m12.l12
+            if feed.length > 0
+                each article in feed
+                    
+
+    else
+        h4 You have to be loged in to use this functionality
