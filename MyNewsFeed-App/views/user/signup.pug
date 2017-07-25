@@ -44,12 +44,8 @@ block content
             input#confirm.form-control(type='password', name='urlProfilePicture')
             .status.confirm-status
         .form-group
-          table(style='width:100%')
-            tr
-              td 
-                a.btn.btn-danger.btn-lg.btn-block(href='/') Cancel
-              td  
-                button.btn.btn-primary.btn-lg.btn-block(type="button") Submit
+          a.btn.btn-cancel(href='/') Cancel 
+          button.btn.btn-submit(type="submit") Submit
 
 append scripts
   script(src='static/js/utils/signup-validator.js')

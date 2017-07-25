@@ -1,22 +1,25 @@
 extends ../shared/_layout
 
 block content
-    if feeds.length > 0
-        each feed in feeds
-            - const feedurl = encodeURIComponent(feed.feedUrl)
-            div.feed
-                img.feed-image(src=feed.imageUrl)
-                a.feed-title(href='/category/' + name + '/' + feed.title + '/' + feedurl)
-                    h4
-                        =feed.title
-                p.feed-description
-                    !=feed.description
-                a.btn.btn-primary.btn-md(type='button' href='/add-feed/' + feed.title) Add to my feeds
-                br
-                hr
-                br
-    else
-        h3 There are no feeds to display in this category
-
-append scripts
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    .container
+        if feeds.length > 0
+            each feed in feeds
+                - const feedurl = encodeURIComponent(feed.feedUrl)
+                - const feedtitle = encodeURIComponent(feed.title)
+                - const originalurl = '/category/' + name + '/' + feedtitle + '/' + feedurl
+                div.feed
+                    img.feed-image(src=feed.imageUrl)
+                    a.feed-title(href=originalurl)
+                        h4
+                            =feed.title
+                    p.feed-description
+                        !=feed.description
+                    if isAuthenticated
+                        button.btn.btn-md.btn-follow(type='button', data-name=feed.title, data-url= originalurl, data-username=user.username) Follow feed
+                    else
+                        a.btn.btn-primary.btn-md(href='/login') Log in to Follow feed
+                    br
+                    hr
+                    br
+        else
+            h3 There are no feeds to display in this category

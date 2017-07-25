@@ -44,6 +44,4 @@ class Feed {
     }
 }
 
-module.exports = {
-    Feed,
-};
+module.exports = Feed;

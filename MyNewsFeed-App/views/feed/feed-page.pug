@@ -1,33 +1,41 @@
 extends ../shared/_layout
-
 block content
-    button.btn.btn-primary.btn-med(type='button') Refresh feed
+    h3
+        =feedname
+    a.btn.btn-refresh(href=originalurl + '/refresh') Refresh feed
+    //- if
+    if isAuthenticated
+        button.btn.btn-md.btn-follow(type='button', data-name=feedname, data-url= originalurl, data-username=user.username) Follow feed
+    else
+        a.btn.btn-primary.btn-md(href='/login') Log in to Follow feed
+    
+    //- else
+        a.btn.btn-follow(href='user/feeds/removefeed/' + feedname) Unfollow feed
     br
     br
+    hr
     if articles.length > 0
         each article in articles
-            //- - const articleurl = encodeURIComponent(article['wfw:commentrss']['#']);
             - const date = article.date.toString().slice(0,11);
+            - const articleUrl = article.articleUrl
+            - const articleTitle = article.title
             div.feed-article
                 img.feed-article-image(src=article.imageUrl)
                 a.feed-article-title(href=originalurl + '/' + article.id)
-                    h4
+                    h5
                         =article.title
-                p.feed-date
-                    =date
                 p.feed-article-summary
                     !=article.summary
                 .feed-article-content.hidden
                     !=article.description
                 br
-                button.btn.btn-primary.btn-md(type="button") Mark as read
-                button.btn.btn-primary.btn-md(type="button") Save article
-                a.btn.btn-primary.btn-med(href=baseurl + '/' + article.id) Read full article
+                if isAuthenticated
+                    //- a.btn.btn-save-article(href='/' + user.username + '/myfeeds/addarticle/' + article.title + '/' + articleUrl) Save article
+                    button.btn.btn-save-article(type='button', data-title=articleTitle, data-url= articleUrl, data-username=user.username) Save article
+                else 
+                    button.btn(type='button') Log in to save article
+                a.btn.btn-primary.btn-med(href=originalurl + '/' + article.id) Read full article
                 br
                 hr
-                //- button.btn.btn-primary.btn-md.read-artcile(type='button') Read full article
     else
         h2 There are no articles to display in this feed
-
-//- append scripts
-//-     script(src='static/js/utils/read-article.js')

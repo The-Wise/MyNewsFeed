@@ -1,5 +1,6 @@
 include navigation
-//- include message
+include message
+//- include ../user/sidebar
 
 doctype html
 html(lang='en')
@@ -7,38 +8,30 @@ html(lang='en')
     link(rel='stylesheet', href='https://bootswatch.com/cyborg/bootstrap.min.css')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href="https://fonts.googleapis.com/icon?family=Material+Icons")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css", type="text/css", media="screen,projection")
+    //- link(rel="stylesheet", type="text/css",  href="libs/materialize-css/dist/css/materialize.min.css",  media="screen,projection")
     link(rel='stylesheet', href='/static/css/home-style.css')
   body
+    .container
     +nav()
-    div.message
-        if typeof message != 'undefined'
-            if message.success
-                .alert.alert-success.alert-dismissable
-                    a.close(href='#', data-dismiss='alert', aria-label='close') ×
-                    strong Success!
-                    span= " " + message.success
-            if message.error
-                .alert.alert-danger.alert-dismissable
-                    a.close(href='#', data-dismiss='alert', aria-label='close') ×
-                    strong Error!
-                    span= " " + message.error
-    .container-fluid
-      .row
-        .col-lg-8
-          block content
-      br
-      footer.footer.text-center.footer-body
-        .container-fluid
-          .footer-header
-            p.navbar-center
-              | Web Applications with Node.js © 2017 
-              a(href='https://telerikacademy.com/') Telerik Academy
-            p.navbar-center
-              | Application by 
-              a(href='https://github.com/The-Wise', target='_blanc') The Wise Team
-    
+    +message()
+    block content
+    br
+    footer.footer.text-center.footer-body
+      .container
+        .footer-header
+          p.navbar-center
+            | Web Applications with Node.js © 2017 
+            a(href='https://telerikacademy.com/') Telerik Academy
+          p.navbar-center
+            | Application by 
+            a(href='https://github.com/The-Wise', target='_blanc') The Wise Team
+  
     block scripts
-      script(src='libs/jquery/dist/jquery.min.js')
+      //- script(src='static/js/jquery.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js")
       script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
-    
-    
+      script(src='/static/js/utils/event-listeners.js')
+      //- script(src='static/js/materialize.min.js')

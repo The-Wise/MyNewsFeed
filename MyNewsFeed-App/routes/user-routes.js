@@ -1,9 +1,15 @@
-const userController = require('../controllers/user-controller.js');
+const UserController = require('../controllers/user-controller.js');
 
+module.exports = function(router, isAuthenticated, data) {
+  const userController = new UserController(data);
 
-module.exports = function(router, isAuthenticated) {
   router
-    .get('/:username/profile', isAuthenticated, userController.getUserProfile)
-    .get('/add-feed/:feedtitle', isAuthenticated, () => console.log('nice'))
-    .get('/myFeeds', isAuthenticated, userController.getUserFeeds);
+    .get('/:username/profile',
+        isAuthenticated, (req, res) => userController.getUserProfile(req, res))
+    .get('/:username/myfeeds',
+        isAuthenticated, (req, res) => userController.loadMyFeedsPage(req, res))
+    .post('/:username/followfeed',
+        isAuthenticated, (req, res) => userController.followFeed(req, res))
+    .post('/:username/addarticle',
+        isAuthenticated, (req, res) => userController.saveArticle(req, res));
 };

@@ -2,7 +2,7 @@ extends ../shared/_layout
 
 block content
     .row
-        .col-lg-4
+        .col.s12.m4.l3
             h4 Add category
             form#admin-add-category.form-horizontal(method='post', action='/admin/edit/addcategory')
                 .form-group
@@ -17,17 +17,18 @@ block content
             h4 Add feed
             form#admin-add-feed(method="post", action="/admin/edit/addfeed")
                 .form-group
-                label(for="feed-title") Feed Category
+                label(for="feed-category") Feed Category
                 br
-                select#feed-category(name='category')
-                    option
-                    if categories 
+                select#feed-category.browser-default(name='category')
+                    if categories
+                        option(value='', disabled='', selected='') Choose your option 
                         each category in categories
-                            option= category.name
-                    else
-                        option you need to add a category first
+                            option(value=category.name)= category.name
+                        else
+                            option you need to add a category first
+                    
                 br
-                label(for="feed-category") Feed Title
+                label(for="feed-title") Feed Title
                 br
                 input#feed-title(name="title")
                 br
@@ -46,7 +47,7 @@ block content
                 br
                 button.btn.btn-primary.btn-sm(type='submit') Submit
             
-        .col-lg-4
+        .col.s12.m8.l9
             each category in categories
                 h4.admin-cat-name= category.name
                 a.btn.btn-danger.btn-sm(href='/admin/edit/deletecategory/' + category._id) delete category

@@ -1,51 +1,94 @@
 mixin nav()
-    nav.navbar.navbar-inverse(style='padding-bottom: 12px; padding-top: 12px;')
-      .container-fluid
-        .navbar-header
-          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-2')
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand.text-menu(href='/')
-            strong HOME
-        #bs-example-navbar-collapse-2.collapse.navbar-collapse
-          ul.nav.navbar-nav()
-            li
-              a.text-menu(href='/myfeeds')
+    nav
+      .nav-wrapper
+        //- a.brand-logo(href='/') 
+          strong Home
+        a.button-collapse(href='#', data-activates='mobile-demo')
+          i.material-icons menu
+        ul.right.hide-on-med-and-down
+          li
+            a(href='/') 
+              strong HOME
+          li
+            if user
+              a(href='/' + user.username + '/myfeeds') 
                 strong MY FEEDS
-            li
-              a.text-menu(href='/category/news')
-                strong NEWS
-            li
-              a.text-menu(href='/category/sport')
-                strong SPORT
-            li
-              a.text-menu(href='/category/tech')
-                strong TECH
-            li
-              a.text-menu(href='/category/design')
-                strong  DESIGN
-          form.navbar-form.navbar-right(role='search')
-            if !isAuthenticated
-              .form-group
-                a.btn.btn-default.btn-success.btn-round.btn-round-login(type='submit', href="/login") Log In
-              .form-group
-                a.btn.btn-default.btn-info.btn-round(type='submit', href="/signup") Sing up
             else
-              .form-group
-                if isAdmin()
-                  a.btn.btn-default.username(style='margin-right: 10px' href="/admin/edit") Add feed
-                .btn-group
-                    if isAdmin() 
-                       a.btn.btn-default.username Admin
-                    a.btn.btn-primary.username(href='#') 
-                      = user.username
-                    a.btn.btn-primary.dropdown-toggle.user-toggle(href='#', data-toggle='dropdown')
-                      span.caret
-                    ul.dropdown-menu
-                      li
-                        a(href='/' + user.username + '/profile') Profile
-                      li.divider
-                      li
-                        a(href='/logout') Log out
+              a(href='/myfeeds') 
+                strong MY FEEDS
+          li
+            a(href='/category/news/')
+              strong NEWS
+          li
+            a(href='/category/sport/') 
+              strong SPORT
+          li
+            a(href='/category/design/')
+              strong DESIGN
+          li
+            a(href='/category/tech/')
+              strong TECH
+
+          if !isAuthenticated
+              a.btn.btn-default.btn-success.btn-round.btn-round-login(href="/login") Log In
+              a.btn.btn-default.btn-info.btn-round(href="/signup") Sing up
+          else
+              if isAdmin()
+                a.btn.btn-default.username(href="/admin/edit") Add feed
+              .btn-group
+                  if isAdmin() 
+                      a.btn.btn-default.username Admin
+                  a.btn.btn-primary.username(href='/') 
+                    = user.username
+                  a.btn.btn-primary.dropdown-toggle.user-toggle(href='#', data-toggle='dropdown')
+                    span.caret
+                  ul.dropdown-menu
+                    li
+                      a(href='/' + user.username + '/profile') Profile
+                    li.divider
+                    li
+                      a(href='/logout') Log out  
+          
+        ul#mobile-demo.side-nav
+          li
+            a(href='/') 
+              strong HOME
+          li
+            if user
+              a(href='/' + user.username + '/myfeeds') 
+                strong MY FEEDS
+            else
+              a(href='/myfeeds') 
+                strong MY FEEDS
+          li
+            a(href='/category/news')
+              strong NEWS
+          li
+            a(href='/category/sport') 
+              strong SPORT
+          li
+            a(href='/category/design')
+              strong DESIGN
+          li
+            a(href='/category/tech')
+              strong TECH
+
+          if !isAuthenticated
+              a.btn.btn-default.btn-success.btn-round.btn-round-login(href="/login") Log In
+              a.btn.btn-default.btn-info.btn-round(href="/signup") Sing up
+          else
+              if isAdmin()
+                a.btn.btn-default.username(href="/admin/edit") Add feed
+              .btn-group
+                  if isAdmin() 
+                      a.btn.btn-default.username Admin
+                  a.btn.btn-primary.username(href='#') 
+                    = user.username
+                  a.btn.btn-primary.dropdown-toggle.user-toggle(href='#', data-toggle='dropdown')
+                    span.caret
+                  ul.dropdown-menu
+                    li
+                      a(href='/' + user.username + '/profile') Profile
+                    li.divider
+                    li
+                      a(href='/logout') Log out

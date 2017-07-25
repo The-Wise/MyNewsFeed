@@ -56,10 +56,6 @@ a.navbar-brand.text-menu :hover {
     font-size: 20px;
 }
 
-.home-page-searcher {
-    margin-left: 300px;
-}
-
 .cancel-button {
      margin-left: 50px;
      border-radius: 20px;
@@ -81,8 +77,14 @@ a:link {
     text-decoration: none;
 }
 
-.feed-article .btn {
+.feed-article .btn, .article .btn, .btn-refresh, .btn-follow,
+.btn-cancel, .btn-submit {
     margin-right: 10px;
+}
+
+.feed-article img, .article img {
+    max-width: 50%;
+    height: auto;
 }
 
 /*form validation */
@@ -97,6 +99,7 @@ a:link {
 
 /*table stiles  */
 table {
+    table-layout: fixed;
     max-width: 10%;
 }
 td, th {
@@ -106,8 +109,4 @@ td, th {
     height: 60px;
     max-height: 60px;
     overflow: hidden;
-}
-
-.hidden {
-    display: none;
 }
