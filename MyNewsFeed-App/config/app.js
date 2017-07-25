@@ -9,7 +9,7 @@ const expressValidator = require('express-validator');
 const { Router } = require('express');
 const path = require('path');
 
-module.exports = function() {
+module.exports = function(data) {
   const app = express();
 
   app.set('view engine', 'pug');
@@ -35,13 +35,10 @@ module.exports = function() {
   app.use(expressValidator());
 
     // passport config
-  require('./passport/passport.js')(app);
+  require('./passport/passport.js')(app, data);
 
     // load routes
-  require('../routes/routes-loader.js')(Router, app);
+  require('../routes/routes-loader.js')(Router, app, data);
 
   return app;
 };
-
-// API key for News api
-// 2a69d47406c043479bdf3cb50e0f477f

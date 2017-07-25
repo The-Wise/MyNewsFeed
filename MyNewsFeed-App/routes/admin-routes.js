@@ -1,14 +1,16 @@
-const adminController = require('../controllers/admin-controller');
+const AdminController = require('../controllers/admin-controller');
 
-module.exports = function(router, isAuthenticated) {
+module.exports = function(router, isAuthenticated, data) {
+  const controller = new AdminController(data);
+
   router
-    .get('/admin/edit', isAuthenticated, adminController.loadAddForm)
+    .get('/admin/edit', isAuthenticated, (req, res) => controller.loadAddForm(req, res))
     .get('/admin/edit/deletecategory/:categoryid', isAuthenticated,
-      adminController.deleteCategoryFeed)
+      (req, res) => controller.deleteCategoryFeed(req, res))
     .get('/admin/edit/deletefeed/:categoryid/:feedid', isAuthenticated,
-      adminController.deleteCategoryFeed)
+      (req, res) => controller.deleteCategoryFeed(req, res))
     .post('/admin/edit/addcategory', isAuthenticated,
-      adminController.addNewCategory)
+      (req, res) => controller.addNewCategory(req, res))
     .post('/admin/edit/addfeed', isAuthenticated,
-      adminController.addNewFeed);
+      (req, res) => controller.addNewFeed(req, res));
 };

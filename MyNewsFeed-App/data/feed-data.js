@@ -1,162 +1,170 @@
-const dbc = require('./database-connection');
-const connect = dbc.connect();
 const { Category } = require('../models/category-model');
 const { Feed } = require('../models/feed-model');
 const { Article } = require('../models/article-model');
-const ObjectId = dbc.ObjectId;
+const ObjectId = require('./database-connection.js').ObjectID;
 
-const findCategoryByName = (name) => {
-    return new Promise((resolve, reject) => {
-        connect
-        .then((db) => {
-            db
-            .collection('categories')
-            .findOne({ name })
-            .then((category) => resolve(category))
-            .catch((err) => console.log(err));
-            });
-        });
-    };
+class FeedData {
+    constructor(db) {
+        this.db = db;
+    }
 
-const getAllCategories = () => {
-    return new Promise((resolve, reject) => {
-        connect
-        .then((db) => {
-            db
-            .collection('categories')
-            .find({})
-            .toArray((err, categories) => {
-                if (err) {
-                    reject('No categories');
-                }
-                resolve(categories);
-            });
-        });
-    });
-};
-
-const addNewCategory = (name) => {
-    return new Promise((resolve, reject) => {
+    addNewCategory(name) {
         const category = new Category(name).toObject();
-        connect
-        .then((db) => {
-            db
-            .collection('categories')
-            .insertOne(category, (err, result) => {
-                if (err) {
-                    reject(err);
-                }
-                resolve(result);
-            });
-        });
-    });
-};
+        return this.db.collection('categories')
+                .insertOne({ category })
+                .then((result) => {
+                    return result;
+                })
+                .catch((err) => console.log(err));
+    }
 
-const addNewFeed = (catName, catId, title, url, image, description) => {
-    return new Promise((resolve, reject) => {
+    addNewCategory(name) {
+        const category = new Category(name).toObject();
+        return this.db.collection('categories')
+                .insertOne({ category })
+                .then((result) => {
+                    return result;
+                })
+                .catch((err) => console.log(err));
+    }
+
+    findCategoryByName(name) {
+    return this.db.collection('categories')
+            .findOne({ name })
+            .then((category) => {
+                    return category;
+                })
+            .catch((err) => console.log(err));
+    }
+
+    getAllCategories() {
+   return this.db.collection('categories')
+            .find({})
+            .toArray()
+            .then((categories) => {
+                return categories;
+            })
+            .catch((err) => console.log(err));
+    }
+
+    addNewFeed(catName, catId, title, url, image, description) {
         const feed = new Feed(title, url, image, description).toObject();
         catId = catId.toString();
-        connect
-        .then((db) => {
             return Promise.all([
-                db
+                this.db
                 .collection('categories')
                 .updateOne({ name: catName }, { $push: { feeds: feed } }),
-                db
+                this.db
                 .collection('feeds')
-                .insertOne({ catId, catName, feedId: feed.id,
+                .insertOne({ catId, catName, feedId: feed.id, feedurl: feed.url,
                     name: feed.title, articles: [] }),
             ])
-            .then((result) => resolve(result))
-            .catch((err) => reject('Error ' + err));
-        });
-    });
-};
+            .then((result) => {
+                return result;
+            })
+            .catch((err) => console.log('Error ' + err));
+    }
 
-const addNewArticles = (feedname, feeds) => {
-    return new Promise((resolve, reject) => {
-        const articles = feeds.map((feed) => {
-        return new Article(feed.title, feed.date, feed.link,
-            feed.image.url, feed.summary, feed['content:encoded']['#']).toObject();
-        });
-        connect
-        .then((db) => {
-            db
+    findFeedByName(name) {
+            return this.db
             .collection('feeds')
-            .updateOne({ name: feedname }, { $set: { articles: [] } })
-            .then(
-                db
-                .collection('feeds')
-                .updateOne({ name: feedname },
-                    { $pushAll: { articles: articles } } )
-            )
+            .findOne({ name })
+            .then((feed) => {
+                return feed;
+            })
             .catch((err) => console.log(err));
-        });
-        resolve(articles);
-    });
-};
+    }
 
-const findArticleById = (feedname, id) => {
-    return new Promise((resolve, reject) => {
-        connect
-        .then((db) => {
-            db
+    addNewArticles(feedname, feeds) {
+        const articles = feeds.map((feed) => {
+            if (!feed['content:encoded']) {
+                return new Article(feed.title, feed.pubDate, feed.link,
+                    feed.image.url, feed.summary, feed.description)
+                    .toObject();
+            }
+            return new Article(feed.title, feed.pubDate, feed.link,
+                feed.image.url, feed.summary, feed['content:encoded']['#'])
+                .toObject();
+        });
+
+        return this.db
+                .collection('feeds')
+                .updateOne({ name: feedname }, { $set: { articles: [] } })
+                .then(
+                    this.   db
+                    .collection('feeds')
+                    .updateOne({ name: feedname },
+                        { $pushAll: { articles: articles } } )
+                )
+                .then(console.log('Feeds updated'))
+                .catch((err) => console.log(err));
+    }
+
+    findArticleById(feedname, id) {
+        return this.db
             .collection('feeds')
             .findOne({ name: feedname }, { articles: { $elemMatch: { id } } } )
-            .then((article) => resolve(article.articles[0]))
-            .catch((err) => reject(console.log(err)));
-        });
-    });
-};
+            .then((article) => {
+                return article.articles[0];
+            })
+            .catch((err) => console.log(err));
+    };
 
-const deleteItem = (itemId, subItemId) => {
-    return new Promise((resolve, reject) => {
+    getLatestArticles() {
+        const articles = [];
+        return this.db.then((dbd) => {
+                    dbd.collection('feeds')
+                        .find({})
+                        .forEach((feed) => {
+                            articles.push({
+                                category: feed.catName,
+                                feed: feed.name,
+                                url: feed.url,
+                                id: feed.articles[0].id,
+                                title: feed.articles[0].title,
+                                image: feed.articles[0].imageUrl,
+                                summary: feed.articles[0].summary,
+                            });
+                        }, () => {
+                        });
+        })
+        .then(() => {
+            return articles;
+        });
+    }
+
+    deleteItem(itemId, subItemId) {
         const itemObjectId = new ObjectId(itemId);
         if (!subItemId) {
-            connect
-                .then((db) => {
-                    return Promise.all([
-                        db
-                        .collection('categories')
-                        .deleteOne({ _id: itemObjectId }),
-                        db
-                        .collection('feeds')
-                        .deleteMany({ catId: itemId }),
-                    ])
-                        .then((result) => {
-                            resolve(result[0].deletedCount +
-                                result[1].deletedCount);
-                        })
-                        .catch((err) => reject(console.log('Error' + err)));
-                });
-        } else {
-            connect
-                .then((db) => {
-                    return Promise.all([
-                        db
-                        .collection('categories')
-                        .updateOne({ _id: itemObjectId },
-                            { $pull: { feeds: { id: subItemId } } }),
-                        db
-                        .collection('feeds')
-                        .deleteOne({ feedId: subItemId }),
-                    ])
-                        .then((result) => {
-                            resolve(result[0].result.nModified +
-                                result[1].deletedCount);
-                        })
-                        .catch((err) => reject(console.log('Error' + err)));
-                });
+            return Promise.all([
+                this.db
+                .collection('categories')
+                .deleteOne({ _id: itemObjectId }),
+                this.db
+                .collection('feeds')
+                .deleteMany({ catId: itemId }),
+                ])
+                .then((result) => {
+                    return result[0].deletedCount +
+                        result[1].deletedCount;
+                })
+                .catch((err) => console.log('Error' + err));
         }
-    });
-};
+            return Promise.all([
+                this.db
+                .collection('categories')
+                .updateOne({ _id: itemObjectId },
+                    { $pull: { feeds: { id: subItemId } } }),
+                this.db
+                .collection('feeds')
+                .deleteOne({ feedId: subItemId }),
+            ])
+                .then((result) => {
+                    return result[0].result.nModified +
+                        result[1].deletedCount;
+                })
+                .catch((err) => console.log('Error' + err));
+    }
+}
 
-module.exports = {
-    findCategoryByName,
-    getAllCategories,
-    addNewCategory,
-    addNewFeed,
-    addNewArticles,
-    findArticleById,
-    deleteItem,
-};
+module.exports = FeedData;

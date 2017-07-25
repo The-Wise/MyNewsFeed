@@ -1,62 +1,63 @@
-const dbc = require('./database-connection.js');
 const User = require('../models/user-model.js');
-const conn = dbc.connect();
-const ObjectId = dbc.ObjectId;
+const ObjectId = require('./database-connection.js').ObjectID;
 
-const createUser = (fullName, username, email, password, urlProfilePicture) => {
-  return new Promise((resolve, reject) => {
+class UserData {
+  constructor(db) {
+    this.db = db;
+  }
+
+  createUser(fullName, username, email, password, urlProfilePicture) {
       const currentDate = new Date().toDateString();
       const user = new User(fullName, username,
           email, password, urlProfilePicture, currentDate)
                 .toObject();
 
-      conn.then((db) => {
-        db.collection('users')
+     return this.db.collection('users')
           .save(user)
           .catch((err) => console.log(err));
-      });
-   });  
-};
+  }
 
-const findUserById = (id) => {
-      return new Promise((resolve, reject) => {
-        const userObjectId = new ObjectId(id);
+  findUserById(id) {
+    const userObjectId = new ObjectId(id);
 
-        conn.then((db) => {
-          db.collection('users')
-            .find({ _id: userObjectId })
-            .toArray((err, user) => {
-              if (err) {
-                reject('User not found');
-              }
+      return this.db
+        .collection('users')
+        .find({ _id: userObjectId })
+        .toArray()
+        .then((user) => {
+          return user[0];
+        })
+        .catch((err) => console.log('User not found'));
+}
 
-              resolve(user[0]);
-            });
-        });
-      });
-};
+  findUserByUsername(username) {
+        return this.db
+          .collection('users')
+          .find({ username })
+          .toArray()
+          .then((user) => {
+            return user[0];
+          })
+          .catch((err) => console.log(err));
+  }
 
-const findUserByUsername = (username) => {
-      return new Promise((resolve, reject) => {
-        conn.then((db) => {
-          db.collection('users')
-            .find({ username })
-            .toArray((err, user) => {
-              if (err) {
-                reject('User not found');
-              }
+  addFeedToUser(username, feed) {
+        return this.db
+          .collection('users')
+          .updateOne({ username }, { $push: { userFeeds: feed } } )
+          .then(console.log('Success'))
+          .catch((err) => console.log(err));
+  }
 
-              resolve(user[0]);
-            });
-        });
-      });
-};
+  addArticleToUser(username, article) {
+        return this.db
+        .collection('users')
+        .updateOne({ username }, { $push: { userArticles: article } })
+        .then(console.log('Success'))
+        .catch((err) => console.log(err));
+  }
 
+}
 
-module.exports = function() {
-  return {
-    createUser,
-    findUserById,
-    findUserByUsername
-  };
-};
+module.exports = UserData;
+

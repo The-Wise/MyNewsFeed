@@ -9,7 +9,7 @@ const getUserProfile = (req, res) => {
 };
 
 const getUserFeeds = (req, res) => {
-      res.render('not-implemented.pug', {
+      res.render('not-implemented', {
        isAuthenticated: req.isAuthenticated(),
        user: req.user,
        isAdmin: () => req.user.admin,
@@ -18,4 +18,5 @@ const getUserFeeds = (req, res) => {
 
 module.exports = {
   getUserProfile,
+  getUserFeeds
 };

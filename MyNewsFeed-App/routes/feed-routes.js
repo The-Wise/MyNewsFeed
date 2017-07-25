@@ -1,11 +1,14 @@
-const categoriesController = require('../controllers/categories-controller');
-const feedContoller = require('../controllers/feed-controller');
+const CategoriesController = require('../controllers/categories-controller');
+const FeedContoller = require('../controllers/feed-controller');
 
-module.exports = (router) => {
-  router
-        .get('/category/:category', categoriesController.loadCategoryPage)
+module.exports = (router, data) => {
+   const categoriesController = new CategoriesController(data),
+         feedContoller = new FeedContoller(data); 
+
+   router
+        .get('/category/:category', (req, res) => categoriesController.loadCategoryPage(req, res))
         .get('/category/:category/:feedname/:feedurl',
-            feedContoller.loadFeedPage)
+            (req, res) => feedContoller.loadFeedPage(req, res))
         .get('/category/:category/:feedname/:feedurl/:articleid',
-            feedContoller.loadArticlePage);
+            (req, res) => feedContoller.loadArticlePage(req, res));
 };
