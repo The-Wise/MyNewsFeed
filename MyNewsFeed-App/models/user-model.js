@@ -8,6 +8,7 @@ class User {
     this.urlProfilePicture = urlProfilePicture;
     this.userJoined = userJoined;
     this.admin = admin;
+    this.feeds = [];
   }
 
   get fullName() {
@@ -66,6 +67,14 @@ class User {
     this._admin = isAdmin;
   }
 
+  get feeds() {
+    return this._feeds;
+  }
+
+  set feeds(feeds) {
+    this._feeds = feeds;
+  }
+
   toObject() {
     return {
       fullName: this.fullName,
@@ -74,7 +83,8 @@ class User {
       password: this.password,
       urlProfilePicture: this.urlProfilePicture,
       userJoined: this.userJoined,
-      admin: false,
+      admin: true,
+      feeds: this.feeds
     };
   }
 }

@@ -1,5 +1,6 @@
-module.exports = function(Router, app) {
+module.exports = function(Router, app, data) {
   const router = new Router();
+  
   function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
       next();
@@ -8,11 +9,11 @@ module.exports = function(Router, app) {
     }
   }
 
-  require('./user-routes')(router, isAuthenticated);
-  require('./authentication-routes')(router, isAuthenticated);
-  require('./home-routes')(router);
-  require('./feed-routes')(router);
-  require('./admin-routes')(router, isAuthenticated);
+  require('./user-routes')(router, isAuthenticated, data);
+  require('./authentication-routes')(router, isAuthenticated, data);
+  require('./home-routes')(router, data);
+  require('./feed-routes')(router, data);
+  require('./admin-routes')(router, isAuthenticated, data);
   // require('./categories-routes')(router);
 
   app.use(router);

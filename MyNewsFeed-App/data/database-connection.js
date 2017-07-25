@@ -1,11 +1,13 @@
-const mongodb = require('mongodb');
-const mongoClient = mongodb.MongoClient;
-const ObjectId = mongodb.ObjectID;
 const connectionString = 'mongodb://localhost:27017/MusicRocksMyWorld-Db';
 
-const connect = () => mongoClient.connect(connectionString);
+const { MongoClient, ObjectID } = require('mongodb');
 
-module.exports = {
-  connect,
-  ObjectId,
+const init = () => {
+    return MongoClient.connect(connectionString)
+        .then((db) => {
+            console.log('Databases connected');
+            return db;
+        });
 };
+
+module.exports = { init, ObjectID };

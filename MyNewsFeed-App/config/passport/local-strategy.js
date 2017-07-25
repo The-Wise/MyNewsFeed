@@ -7,22 +7,23 @@ module.exports = function(passport, data) {
     passReqToCallback: true,
   },
   (req, username, password, done) => {
-    data.findUserByUsername(username)
-        .then((user) => {
-          if (!user) {
-            return done(null, false, req.flash('error', 'No user found.'));
-          }
-
-          if (password !== user.password) {
-            return done(null, false, req.flash('error', 'Oops! Wrong password.'));
-          }
-
-          return done(null, user, req.flash('success', 'Logged in!'));
-        })
-        .catch((err) => done(null, false, {
-          success: false,
-          message: 'Incorrect username',
-        }));
+     data.users
+         .findUserByUsername(username)
+         .then((user) => {
+           if (!user) {
+             return done(null, false, req.flash('error', 'No user found.'));
+           }
+         
+           if (password !== user.password) {
+             return done(null, false, req.flash('error', 'Oops! Wrong password.'));
+           }
+         
+           return done(null, user, req.flash('success', 'Logged in!'));
+         })
+         .catch((err) => done(null, false, {
+           success: false,
+           message: 'Incorrect username',
+         }));
   });
 
   passport.use('local', localStrategy);

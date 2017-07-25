@@ -11,7 +11,7 @@ block content
                         =feed.title
                 p.feed-description
                     !=feed.description
-                button.btn.btn-primary.btn-md(type='button') Add to my feeds
+                a.btn.btn-primary.btn-md(type='button' href='/add-feed/' + feed.title) Add to my feeds
                 br
                 hr
                 br
