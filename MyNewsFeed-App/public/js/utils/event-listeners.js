@@ -1,4 +1,4 @@
-/* globals $ */
+/* globals $, message, Materialize */
 
 $( document ).ready(function() {
     $('.button-collapse').sideNav();
@@ -10,7 +10,11 @@ $( document ).ready(function() {
     $('.btn-follow').on('click', (event) => {
         followFeed(event);
     });
-});
+    // if (typeof message != 'undefined') {
+    //     toaster(message);
+    // }
+    });
+
 
 function saveArticle(event) {
     const data = {};
@@ -29,3 +33,14 @@ function followFeed(event) {
         const url = '/' + data.username + '/followfeed';
         $.post(url, data);
 }
+
+// function toaster(message) {
+//     if (message.success) {
+//             if (message.success) {
+//                 Materialize.toast('Success ' + message.success, 4000);
+//             }
+//             if (message.error) {
+//                 Materialize.toast('Error ' + message.error, 4000);
+//             }
+//     }
+// }

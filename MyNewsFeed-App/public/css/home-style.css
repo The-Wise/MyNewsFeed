@@ -110,3 +110,13 @@ td, th {
     max-height: 60px;
     overflow: hidden;
 }
+
+#sidebar {
+    min-height: 700px;
+    background: grey;
+}
+
+/* footer {
+    background:darkgrey;
+    padding-top: 20px;
+} */

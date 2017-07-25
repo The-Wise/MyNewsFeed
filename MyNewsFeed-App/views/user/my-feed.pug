@@ -1,14 +1,31 @@
 extends ../shared/_layout
-include sidebar
+//- include sidebar
 
 block content
     if isAuthenticated
-        +sidebar()
         .row
-            .col.s12.m12.l12
-            if feed.length > 0
-                each article in feed
-                    
+            #sidebar.col.s12.m4.l3.no-padding
+                h4 My feeds 
+                br
+                if feeds
+                    ul
+                        each feed in feeds
+                            li
+                                a(href=feed.feedUrl) 
+                                    h5
+                                        =feed.feedName
+                else
+                    p You are not following any feeds yet
+
+            .col.s12.m8.l9
+                h4 My saved articles
+                if articles
+                    each article in articles
+                        a(href=article.articleUrl, target='_blanc')
+                            h5
+                                =article.articleTitle
+                else
+                    h4 You have no saved articles yet
 
     else
         h4 You have to be loged in to use this functionality
