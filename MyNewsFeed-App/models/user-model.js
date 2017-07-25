@@ -8,7 +8,8 @@ class User {
     this.urlProfilePicture = urlProfilePicture;
     this.userJoined = userJoined;
     this.admin = admin;
-    this.feeds = [];
+    this.userFeeds = [];
+    this.userArticles = [];
   }
 
   get fullName() {
@@ -67,12 +68,20 @@ class User {
     this._admin = isAdmin;
   }
 
-  get feeds() {
-    return this._feeds;
+  get userFeeds() {
+    return this._userFeeds;
   }
 
-  set feeds(feeds) {
-    this._feeds = feeds;
+  set userFeeds(array) {
+    this._userFeeds = array;
+  }
+
+  get userArticles() {
+    return this._userArticles;
+  }
+
+  set userArticles(array) {
+    this._userArticles = array;
   }
 
   toObject() {
@@ -83,8 +92,9 @@ class User {
       password: this.password,
       urlProfilePicture: this.urlProfilePicture,
       userJoined: this.userJoined,
+      userFeeds: this.userFeeds,
+      userArticles: this.userArticles,
       admin: true,
-      feeds: this.feeds
     };
   }
 }

@@ -1,6 +1,6 @@
-const { Category } = require('../models/category-model');
-const { Feed } = require('../models/feed-model');
-const { Article } = require('../models/article-model');
+const Category = require('../models/category-model');
+const Feed = require('../models/feed-model');
+const Article = require('../models/article-model');
 const ObjectId = require('./database-connection.js').ObjectID;
 
 class FeedData {
@@ -18,18 +18,8 @@ class FeedData {
                 .catch((err) => console.log(err));
     }
 
-    addNewCategory(name) {
-        const category = new Category(name).toObject();
-        return this.db.collection('categories')
-                .insertOne({ category })
-                .then((result) => {
-                    return result;
-                })
-                .catch((err) => console.log(err));
-    }
-
     findCategoryByName(name) {
-    return this.db.collection('categories')
+        return this.db.collection('categories')
             .findOne({ name })
             .then((category) => {
                     return category;
@@ -38,7 +28,7 @@ class FeedData {
     }
 
     getAllCategories() {
-   return this.db.collection('categories')
+        return this.db.collection('categories')
             .find({})
             .toArray()
             .then((categories) => {
@@ -75,15 +65,15 @@ class FeedData {
             .catch((err) => console.log(err));
     }
 
-    addNewArticles(feedname, feeds) {
-        const articles = feeds.map((feed) => {
-            if (!feed['content:encoded']) {
-                return new Article(feed.title, feed.pubDate, feed.link,
-                    feed.image.url, feed.summary, feed.description)
+    addNewArticles(feedname, feedurl, feed) {
+        const articles = feed.map((a) => {
+            if (!a['content:encoded']) {
+                return new Article(a.title, a.pubDate, a.link, feedurl,
+                    a.image.url, a.summary, a.description)
                     .toObject();
             }
-            return new Article(feed.title, feed.pubDate, feed.link,
-                feed.image.url, feed.summary, feed['content:encoded']['#'])
+            return new Article(a.title, a.pubDate, a.link, feedurl,
+                a.image.url, a.summary, a['content:encoded']['#'])
                 .toObject();
         });
 
@@ -91,7 +81,7 @@ class FeedData {
                 .collection('feeds')
                 .updateOne({ name: feedname }, { $set: { articles: [] } })
                 .then(
-                    this.   db
+                    this.db
                     .collection('feeds')
                     .updateOne({ name: feedname },
                         { $pushAll: { articles: articles } } )
@@ -108,29 +98,48 @@ class FeedData {
                 return article.articles[0];
             })
             .catch((err) => console.log(err));
-    };
+    }
 
     getLatestArticles() {
-        const articles = [];
-        return this.db.then((dbd) => {
-                    dbd.collection('feeds')
+        // const articles = [];
+        //             return this.db
+        //                 .collection('feeds')
+        //                 .find({})
+        //                 .forEach((feed) => {
+        //                     articles.push({
+        //                         category: feed.catName,
+        //                         feed: feed.name,
+        //                         url: feed.url,
+        //                         id: feed.articles[0].id,
+        //                         title: feed.articles[0].title,
+        //                         image: feed.articles[0].imageUrl,
+        //                         summary: feed.articles[0].summary,
+        //                     });
+        //                 }, () => {
+        //                     console.log(articles);
+        //                     return Promise.resolve(articles);
+        //                 });
+        const promise = new Promise((resolve, reject) => {
+            const articles = [];
+            this.db.collection('feeds')
                         .find({})
                         .forEach((feed) => {
                             articles.push({
                                 category: feed.catName,
                                 feed: feed.name,
-                                url: feed.url,
+                                url: feed.articles[0].feedurl,
                                 id: feed.articles[0].id,
                                 title: feed.articles[0].title,
                                 image: feed.articles[0].imageUrl,
                                 summary: feed.articles[0].summary,
                             });
                         }, () => {
+                            console.log(articles);
+                            resolve(articles);
                         });
-        })
-        .then(() => {
-            return articles;
         });
+
+        return promise;
     }
 
     deleteItem(itemId, subItemId) {

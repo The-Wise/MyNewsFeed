@@ -1,7 +1,7 @@
 const { idGen } = require('../utils/id-generator');
 
 class Article {
-    constructor(title, date, articleUrl, imageUrl, summary, content) {
+    constructor(title, date, feedUrl, articleUrl, imageUrl, summary, content) {
         this._id = idGen();
         this._title = title;
         this._date = date;
@@ -21,6 +21,12 @@ class Article {
     }
     set date(date) {
         this._date = date;
+    }
+    get feedUrl() {
+        return this._feedUrl;
+    }
+    set feedUrl(feedUrl) {
+        this._feedUrl = escape(feedUrl);
     }
     get articleUrl() {
         return this._articleUrl;
@@ -45,6 +51,7 @@ class Article {
             id: this._id,
             title: this._title,
             date: this._date,
+            feedUrl: this._feedURL,
             articleUrl: this._articleUrl,
             imageUrl: this._imageUrl,
             summary: this._summary,
@@ -53,6 +60,4 @@ class Article {
     }
 }
 
-module.exports = {
-    Article,
-};
+module.exports = Article;

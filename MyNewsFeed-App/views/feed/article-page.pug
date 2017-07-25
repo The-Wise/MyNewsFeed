@@ -2,22 +2,23 @@ extends ../shared/_layout
 
 block content
     if article
+        - const articleUrl = encodeURIComponent(article.articleUrl)
+        - const articleTitle = encodeURIComponent(article.title)
         div.article
-            h2 
+            h4 
                 =article.title
-            button.btn.btn-primary.btn-med(type='button') Read later
+            if isAuthenticated
+                button.btn.btn-save-article(type='button', data-title=articleTitle, data-url= articleUrl, data-username=user.username) Save article
+            else 
+                button.btn(type='button') Log in to save article
+            a.btn.btn-primary.btn-med(href=article.articleUrl, target='_blanc') Read original article
             br
             hr
-            br
-            img(src=article.imageUrl)
-            br
             br
             div
                 if article.content
                     !=article.content
                 else
                     !=article.summary
-            br
-            a.btn.btn-primary.btn-med(href=article.articleUrl, target='_blanc') Read original article
     else
         h2 No article
