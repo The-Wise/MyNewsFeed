@@ -14,7 +14,7 @@ mixin nav()
               a(href='/' + user.username + '/myfeeds') 
                 strong MY FEEDS
             else
-              a(href='/myfeeds') 
+              a.not-active(href='/myfeeds') 
                 strong MY FEEDS
           li
             a(href='/category/news/')
@@ -58,7 +58,7 @@ mixin nav()
               a(href='/' + user.username + '/myfeeds') 
                 strong MY FEEDS
             else
-              a(href='/myfeeds') 
+              a.not-active(href='/myfeeds') 
                 strong MY FEEDS
           li
             a(href='/category/news')

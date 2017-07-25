@@ -120,3 +120,8 @@ td, th {
     background:darkgrey;
     padding-top: 20px;
 } */
+
+.not-active {
+   pointer-events: none;
+   cursor: default;
+}
