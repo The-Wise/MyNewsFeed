@@ -40,5 +40,7 @@ module.exports = function(data) {
     // load routes
   require('../routes/routes-loader.js')(Router, app, data);
 
+  require('./security')(app);
+
   return app;
 };
