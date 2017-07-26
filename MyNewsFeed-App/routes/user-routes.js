@@ -8,8 +8,8 @@ module.exports = function(router, isAuthenticated, data) {
         isAuthenticated, (req, res) => userController.getUserProfile(req, res))
     .get('/:username/myfeeds',
         isAuthenticated, (req, res) => userController.loadMyFeedsPage(req, res))
-    .post('/:username/followfeed',
+    .put('/:username/followfeed',
         isAuthenticated, (req, res) => userController.followFeed(req, res))
-    .post('/:username/addarticle',
+    .put('/:username/addarticle',
         isAuthenticated, (req, res) => userController.saveArticle(req, res));
 };

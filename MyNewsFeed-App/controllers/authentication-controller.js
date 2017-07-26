@@ -1,3 +1,4 @@
+
 const validator = require('../utils/validator.js');
 
 class AuthenticationController {
@@ -20,11 +21,11 @@ class AuthenticationController {
             const password = req.body.password;
             const urlProfilePicture = req.body.urlProfilePicture;
 
-            var errors = validator.validateRegisterForm(req, res)
+            const errors = validator.validateRegisterForm(req, res);
 
             if (errors) {
-                return res.render("user/signup", {
-                      errors
+                return res.render('user/signup', {
+                      errors,
                 });
             }
 
@@ -46,7 +47,5 @@ class AuthenticationController {
             res.redirect('/');
       }
 }
-
-
 
 module.exports = AuthenticationController;

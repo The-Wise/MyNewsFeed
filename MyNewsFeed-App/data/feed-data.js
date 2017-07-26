@@ -101,25 +101,7 @@ class FeedData {
     }
 
     getLatestArticles() {
-        // const articles = [];
-        //             return this.db
-        //                 .collection('feeds')
-        //                 .find({})
-        //                 .forEach((feed) => {
-        //                     articles.push({
-        //                         category: feed.catName,
-        //                         feed: feed.name,
-        //                         url: feed.url,
-        //                         id: feed.articles[0].id,
-        //                         title: feed.articles[0].title,
-        //                         image: feed.articles[0].imageUrl,
-        //                         summary: feed.articles[0].summary,
-        //                     });
-        //                 }, () => {
-        //                     console.log(articles);
-        //                     return Promise.resolve(articles);
-        //                 });
-        const promise = new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             const articles = [];
             this.db.collection('feeds')
                         .find({})
@@ -130,17 +112,13 @@ class FeedData {
                                 url: feed.articles[0].feedUrl,
                                 id: feed.articles[0].id,
                                 title: feed.articles[0].title,
-                                image: feed.articles[0].imageUrl,
+                                imageUrl: feed.articles[0].imageUrl,
                                 summary: feed.articles[0].summary,
                             });
-                            console.log(feed.articles[0].feedUrl);
                         }, () => {
-                            console.log(articles);
                             resolve(articles);
                         });
         });
-
-        return promise;
     }
 
     deleteItem(itemId, subItemId) {
