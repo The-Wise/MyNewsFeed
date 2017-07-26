@@ -28,7 +28,6 @@ class FeedController {
     const feedname = req.params.feedname;
       this.feedData.findArticleById(feedname, id)
       .then((article) => {
-        // console.log(article);
         res.render('feed/article-page.pug', {
           article,
           isAuthenticated: req.isAuthenticated(),

@@ -59,27 +59,27 @@ class UserData {
           .catch((err) => console.log(err));
     }
 
-    removeFeedFromUser(username, feed) {
-          return this.db
-            .collection('users')
-            .updateOne({ username }, { $pull: { userFeeds: feed } } )
-            .then((result) => {
-              return result.nModified;
-            })
-            .catch((err) => console.log(err));
-    }
+//     removeFeedFromUser(username, feed) {
+//           return this.db
+//             .collection('users')
+//             .updateOne({ username }, { $pull: { userFeeds: feed } } )
+//             .then((result) => {
+//               return result.nModified;
+//             })
+//             .catch((err) => console.log(err));
+//     }
 
-    removeArticleFromUser(username, article) {
-          return this.db
-          .collection('users')
-          .updateOne({ username }, { $pull: { userArticles: article } })
-          .then((result) => {
-              return result.nModified;
-          })
-          .catch((err) => console.log(err));
-    }
+//     removeArticleFromUser(username, article) {
+//           return this.db
+//           .collection('users')
+//           .updateOne({ username }, { $pull: { userArticles: article } })
+//           .then((result) => {
+//               return result.nModified;
+//           })
+//           .catch((err) => console.log(err));
+//     }
 
-}
+// }
 
 module.exports = UserData;
 

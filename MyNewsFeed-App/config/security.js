@@ -24,7 +24,7 @@ module.exports = setSettings;
     CSP предпазва от cross-site scripting
         Какво е CSP 
             -- https://github.com/helmetjs/csp
-        Какаво е Cross-Site Scripting
+        Какаво е Cross-Site Scripting XSS
             -- https://www.acunetix.com/websitesecurity/cross-site-scripting/
 
     Какво е ienoopen 
