@@ -1,4 +1,4 @@
-/* globals $, message, Materialize */
+/* globals $, Materialize */
 
 $( document ).ready(function() {
     $('.button-collapse').sideNav();
@@ -22,7 +22,12 @@ function saveArticle(event) {
         data.articleTitle = event.target.getAttribute('data-title');
         data.articleUrl = event.target.getAttribute('data-url');
         const url = '/' + data.username + '/addarticle';
-        $.post(url, data);
+        $.ajax({
+            url,
+            method: 'PUT',
+            data,
+            success: Materialize.toast('Success, article saved!', 4000),
+        });
 }
 
 function followFeed(event) {
@@ -31,7 +36,12 @@ function followFeed(event) {
         data.feedName = event.target.getAttribute('data-name');
         data.feedUrl = event.target.getAttribute('data-url');
         const url = '/' + data.username + '/followfeed';
-        $.post(url, data);
+        $.ajax({
+            url,
+            method: 'PUT',
+            data,
+            success: Materialize.toast('Success, feed saved!', 4000),
+        });
 }
 
 // function toaster(message) {

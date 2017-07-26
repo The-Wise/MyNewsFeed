@@ -112,7 +112,7 @@ class FeedData {
                                 url: feed.articles[0].feedUrl,
                                 id: feed.articles[0].id,
                                 title: feed.articles[0].title,
-                                image: feed.articles[0].imageUrl,
+                                imageUrl: feed.articles[0].imageUrl,
                                 summary: feed.articles[0].summary,
                             });
                         }, () => {
