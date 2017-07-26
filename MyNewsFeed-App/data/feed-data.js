@@ -66,6 +66,7 @@ class FeedData {
     }
 
     addNewArticles(feedname, feedurl, feed) {
+        console.log('Feedname ' + feedname);
         const articles = feed.map((a) => {
             if (!a['content:encoded']) {
                 return new Article(a.title, a.pubDate, a.link, feedurl,
@@ -76,7 +77,6 @@ class FeedData {
                 a.image.url, a.summary, a['content:encoded']['#'])
                 .toObject();
         });
-
         return this.db
                 .collection('feeds')
                 .updateOne({ name: feedname }, { $set: { articles: [] } })
@@ -127,12 +127,13 @@ class FeedData {
                             articles.push({
                                 category: feed.catName,
                                 feed: feed.name,
-                                url: feed.articles[0].feedurl,
+                                url: feed.articles[0].feedUrl,
                                 id: feed.articles[0].id,
                                 title: feed.articles[0].title,
                                 image: feed.articles[0].imageUrl,
                                 summary: feed.articles[0].summary,
                             });
+                            console.log(feed.articles[0].feedUrl);
                         }, () => {
                             console.log(articles);
                             resolve(articles);

@@ -1,61 +1,75 @@
 const { idGen } = require('../utils/id-generator');
 
 class Article {
-    constructor(title, date, feedUrl, articleUrl, imageUrl, summary, content) {
-        this._id = idGen();
-        this._title = title;
-        this._date = date;
-        this._articleUrl = articleUrl;
-        this._imageUrl = imageUrl;
-        this._summary = summary;
-        this._content = content;
+    constructor(title, date, articleUrl, feedUrl, imageUrl, summary, content) {
+        this.id = idGen();
+        this.title = title;
+        this.date = date;
+        this.articleUrl = articleUrl;
+        this.feedUrl = feedUrl;
+        this.imageUrl = imageUrl;
+        this.summary = summary;
+        this.content = content;
     }
     get title() {
         return this._title;
     }
+
     set title(title) {
         this._title = title.toLowerCase();
     }
+
     get date() {
         return this._title;
     }
+
     set date(date) {
         this._date = date;
     }
+
     get feedUrl() {
         return this._feedUrl;
     }
+
     set feedUrl(feedUrl) {
-        this._feedUrl = escape(feedUrl);
+        this._feedUrl = feedUrl;
     }
+
     get articleUrl() {
         return this._articleUrl;
     }
+
     set articleUrl(articleUrl) {
-        this._articleUrl = escape(articleUrl);
+        this._articleUrl = articleUrl;
     }
+
     get imageUrl() {
         return this._imageUrl;
     }
+
     set imageUrl(imageUrl) {
         this._imageUrl = imageUrl;
     }
+
     get summary() {
         return this._summary;
     }
+
     set summary(summary) {
         this._summary = summary;
     }
+
     toObject() {
+        console.log(this.feedUrl + ' Model');
         return {
-            id: this._id,
-            title: this._title,
-            date: this._date,
-            feedUrl: this._feedURL,
-            articleUrl: this._articleUrl,
-            imageUrl: this._imageUrl,
-            summary: this._summary,
-            content: this._content,
+            id: this.id,
+            title: this.title,
+            date: this.date,
+            articleUrl: this.articleUrl,
+            feedUrl: this.feedUrl,
+            imageUrl: this.imageUrl,
+            summary: this.summary,
+            content: this.content,
         };
     }
 }
