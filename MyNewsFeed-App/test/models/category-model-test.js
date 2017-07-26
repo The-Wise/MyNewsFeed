@@ -4,9 +4,6 @@ let Category = require('../../models/category-model').Category;
 let categoryName = 'categoryName';
 let category = new Category(categoryName);
 
-// console.log(category.name);
-
-
 describe('categoriesModel', function () {
      it('Expect Category to exist', function () {
         expect(Category).to.exist;
