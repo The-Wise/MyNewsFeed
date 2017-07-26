@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for controllers\feed-controller.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">controllers/</a> feed-controller.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/43</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/43</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >const FeedParser = require('feedparser');</span>
+<span class="cstat-no" title="statement not covered" >const request = require('request');</span>
+&nbsp;
+class FeedController {
+  constructor<span class="fstat-no" title="function not covered" >(data) {</span>
+<span class="cstat-no" title="statement not covered" >    this.feedData = data.feeds;</span>
+  }
+&nbsp;
+  loadFeedPage<span class="fstat-no" title="function not covered" >(req, res) {</span>
+<span class="cstat-no" title="statement not covered" >    const originalurl = req.originalUrl;</span>
+<span class="cstat-no" title="statement not covered" >    const feedname = decodeURI(req.params.feedname);</span>
+<span class="cstat-no" title="statement not covered" >    this.feedData.findFeedByName(feedname)</span>
+      .then(({ articles }) =&gt; {
+<span class="cstat-no" title="statement not covered" >        res.render('feed/feed-page.pug', {</span>
+          isAuthenticated: req.isAuthenticated(),
+          user: req.user,
+          isAdmin: () =&gt; {
+<span class="cstat-no" title="statement not covered" >          return req.user.admin;</span>
+        },
+          articles,
+          originalurl,
+          feedname });
+      });
+  }
+&nbsp;
+  loadArticlePage<span class="fstat-no" title="function not covered" >(req, res) {</span>
+<span class="cstat-no" title="statement not covered" >    const id = req.params.articleid;</span>
+<span class="cstat-no" title="statement not covered" >    const feedname = req.params.feedname;</span>
+<span class="cstat-no" title="statement not covered" >      this.feedData.findArticleById(feedname, id)</span>
+      .then((article) =&gt; {
+        // console.log(article);
+<span class="cstat-no" title="statement not covered" >        res.render('feed/article-page.pug', {</span>
+          article,
+          isAuthenticated: req.isAuthenticated(),
+          user: req.user,
+          isAdmin: () =&gt; {
+<span class="cstat-no" title="statement not covered" >          return req.user.admin;</span>
+        },
+        });
+      });
+  }
+&nbsp;
+  refreshFeed<span class="fstat-no" title="function not covered" >(req, res) {</span>
+<span class="cstat-no" title="statement not covered" >    const url = req.params.feedurl;</span>
+<span class="cstat-no" title="statement not covered" >    const urlenc = encodeURIComponent(req.params.feedurl);</span>
+<span class="cstat-no" title="statement not covered" >    const name = req.params.feedname;</span>
+<span class="cstat-no" title="statement not covered" >    console.log(urlenc);</span>
+<span class="cstat-no" title="statement not covered" >    this.getFeed(url)</span>
+    .then((feed) =&gt; {
+<span class="cstat-no" title="statement not covered" >      console.log(url + ' feed_controller');</span>
+<span class="cstat-no" title="statement not covered" >      this.feedData.addNewArticles(name, urlenc, feed);</span>
+    })
+    .then(() =&gt; {
+<span class="cstat-no" title="statement not covered" >      req.flash('success', 'Feed Refreshed');</span>
+<span class="cstat-no" title="statement not covered" >      res.redirect(req.get('referer'));</span>
+    }
+    );
+  }
+&nbsp;
+  getFeed<span class="fstat-no" title="function not covered" >(url) {</span>
+<span class="cstat-no" title="statement not covered" >    return new Promise((resolve, reject) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      const feed = [];</span>
+<span class="cstat-no" title="statement not covered" >      const req = request(url);</span>
+<span class="cstat-no" title="statement not covered" >      const feedparser = new FeedParser();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      req.on('error', (error) =&gt; {</span>
+            // handle any request errors
+<span class="cstat-no" title="statement not covered" >        console.log(error);</span>
+      });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      req.on('response', <span class="fstat-no" title="function not covered" >function(res) {</span></span>
+<span class="cstat-no" title="statement not covered" >        const stream = this; </span>// `this` is `req`, which is a stream
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (res.statusCode !== 200) {</span>
+<span class="cstat-no" title="statement not covered" >          stream.emit('error', new Error('Bad status code'));</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >          stream.pipe(feedparser);</span>
+        }
+      });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      feedparser.on('error', (error) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        reject(error);</span>
+      });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      feedparser.on('readable', <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        const stream = this;</span>
+<span class="cstat-no" title="statement not covered" >        let item;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        while (item = stream.read()) {</span>
+<span class="cstat-no" title="statement not covered" >          feed.push(item);</span>
+        }
+      });
+<span class="cstat-no" title="statement not covered" >      feedparser.on('end', () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          resolve(feed);</span>
+      });
+    });
+  }
+}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >module.exports = FeedController;</span>
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 26 2017 14:59:04 GMT+0300 (FLE Daylight Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
