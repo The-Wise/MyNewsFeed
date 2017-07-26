@@ -16,6 +16,13 @@ class Article {
     }
 
     set title(title) {
+        if(title === null) {
+           throw "Title can not be null!"; 
+        }
+        if(title === '') {
+           throw "Title can not be empty!"; 
+        }
+
         this._title = title.toLowerCase();
     }
 
@@ -24,6 +31,13 @@ class Article {
     }
 
     set date(date) {
+        if(date === null) {
+           throw "date can not be null!"; 
+        }
+        if(date === '') {
+           throw "date can not be empty!"; 
+        }
+
         this._date = date;
     }
 
@@ -32,6 +46,13 @@ class Article {
     }
 
     set feedUrl(feedUrl) {
+        if(feedUrl === null) {
+           throw "feedUrl can not be null!"; 
+        }
+        if(feedUrl === '') {
+           throw "feedUrl can not be empty!"; 
+        }
+
         this._feedUrl = feedUrl;
     }
 
@@ -40,6 +61,13 @@ class Article {
     }
 
     set articleUrl(articleUrl) {
+        if(articleUrl === null) {
+           throw "articleUrl can not be null!"; 
+        }
+        if(articleUrl === '') {
+           throw "articleUrl can not be empty!"; 
+        }
+
         this._articleUrl = articleUrl;
     }
 
@@ -56,7 +84,22 @@ class Article {
     }
 
     set summary(summary) {
+        if(summary === null) {
+           throw "summary can not be null!"; 
+        }
+        if(summary === '') {
+           throw "summary can not be empty!"; 
+        }
+        
         this._summary = summary;
+    }
+
+    get content() {
+        return this._content;
+    }
+
+    set content(content) {
+        this._content = content;
     }
 
     toObject() {
@@ -74,4 +117,6 @@ class Article {
     }
 }
 
-module.exports = Article;
+module.exports = {
+    Article
+};

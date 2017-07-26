@@ -7,6 +7,15 @@ class Category {
         return this._name;
     }
     set name(name) {
+        if(name === null)
+        {
+            throw 'Name can not be null!';
+        }
+        if(name === '')
+        {
+            throw 'Name can not be empty!'
+        }
+        
         this._name = name.toLowerCase();
     }
 
@@ -18,4 +27,7 @@ class Category {
     }
 }
 
-module.exports = Category;
+module.exports = {
+    Category
+};
+ 

@@ -18,7 +18,7 @@ gulp.task('pre-test', () => {
     ])
     .pipe(istanbul({
         includeUntested: true,
-        i
+        
     }))
     .pipe(istanbul.hookRequire());
 });
