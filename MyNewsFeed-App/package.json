@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test/models ./test/routes"
+    "test": "mocha ./test/models ./test/routes ./test/integration"
   },
   "author": "Dimitar",
   "license": "ISC",
@@ -42,7 +42,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "gulp": "^3.9.1",
     "gulp-istanbul": "^1.1.2",
-    "gulp-mocha": "^3.0.1",
+    "gulp-mocha": "^3.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
     "sinon": "^2.4.0",
