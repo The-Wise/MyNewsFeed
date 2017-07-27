@@ -8,14 +8,20 @@ const UserData = require('../../../data/user-data');
     let users = [];
 
     const userData = null;
+
+    const findOne = (name) => {
+        return Promise.resolve(users[name]);
+    };
     
     beforeEach(() => {
         sinon.stub(db, 'collection')
-            .callsFake();
+            .callsFake(() => {
+                findOne(name);
+            });
     });
 
     afterEach(() => {
-                sinon.stub.restore();
+                sinon.restore();
             });
 
 describe('DataUser tests', () => {
