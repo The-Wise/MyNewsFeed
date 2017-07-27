@@ -25,7 +25,10 @@ describe('User-controller tests', function() {
         },
         res = { render: () => {} },
         req = {
-            isAuthenticated: () => {}
+            isAuthenticated: () => {},
+            user: {
+                username: 'asd'
+            }
         },
         resStub = sinon.stub(res, 'render').returns(0);
     });
@@ -57,11 +60,52 @@ describe('User-controller tests', function() {
         expect(userController.saveArticle).to.be.a('function');
     });
 
-    it('Expect getUserProfile function to call res.render()', function() {
-        let userController = new UserController(dataStub);
+     describe('getUserProfile()', function() {
+        it('Expect getUserProfile function to call res.render()', function() {
+            let userController = new UserController(dataStub);
 
-        userController.getUserProfile(req, res);
-        
-        sinon.assert.calledOnce(resStub);        
-    })
+            userController.getUserProfile(req, res);
+
+            sinon.assert.calledOnce(resStub);        
+        })
+    });
+
+    describe('saveArticle()', function() {
+        it('Expect to call addArticleToUser function once', function() {
+            let data = {
+                    users: {
+                        addArticleToUser: () => {}
+                    },
+                    feeds: ''
+                }, 
+                userDataStubForAddArticle = sinon.stub(data.users, 'addArticleToUser');
+
+            let userController = new UserController(data);
+            
+            userController.saveArticle(req, res);
+            
+            sinon.assert.calledOnce(userDataStubForAddArticle);    
+        });
+    });
+
+    describe('followFeed()', function() {
+
+        it('Expect to call addFeedToUser function once', function() {
+            let data = {
+                    users: {
+                        addFeedToUser: () => {}
+                    },
+                    feeds: ''
+                },
+                userDataStubForAddFeedToUser = sinon.stub(data.users, 'addFeedToUser');
+
+            let userController = new UserController(data);
+            
+            userController.followFeed(req, res);
+            
+            sinon.assert.calledOnce(userDataStubForAddFeedToUser);
+        });
+    });
+
+
 });
