@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
-const { idGen } = require('../../utils/id-generator');
-let Article = require('../../models/article-model').Article;
+const { idGen } = require('../../../utils/id-generator');
+let Article = require('../../../models/article-model').Article;
 
 describe('articleModel', function () {
 

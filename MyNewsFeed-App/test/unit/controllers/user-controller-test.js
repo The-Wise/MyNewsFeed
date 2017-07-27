@@ -1,9 +1,9 @@
 const mocha = require('mocha'),
       sinon = require('sinon'),
       chai = require('chai'),
-      UserController = require('../../controllers/user-controller.js'),
-      FeedData = require('../../data/feed-data.js'),
-      UserData = require('../../data/user-data.js');
+      UserController = require('../../../controllers/user-controller.js'),
+      FeedData = require('../../../data/feed-data.js'),
+      UserData = require('../../../data/user-data.js');
       
 let expect = chai.expect,
     assert = chai.assert;

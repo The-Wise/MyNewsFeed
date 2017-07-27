@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test/models ./test/integration ./test/unit/data ./test/controllers"
+    "test": "mocha ./test/unit/models ./test/integration ./test/unit/data ./test/unit/controllers"
   },
   "author": "Dimitar",
   "license": "ISC",

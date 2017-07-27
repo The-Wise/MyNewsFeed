@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-let Category = require('../../models/category-model').Category;
+let Category = require('../../../models/category-model').Category;
 
 let categoryName = 'categoryName';
 let category = new Category(categoryName);
