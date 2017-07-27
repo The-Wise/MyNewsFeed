@@ -3,9 +3,8 @@ const { idGen } = require('../utils/id-generator');
 class Article {
     constructor(title, date, articleUrl, feedUrl, imageUrl, summary, content) {
         
-        var id = null;
-        this.id = id;
-
+       //var id = null;
+        this.id = idGen();
         this.title = title;
         this.date = date;
         this.articleUrl = articleUrl;
@@ -14,7 +13,7 @@ class Article {
         this.summary = summary;
         this.content = content;
     }
-    
+    /*
     get id()
     {
         return this._id;
@@ -26,6 +25,7 @@ class Article {
         }
         this._id = idGen;
     }
+    */
     get title() {
         return this._title;
 

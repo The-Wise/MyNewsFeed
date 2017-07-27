@@ -205,29 +205,33 @@ describe('articleModel', function () {
         expect(article.id).to.not.be.undefined;
 
     });
+    /*
     it('Expect id to be not equal to new passed id', function () {
         let generatedId = article.id;
         let setId = idGen();
         article.id = setId;
+        let actualId = article.id;
 
         console.log (generatedId);
         console.log(setId);
         console.log (article.id);
 
-        expect(article.id).to.be.not.equal(setId);
+        expect(actualId).to.be.not.equal(setId);
        
     });
+    */
     it('Expect id to be not changed when trying to set new one', function () {
         let generatedId = article.id;
         let setId = idGen();
         article.id = setId;
+        let actualId = article.id;
 
-        console.log (generatedId);
-        console.log(setId);
-        console.log (article.id);
+        console.log ('generatedId: {0}', generatedId);
+        console.log('setId: {0}', setId);
+        console.log ('actualId {0}', actualId );
         
         
-        expect(article.id).to.be.equal(generatedId);
+        expect(actualId).to.be.equal(generatedId);
        
     }); 
     it('Expect article.toObject to return object', function () {
