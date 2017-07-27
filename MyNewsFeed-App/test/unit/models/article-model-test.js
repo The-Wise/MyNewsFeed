@@ -205,6 +205,10 @@ describe('articleModel', function () {
         expect(article.id).to.not.be.undefined;
 
     });
+    it('Expect article.id to return instance id', function () {
+        expect(article.id).to.exist;
+
+    });
     /*
     it('Expect id to be not equal to new passed id', function () {
         let generatedId = article.id;
@@ -219,7 +223,24 @@ describe('articleModel', function () {
         expect(actualId).to.be.not.equal(setId);
        
     });
-    */
+   
+    
+    it('Expect id setter to throw', function () {
+        
+        function setId() {
+            article.id = idGen();
+        }
+        let generatedId = article.id; 
+        setId();      
+        let actualId = article.id;
+
+        console.log (generatedId);
+        console.log (article.id);
+
+        expect(setId).to.throw();
+       
+    });
+    
     it('Expect id to be not changed when trying to set new one', function () {
         let generatedId = article.id;
         let setId = idGen();
@@ -234,6 +255,31 @@ describe('articleModel', function () {
         expect(actualId).to.be.equal(generatedId);
        
     }); 
+    */
+   
+    it('Expect id of each Article to be unique', function () {
+        
+        let  titleSecond = 'title',
+         dateSecond = '01.01.1000',
+         articleUrlSecond = 'articleUrl',
+         feedUrlSecond = 'feedUrl',
+         imageUrlSecond = 'imageUrl',
+         summarySecond = 'summary',
+         contentSecond = 'content';
+
+        let articleSecond = new Article(
+            titleSecond, dateSecond, articleUrlSecond, feedUrlSecond, imageUrlSecond, summarySecond, contentSecond);
+
+        let generatedId = article.id;
+        let secondGeneratedId = articleSecond.id;
+
+
+        console.log ('generatedId: {0}', generatedId);
+        console.log('secondGeneratedId: {0}', secondGeneratedId);
+     
+        expect(generatedId).to.be.not.equal(secondGeneratedId);
+
+    });
     it('Expect article.toObject to return object', function () {
         article.toObject();
 

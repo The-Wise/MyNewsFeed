@@ -1,9 +1,9 @@
+'use strict';
 const { idGen } = require('../utils/id-generator');
 
 class Article {
     constructor(title, date, articleUrl, feedUrl, imageUrl, summary, content) {
-        
-       //var id = null;
+       
         this.id = idGen();
         this.title = title;
         this.date = date;
@@ -12,20 +12,8 @@ class Article {
         this.imageUrl = imageUrl;
         this.summary = summary;
         this.content = content;
+
     }
-    /*
-    get id()
-    {
-        return this._id;
-    }
-    set id(id) {
-        let _idGen = idGen();
-        if(id === _idGen) {
-            this._id = id;
-        }
-        this._id = idGen;
-    }
-    */
     get title() {
         return this._title;
 
