@@ -24,12 +24,12 @@ gulp.task('pre-test', () => {
 
 gulp.task('test', ['pre-test'], () => {
     return gulp.src([
-// To be included in test ewcution all files should be required in the array
+// To be included in test exxcution all files should be required in the array
         './test/unit/models/**/*.js',
         './test/unit/routes/**/*.js',
         './test/unit/data/**/*.js',
         './test/unit/controllers/**/*.js',
-        './test/integration/**/*.js',
+       // './test/integration/**/*.js',
     ])
     .pipe(mocha())
     .pipe(istanbul.writeReports());

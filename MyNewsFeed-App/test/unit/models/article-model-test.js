@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
-const { idGen } = require('../../../utils/id-generator');
-let Article = require('../../../models/article-model').Article;
+//const { idGen } = require('../../../utils/id-generator');
+const Article = require('../../../models/article-model').Article;
 
 describe('articleModel', function () {
 
@@ -14,7 +14,6 @@ describe('articleModel', function () {
 
     let article = new Article(
             title, date, articleUrl, feedUrl, imageUrl, summary, content); 
-    console.log(article.id);
 
     it('Expect Article to exist', function () {
         expect(Article).to.exist;
@@ -65,7 +64,7 @@ describe('articleModel', function () {
         expect(createArticle).to.not.throw();
         
     });
-     it('Should throw when all params excepting imageUrl and content are null', function () {
+    it('Should throw when all params excepting imageUrl and content are null', function () {
         function setNullParams() {
             article.title = null;
             article.date = null;
@@ -286,5 +285,11 @@ describe('articleModel', function () {
         expect(article).to.be.an('object');
 
     });   
+    it('Expect article.toObject to return all keys', function () {
+        article.toObject();
+
+        expect(article).to.contain.keys(['id', '_title', '_date' ,'_articleUrl' ,'_feedUrl', '_imageUrl','_summary', '_content']);
+
+    });
 });
 
