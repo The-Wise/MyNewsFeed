@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">70% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>7/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">25% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>1/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">70% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>7/10</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -64,11 +64,31 @@
 19
 20
 21
-22</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -77,42 +97,55 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">class Category {
-    constructor<span class="fstat-no" title="function not covered" >(name) {</span>
-<span class="cstat-no" title="statement not covered" >        this._name = name;</span>
-<span class="cstat-no" title="statement not covered" >        this._feeds = [];</span>
+    constructor(name) {
+        this._name = name;
+        this._feeds = [];
     }
-    get name<span class="fstat-no" title="function not covered" >() {</span>
-<span class="cstat-no" title="statement not covered" >        return this._name;</span>
+    get name() {
+        return this._name;
     }
-    set name<span class="fstat-no" title="function not covered" >(name) {</span>
+    set name(name) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if(name === null)
+        {
+            throw 'Name can not be null!';
+        }
+<span class="cstat-no" title="statement not covered" >        if(name === '')</span>
+        {
+<span class="cstat-no" title="statement not covered" >            throw 'Name can not be empty!'</span>
+        }
+        
 <span class="cstat-no" title="statement not covered" >        this._name = name.toLowerCase();</span>
     }
 &nbsp;
-    toObject<span class="fstat-no" title="function not covered" >() {</span>
-<span class="cstat-no" title="statement not covered" >        return {</span>
+    toObject() {
+        return {
             name: this._name,
             feeds: this._feeds,
         };
     }
 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >module.exports = Category;</span>
-&nbsp;</pre></td></tr>
+module.exports = {
+    Category
+};
+ </pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 26 2017 15:00:20 GMT+0300 (FLE Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 27 2017 03:14:34 GMT+0300 (FLE Daylight Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
