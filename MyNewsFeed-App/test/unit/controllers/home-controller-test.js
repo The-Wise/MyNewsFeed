@@ -41,6 +41,7 @@ describe('Home-controller test', function() {
                 res = { render: () => {} },
                 req = {
                     isAuthenticated: () => {},
+                    flash: () => {},
                     user: {
                         username: 'asd'
                     }
@@ -57,6 +58,4 @@ describe('Home-controller test', function() {
             sinon.assert.calledOnce(getLatestArticlesStub);
         });
     });
-
 });
-

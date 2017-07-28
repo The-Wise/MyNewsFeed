@@ -1,4 +1,3 @@
-
 const validator = require('../utils/validator.js');
 
 class AuthenticationController {
