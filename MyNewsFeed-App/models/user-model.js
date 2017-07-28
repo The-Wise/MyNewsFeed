@@ -56,7 +56,7 @@ class User {
     if(password === null) {
         throw "password can not be null!"; 
     }
-    if(password === '') {
+    if(password === "") {
         throw "password can not be empty!"; 
     }
     this._password = password;
@@ -91,9 +91,6 @@ class User {
     if(array === null) {
         throw "userFeeds can not be null!"; 
     }
-    if(array === []) {
-        throw "userFeeds can not be empty!"; 
-    }
     this._userFeeds = array;
   }
 
@@ -105,9 +102,6 @@ class User {
     if(array === null) {
         throw "articles can not be null!"; 
     }
-    if(array === []) {
-        throw "articles can not be empty!"; 
-    }
     this._userArticles = array;
   }
   get admin() {
@@ -116,11 +110,16 @@ class User {
 
   set admin(isAdmin) {
     if(isAdmin === null) {
-        throw "isAdmin can not be null!"; 
+        throw "Admin is null!"; 
     }
     if(isAdmin === undefined) {
-        throw "isAdmin can not be undef!"; 
+        throw "Admin is undefined!"; 
     }
+    
+    if(isAdmin === "") {
+        throw "Admin can not be empty!"; 
+    }
+    
     this._admin = isAdmin;
   }
   
