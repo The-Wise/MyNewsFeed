@@ -5,8 +5,8 @@ class HomeController {
   }
 
   loadHomePage(req, res) {
-        this.feedData.getLatestArticles()
-        .then((articles) => {
+     //   this.feedData.getLatestArticles()
+     //   .then((articles) => {
           // console.log(articles);
           res.render('home-page.pug', {
             isAuthenticated: req.isAuthenticated(),
@@ -14,10 +14,9 @@ class HomeController {
             isAdmin: () => {
               return req.user.admin;
             },
-            message: req.flash(),
-            articles,
+            message: req.flash()
             });
-        });
+        //});
       }
 }
 

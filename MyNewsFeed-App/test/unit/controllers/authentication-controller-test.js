@@ -17,12 +17,24 @@ describe('Authentication controller test', function() {
         userDataStub = sinon.createStubInstance(UserData),
         dataStub = { users: userDataStub },
         req = { 
-            flash: () => {}
+            flash: () => {},
+            logout: () => {},
+            body: {
+                username: '',
+                email: '',
+                password: '',
+                urlProfilePicture: '',
+                name: ''
+            }
         },
         res = {
-            render: () => {}
+            render: () => {},
+            redirect: () => {}
         },
-        authenticationController = new AuthenticationController(dataStub);
+        validator =  {
+            validateRegisterForm: () => {}
+        },
+        authenticationController = new AuthenticationController(dataStub, null);
     });
 
     it('Expect HomeController class to exist', function() {
@@ -69,4 +81,94 @@ describe('Authentication controller test', function() {
         });
     });
 
+    describe('login()', function() {
+        it('Expect to call res.redirect() function once', function() {
+            let resStub = sinon.stub(res, 'redirect');
+
+            authenticationController.login(req, res);
+
+            sinon.assert.calledOnce(resStub);
+        });
+    });
+
+    describe('logout()', function() {
+        it('Expect to call req.logout() function once', function() {
+            let reqStub = sinon.stub(req, 'logout');
+
+            authenticationController.logout(req, res);
+
+            sinon.assert.calledOnce(reqStub);
+        });
+
+        it('Expect to call req.flash() function once', function() {
+            let reqStub = sinon.stub(req, 'flash');
+
+            authenticationController.logout(req, res);
+
+            sinon.assert.calledOnce(reqStub);
+        });
+
+        it('Expect to call res.redirect() function once', function() {
+            let resStub = sinon.stub(res, 'redirect');
+
+            authenticationController.logout(req, res);
+
+            sinon.assert.calledOnce(resStub);
+        });
+    });
+
+    describe('singup()', function() {
+        let userData,
+            data,
+            promise,
+            validatorStub;
+
+        beforeEach(function() {
+            userData = { createUser: () => {} },
+            data = { users: userData };
+
+            validatorStub = sinon.stub(validator, 'validateRegisterForm'),
+            promise = new Promise((resolve, reject) => { resolve({}) });
+            userDataStub = sinon.stub(data.users, 'createUser');
+        });
+
+        afterEach(function() {
+            validatorStub.restore();
+            userDataStub.restore();
+        });
+
+        it('Should call this.valdator.validateRegisterForm() function once', function() {
+                validatorStub.returns(false);
+                userDataStub.returns(promise);
+
+                authenticationController = new AuthenticationController(data, validator);
+
+                authenticationController.signup(req, res);
+
+                sinon.assert.calledOnce(validatorStub);
+        });
+
+        it('Should call this.userData.createUser() function once', function() {
+                validatorStub.returns(false);
+                userDataStub.returns(promise);
+
+                authenticationController = new AuthenticationController(data, validator);
+
+                authenticationController.signup(req, res);
+
+                sinon.assert.calledOnce(userDataStub);
+        });
+            
+        it('Should call res.render() function once', function() {
+            let resStub = sinon.stub(res, 'render');
+
+                validatorStub.returns(true);
+
+                authenticationController = new AuthenticationController(data, validator);
+
+                authenticationController.signup(req, res);
+
+                sinon.assert.calledOnce(resStub);
+        });
+    });
 });

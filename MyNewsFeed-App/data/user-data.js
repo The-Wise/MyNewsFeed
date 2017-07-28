@@ -1,4 +1,4 @@
-const User = require('../models/user-model.js');
+const User = require('../models/user-model.js').User;
 const ObjectId = require('./database-connection.js').ObjectID;
 
 class UserData {
@@ -9,8 +9,10 @@ class UserData {
     createUser(fullName, username, email, password, urlProfilePicture) {
         const currentDate = new Date().toDateString();
         const user = new User(fullName, username,
-            email, password, urlProfilePicture, currentDate)
+            email, password, urlProfilePicture, currentDate, false)
                   .toObject();
+        
+        console.log("HERE");
 
         return this.db.collection('users')
             .save(user)

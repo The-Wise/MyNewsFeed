@@ -133,7 +133,7 @@ class User {
       userJoined: this.userJoined,
       userFeeds: this.userFeeds,
       userArticles: this.userArticles,
-      admin: true,
+      admin: this.admin,
     };
   }
 }
