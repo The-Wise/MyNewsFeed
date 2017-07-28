@@ -1,0 +1,2 @@
+1. User-controller.js
+     1.1 || I have to make a test for loadMyFeedsPage function

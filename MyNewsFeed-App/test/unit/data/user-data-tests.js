@@ -1,67 +1,91 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
+// const { expect } = require('chai');
+// const sinon = require('sinon');
 
-const UserData = require('../../../data/user-data');
-    const db = {
-        collection: () => {},
-    };
-    let users = [];
+// const UserData = require('../../../data/user-data');
+//     const db = {
+//         collection: () => {},
+//     };
+//     const users = [];
 
-    let userData = null;
+//     // let userData = null;
+//     // const findOne = () => {};
 
-    // const save = () => {};
+//     const newUserData = {
+//         db: {
+//             collection: () => {
+//                 return {
+//                     findOne: (name) => {
+//                     },
+//                 };
+//             },
+//         },
+//     };
+//     let userData;
 
-    const findOne = (prop, value) => {
-        return Promise.resolve(users.find((user) => {
-            return user.prop === value;
-        }));
-    };
+//     // db.findOne = findOne();
 
-    // beforeEach(() => {
-    //     sinon.stub(db, 'collection')
-    //         .callsFake(() => {
-    //             findOne('username', 'name');
-    //         });
-        const user = class {};
+//     // let save = () => {};
 
-    afterEach(() => {
-                sinon.restore();
-            });
+//     // let findOne = (prop, value) => {
+//     //     return Promise.resolve(users.find((user) => {
+//     //         return user.prop === value;
+//     //     }));
+//     // };
 
-describe('DataUser tests', () => {
-    describe('createUser', () => {
-    });
+//     // beforeEach(() => {
+//     //     sinon.stub(db, 'collection')
+//     //         .callsFake(() => {
+//     //             findOne('username', 'name');
+//     //         });
+//     const user = class {};
+//     let findOne;
 
-    describe('findUserByID', () => {
+//     // afterEach(() => {
+//     //             sinon.restore();
+//     //         });
 
-    });
+// describe('DataUser tests', () => {
+//     describe('createUser', () => {
+//     });
 
-    describe('findUserByName', () => {
-        beforeEach(() => {
-        const save = sinon.stub(db, 'save');
-        userData = new UserData(db);
-            });
+//     describe('findUserByID', () => {
 
-        afterEach(() => {
-                save.restore();
-            });
+//     });
 
-        it('SAVE method called once', () => {
-          userData.findUserByUsername('username')
-            .then(
-                expect(save).to.have.been.calledOnce);
-        });
-    });
+//     describe('findUserByName', () => {
+//         beforeEach(() => {
+//         sinon.stub(db, 'collection');
+//             // .callsFake(() => {
+//             //     return findOne('username', 'name');
+//             //     });
+//         findOne = sinon.stub(newUserData.db.collection, 'findOne').resolves('Promise.resolve()');
+//         userData = new UserData(newUserData.db);
+//             });
 
-    describe('addFeedToUser', () => {
+//         afterEach(() => {
+//                 db.collection.restore();
+//                 db.findOne.restore();
+//             });
 
-    });
+//         it('findOne method called once', (done) => {
+//           userData.findUserByUsername('username')
+//             .then(
+//                 // expect(findOne).to.have.been.calledOnce
+//                 sinon.assert.calledOnce(findOne)
+//             );
+//             done();
+//         });
+//     });
 
-    describe('addFeedToUser', () => {
+//     describe('addFeedToUser', () => {
 
-    });
+//     });
 
-    describe('addArticleToUser', () => {
+//     describe('addFeedToUser', () => {
 
-    });
-});
+//     });
+
+//     describe('addArticleToUser', () => {
+
+//     });
+// });
