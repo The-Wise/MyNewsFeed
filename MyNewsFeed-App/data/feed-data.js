@@ -1,6 +1,6 @@
-const Category = require('../models/category-model');
-const Feed = require('../models/feed-model');
-const Article = require('../models/article-model');
+const { Category } = require('../models/category-model');
+const { Feed } = require('../models/feed-model');
+const { Article } = require('../models/article-model');
 const ObjectId = require('./database-connection.js').ObjectID;
 
 class FeedData {

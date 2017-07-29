@@ -51,12 +51,12 @@ class UserData {
 
     addArticleToUser(username, article) {
           return this.db
-          .collection('users')
-          .updateOne({ username }, { $addToSet: { userArticles: article } })
-          .then((result) => {
-              return result.nModified;
-          })
-          .catch((err) => console.log(err));
+            .collection('users')
+            .updateOne({ username }, { $addToSet: { userArticles: article } })
+            .then((result) => {
+                return result.nModified;
+            })
+            .catch((err) => console.log(err));
     }
 }
 
