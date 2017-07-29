@@ -1,12 +1,12 @@
 class User {
   constructor(fullName, username, email,
-    password, urlProfilePicture, userJoined, admin) {
+    password, urlProfilePicture, admin) {
     this.fullName = fullName;
     this.username = username;
     this.email = email;
     this.password = password;
     this.urlProfilePicture = urlProfilePicture;
-    this.userJoined = userJoined;
+    this.userJoined = new Date().toDateString();
     this.admin = admin;
     this.userFeeds = [];
     this.userArticles = [];
@@ -56,9 +56,9 @@ class User {
     return this._userJoined;
   }
 
-  set userJoined(date) {
-    this._userJoined = date;
-  }
+  // set userJoined(date) {
+  //   this._userJoined = new Date().toDateString();
+  // }
 
   get admin() {
     return this._admin;

@@ -7,9 +7,8 @@ class UserData {
     }
 
     createUser(fullName, username, email, password, urlProfilePicture) {
-        const currentDate = new Date().toDateString();
         const user = new User(fullName, username,
-            email, password, urlProfilePicture, currentDate)
+            email, password, urlProfilePicture)
                   .toObject();
 
         return this.db.collection('users')
