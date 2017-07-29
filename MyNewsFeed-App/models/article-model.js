@@ -1,3 +1,4 @@
+'use strict';
 const { idGen } = require('../utils/id-generator');
 
 class Article {
@@ -12,19 +13,6 @@ class Article {
         this.summary = summary;
         this.content = content;
     }
-    /*
-    get id()
-    {
-        return this._id;
-    }
-    set id(id) {
-        let _idGen = idGen();
-        if(id === _idGen) {
-            this._id = id;
-        }
-        this._id = idGen;
-    }
-    */
     get title() {
         return this._title;
     }

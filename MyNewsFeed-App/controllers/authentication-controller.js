@@ -1,9 +1,7 @@
-
-const validator = require('../utils/validator.js');
-
 class AuthenticationController {
-      constructor(data) {
+      constructor(data, validator) {
             this.userData = data.users;
+            this.validator = validator;
       }
 
       loadLoginPage(req, res) {
@@ -21,7 +19,7 @@ class AuthenticationController {
             const password = req.body.password;
             const urlProfilePicture = req.body.urlProfilePicture;
 
-            const errors = validator.validateRegisterForm(req, res);
+            const errors = this.validator.validateRegisterForm(req, res);
 
             if (errors) {
                 return res.render('user/signup', {

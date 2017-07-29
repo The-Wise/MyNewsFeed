@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
-const { idGen } = require('../../../utils/id-generator');
-let Article = require('../../../models/article-model').Article;
+//const { idGen } = require('../../../utils/id-generator');
+const Article = require('../../../models/article-model').Article;
 
 describe('articleModel', function () {
 
@@ -14,7 +14,6 @@ describe('articleModel', function () {
 
     let article = new Article(
             title, date, articleUrl, feedUrl, imageUrl, summary, content); 
-    console.log(article.id);
 
     it('Expect Article to exist', function () {
         expect(Article).to.exist;
@@ -65,7 +64,7 @@ describe('articleModel', function () {
         expect(createArticle).to.not.throw();
         
     });
-     it('Should throw when all params excepting imageUrl and content are null', function () {
+    it('Should throw when all params excepting imageUrl and content are null', function () {
         function setNullParams() {
             article.title = null;
             article.date = null;
@@ -205,6 +204,10 @@ describe('articleModel', function () {
         expect(article.id).to.not.be.undefined;
 
     });
+    it('Expect article.id to return instance id', function () {
+        expect(article.id).to.exist;
+
+    });
     /*
     it('Expect id to be not equal to new passed id', function () {
         let generatedId = article.id;
@@ -219,7 +222,24 @@ describe('articleModel', function () {
         expect(actualId).to.be.not.equal(setId);
        
     });
-    */
+   
+    
+    it('Expect id setter to throw', function () {
+        
+        function setId() {
+            article.id = idGen();
+        }
+        let generatedId = article.id; 
+        setId();      
+        let actualId = article.id;
+
+        console.log (generatedId);
+        console.log (article.id);
+
+        expect(setId).to.throw();
+       
+    });
+    
     it('Expect id to be not changed when trying to set new one', function () {
         let generatedId = article.id;
         let setId = idGen();
@@ -234,11 +254,42 @@ describe('articleModel', function () {
         expect(actualId).to.be.equal(generatedId);
        
     }); 
+    */
+   
+    it('Expect id of each Article to be unique', function () {
+        
+        let  titleSecond = 'title',
+         dateSecond = '01.01.1000',
+         articleUrlSecond = 'articleUrl',
+         feedUrlSecond = 'feedUrl',
+         imageUrlSecond = 'imageUrl',
+         summarySecond = 'summary',
+         contentSecond = 'content';
+
+        let articleSecond = new Article(
+            titleSecond, dateSecond, articleUrlSecond, feedUrlSecond, imageUrlSecond, summarySecond, contentSecond);
+
+        let generatedId = article.id;
+        let secondGeneratedId = articleSecond.id;
+
+
+        console.log ('generatedId: {0}', generatedId);
+        console.log('secondGeneratedId: {0}', secondGeneratedId);
+     
+        expect(generatedId).to.be.not.equal(secondGeneratedId);
+
+    });
     it('Expect article.toObject to return object', function () {
         article.toObject();
 
         expect(article).to.be.an('object');
 
     });   
+    it('Expect article.toObject to return all keys', function () {
+        article.toObject();
+
+        expect(article).to.contain.keys(['id', '_title', '_date' ,'_articleUrl' ,'_feedUrl', '_imageUrl','_summary', '_content']);
+
+    });
 });
 

@@ -34,9 +34,6 @@ describe('User-controller tests', function() {
     });
 
     after(function() {
-        // userDataStub.restore();
-        // feedDataStub.restore();
-
         resStub.restore();
     });
 
@@ -107,5 +104,25 @@ describe('User-controller tests', function() {
         });
     });
 
+    describe('loadMyFeedsPage()', function() {
 
+        it('Expect to call findUserByUsername function once', function() {
+            let data = {
+                    users: {
+                        findUserByUsername: () => {}
+                    },
+                    feeds: ''
+                },
+                promise = new Promise((resolve, reject) => resolve({})),
+                findUserByUsernameStub = sinon.stub(data.users, 'findUserByUsername');
+
+            let userController = new UserController(data);
+
+            findUserByUsernameStub.returns(promise);
+
+            userController.loadMyFeedsPage(req, res);
+
+            sinon.assert.calledOnce(findUserByUsernameStub);
+        });
+    });
 });

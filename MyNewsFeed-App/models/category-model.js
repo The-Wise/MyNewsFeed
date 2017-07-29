@@ -1,7 +1,7 @@
 class Category {
     constructor(name) {
-        this._name = name;
-        this._feeds = [];
+        this.name = name;
+        this.feeds = [];
     }
     get name() {
         return this._name;
@@ -21,9 +21,9 @@ class Category {
 
     toObject() {
         return {
-            name: this._name,
-            feeds: this._feeds,
-        };
+            name: this.name,
+            feeds: this.feeds,
+    };
     }
 }
 

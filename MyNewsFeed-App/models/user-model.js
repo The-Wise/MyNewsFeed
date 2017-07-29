@@ -25,6 +25,12 @@ class User {
   }
 
   set username(username) {
+      if(username === null) {
+         throw "username can not be null!"; 
+      }
+      if(username === '') {
+         throw "username can not be empty!"; 
+      }
     this._username = username;
   }
 
@@ -33,6 +39,12 @@ class User {
   }
 
   set email(email) {
+    if(email === null) {
+        throw "email can not be null!"; 
+    }
+    if(email === '') {
+        throw "email can not be empty!"; 
+    }
     this._email = email;
   }
 
@@ -41,6 +53,12 @@ class User {
   }
 
   set password(password) {
+    if(password === null) {
+        throw "password can not be null!"; 
+    }
+    if(password === "") {
+        throw "password can not be empty!"; 
+    }
     this._password = password;
   }
 
@@ -56,6 +74,7 @@ class User {
     return this._userJoined;
   }
 
+<<<<<<< HEAD
   // set userJoined(date) {
   //   this._userJoined = new Date().toDateString();
   // }
@@ -68,11 +87,25 @@ class User {
     this._admin = isAdmin;
   }
 
+=======
+  set userJoined(date) {
+    if(date === null) {
+        throw "date can not be null!"; 
+    }
+    if(date === '') {
+        throw "date can not be empty!"; 
+    }
+    this._userJoined = date;
+  }
+>>>>>>> 1a0265c77d98e0568fb2ea2e2de4e76ed0ced880
   get userFeeds() {
     return this._userFeeds;
   }
 
   set userFeeds(array) {
+    if(array === null) {
+        throw "userFeeds can not be null!"; 
+    }
     this._userFeeds = array;
   }
 
@@ -81,9 +114,30 @@ class User {
   }
 
   set userArticles(array) {
+    if(array === null) {
+        throw "articles can not be null!"; 
+    }
     this._userArticles = array;
   }
+  get admin() {
+    return this._admin;
+  }
 
+  set admin(isAdmin) {
+    if(isAdmin === null) {
+        throw "Admin is null!"; 
+    }
+    if(isAdmin === undefined) {
+        throw "Admin is undefined!"; 
+    }
+    
+    if(isAdmin === "") {
+        throw "Admin can not be empty!"; 
+    }
+    
+    this._admin = isAdmin;
+  }
+  
   toObject() {
     return {
       fullName: this.fullName,
@@ -94,7 +148,7 @@ class User {
       userJoined: this.userJoined,
       userFeeds: this.userFeeds,
       userArticles: this.userArticles,
-      admin: true,
+      admin: this.admin,
     };
   }
 }
