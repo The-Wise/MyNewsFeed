@@ -74,20 +74,6 @@ class User {
     return this._userJoined;
   }
 
-<<<<<<< HEAD
-  // set userJoined(date) {
-  //   this._userJoined = new Date().toDateString();
-  // }
-
-  get admin() {
-    return this._admin;
-  }
-
-  set admin(isAdmin) {
-    this._admin = isAdmin;
-  }
-
-=======
   set userJoined(date) {
     if(date === null) {
         throw "date can not be null!"; 
@@ -97,7 +83,6 @@ class User {
     }
     this._userJoined = date;
   }
->>>>>>> 1a0265c77d98e0568fb2ea2e2de4e76ed0ced880
   get userFeeds() {
     return this._userFeeds;
   }

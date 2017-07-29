@@ -8,14 +8,9 @@ class UserData {
 
     createUser(fullName, username, email, password, urlProfilePicture) {
         const user = new User(fullName, username,
-<<<<<<< HEAD
             email, password, urlProfilePicture)
-=======
-            email, password, urlProfilePicture, currentDate, false)
->>>>>>> 1a0265c77d98e0568fb2ea2e2de4e76ed0ced880
                   .toObject();
-        
-        console.log("HERE");
+        console.log('HERE');
 
         return this.db.collection('users')
             .save(user)
