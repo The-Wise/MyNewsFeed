@@ -4,13 +4,13 @@ let mocha = require('mocha'),
     AdminController = require('../../../controllers/admin-controller.js'),
     FeedData = require('../../../data/feed-data.js');
 
-let expect = chai.expect;
+const expect = chai.expect;
 
 describe('Admin controller test', function() {
     let adminController,
         dataStub,
         feedDataStub,
-        req = { 
+        req = {
             flash: () => {},
             logout: () => {},
             body: {
@@ -19,18 +19,18 @@ describe('Admin controller test', function() {
                 password: '',
                 urlProfilePicture: '',
                 name: '',
-                category: ''
+                category: '',
             },
-            isAuthenticated: () => {}
+            isAuthenticated: () => {},
         },
         res = {
             render: () => {},
-            redirect: () => {}
+            redirect: () => {},
         };
 
     beforeEach(function() {
         feedDataStub = sinon.createStubInstance(AdminController);
-        dataStub = { feeds:  feedDataStub };
+        dataStub = { feeds: feedDataStub };
         adminController = new AdminController(dataStub);
     });
 
@@ -46,22 +46,22 @@ describe('Admin controller test', function() {
         expect(adminController.addNewCategory).to.be.a('function');
         expect(adminController.addNewFeed).to.be.a('function');
         expect(adminController.deleteCategoryFeed).to.be.a('function');
-        expect(adminController.loadAddForm).to.be.a('function');1
+        expect(adminController.loadAddForm).to.be.a('function');
     });
 
     describe('loadAddForm()', function() {
         beforeEach(function() {
             feedDataStub = {
-                getAllCategories: () => {}
+                getAllCategories: () => {},
             };
             dataStub = {
-                feeds: feedDataStub
+                feeds: feedDataStub,
             };
         });
 
-        it('Expect to call this.feedData.getAllCategories() function once',function() {
+        it('Expect to call this.feedData.getAllCategories() function once', function() {
             let getAllCategoriesStub = sinon.stub(feedDataStub, 'getAllCategories'),
-                promise = new Promise((resolve, reject) => { resolve({}); });
+                promise = new Promise((resolve, reject) => { resolve({}) });
 
             adminController = new AdminController(dataStub);
 
@@ -76,17 +76,19 @@ describe('Admin controller test', function() {
     describe('addNewCategory()', function() {
         beforeEach(function() {
             feedDataStub = {
-                findCategoryByName: () => {}
+                findCategoryByName: () => {},
             };
             dataStub = {
-                feeds: feedDataStub
+                feeds: feedDataStub,
             };
         });
 
-        it('Expect to call req.flash() function once',function() {
+        it('Expect to call req.flash() function once', function() {
             let findCategoryByNameStub = sinon.stub(feedDataStub, 'findCategoryByName'),
                 reqStub = sinon.stub(req, 'flash'),
-                promise = new Promise((resolve, reject) => { resolve({}); });
+                promise = new Promise((resolve, reject) => {
+ resolve({}); 
+});
 
             adminController = new AdminController(dataStub);
 
@@ -97,7 +99,7 @@ describe('Admin controller test', function() {
             sinon.assert.calledOnce(reqStub);
         });
 
-        it('Expect to call res.redirect() function once',function() {
+        it('Expect to call res.redirect() function once', function() {
             let findCategoryByNameStub = sinon.stub(feedDataStub, 'findCategoryByName'),
                 resStub = sinon.stub(res, 'redirect'),
                 promise = new Promise((resolve, reject) => { resolve({}); });
@@ -111,7 +113,7 @@ describe('Admin controller test', function() {
             sinon.assert.calledOnce(resStub);
         });
 
-        it('Expect to call this.feedData.findCategoryByName() function once',function() {
+        it('Expect to call this.feedData.findCategoryByName() function once', function() {
             let findCategoryByNameStub = sinon.stub(feedDataStub, 'findCategoryByName'),
                 promise = new Promise((resolve, reject) => { resolve({}); });
 
@@ -125,6 +127,5 @@ describe('Admin controller test', function() {
 
             sinon.assert.calledOnce(findCategoryByNameStub);
         });
-
     });
 });

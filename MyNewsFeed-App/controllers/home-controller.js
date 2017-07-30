@@ -1,4 +1,3 @@
-
 class HomeController {
   constructor(data) {
     this.feedData = data.feeds;
@@ -7,7 +6,6 @@ class HomeController {
   loadHomePage(req, res) {
        this.feedData.getLatestArticles()
        .then((articles) => {
-          console.log(articles.length);
           res.render('home-page.pug', {
             isAuthenticated: req.isAuthenticated(),
             user: req.user,
