@@ -5,18 +5,19 @@ class HomeController {
   }
 
   loadHomePage(req, res) {
-     //   this.feedData.getLatestArticles()
-     //   .then((articles) => {
-          // console.log(articles);
+       this.feedData.getLatestArticles()
+       .then((articles) => {
+          console.log(articles);
           res.render('home-page.pug', {
             isAuthenticated: req.isAuthenticated(),
             user: req.user,
             isAdmin: () => {
               return req.user.admin;
             },
-            message: req.flash()
+            message: req.flash(),
+            articles
             });
-        //});
+        });
       }
 }
 
