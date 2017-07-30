@@ -7,12 +7,10 @@ class UserData {
     }
 
     createUser(fullName, username, email, password, urlProfilePicture) {
-        const currentDate = new Date().toDateString();
         const user = new User(fullName, username,
-            email, password, urlProfilePicture, currentDate, false)
+            email, password, urlProfilePicture)
                   .toObject();
-        
-        console.log("HERE");
+        console.log('HERE');
 
         return this.db.collection('users')
             .save(user)
@@ -53,12 +51,12 @@ class UserData {
 
     addArticleToUser(username, article) {
           return this.db
-          .collection('users')
-          .updateOne({ username }, { $addToSet: { userArticles: article } })
-          .then((result) => {
-              return result.nModified;
-          })
-          .catch((err) => console.log(err));
+            .collection('users')
+            .updateOne({ username }, { $addToSet: { userArticles: article } })
+            .then((result) => {
+                return result.nModified;
+            })
+            .catch((err) => console.log(err));
     }
 }
 

@@ -1,12 +1,12 @@
 class User {
   constructor(fullName, username, email,
-    password, urlProfilePicture, userJoined, admin) {
+    password, urlProfilePicture, admin) {
     this.fullName = fullName;
     this.username = username;
     this.email = email;
     this.password = password;
     this.urlProfilePicture = urlProfilePicture;
-    this.userJoined = userJoined;
+    this.userJoined = new Date().toDateString();
     this.admin = admin;
     this.userFeeds = [];
     this.userArticles = [];
