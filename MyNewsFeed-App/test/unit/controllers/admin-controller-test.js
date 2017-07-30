@@ -86,9 +86,7 @@ describe('Admin controller test', function() {
         it('Expect to call req.flash() function once', function() {
             let findCategoryByNameStub = sinon.stub(feedDataStub, 'findCategoryByName'),
                 reqStub = sinon.stub(req, 'flash'),
-                promise = new Promise((resolve, reject) => {
- resolve({}); 
-});
+                promise = new Promise((resolve, reject) => { resolve({}); });
 
             adminController = new AdminController(dataStub);
 
@@ -126,6 +124,76 @@ describe('Admin controller test', function() {
             adminController.addNewCategory(req, res);
 
             sinon.assert.calledOnce(findCategoryByNameStub);
+        });
+    });
+
+    describe('addNewFeed()', function() {
+        let promise = new Promise((resolve, reject) => { resolve({}) });
+
+        beforeEach(function() {
+            feedDataStub = {
+                findCategoryByName: () => {},
+                addNewFeed: () => {}
+            };
+
+            req = {
+                body: {
+                    category: '',
+                    title: '',
+                    url: '',
+                    image: '',
+                    description: ''
+                },
+                flash: () => {}
+            };
+
+            dataStub = { feeds: feedDataStub };
+        });
+
+        it('Expect to call this.feedData.findCategoryByName() function once', function() {
+            let findCategoryByNameStub = sinon.stub(feedDataStub, 'findCategoryByName'),
+                addNewFeedStub = sinon.stub(feedDataStub, 'addNewFeed');
+
+            adminController = new AdminController(dataStub);
+
+            findCategoryByNameStub.returns(promise);
+            addNewFeedStub.returns(promise);
+
+            adminController.addNewFeed(req, res);
+
+            sinon.assert.calledOnce(findCategoryByNameStub);
+        });
+    });
+
+    describe('deleteCategoryFeed()', function() {
+        let promise = new Promise((resolve, reject) => { resolve({}) });
+
+        beforeEach(function() {
+            feedDataStub = {
+                deleteItem: () => {}
+            };
+
+            req = {
+                params: {
+                    categoryif: '',
+                    feedid: ''
+                },
+                flash: () => {}
+            };
+
+            dataStub = { feeds: feedDataStub };
+        });
+
+        it('Expect to call this.feedData.deleteItem() function once', function() {
+            let deleteItemStub = sinon.stub(feedDataStub, 'deleteItem');
+
+            adminController = new AdminController(dataStub);
+
+            deleteItemStub.returns(promise);
+
+            adminController.deleteCategoryFeed(req, res);
+
+            sinon.assert.calledOnce(deleteItemStub);
         });
     });
 });

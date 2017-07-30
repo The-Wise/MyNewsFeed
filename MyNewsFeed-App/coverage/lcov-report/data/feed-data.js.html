@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/50</span>
+        <span class='fraction'>0/47</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/50</span>
+        <span class='fraction'>0/47</span>
       </div>
     </div>
   </div>
@@ -201,29 +201,7 @@
 156
 157
 158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+159</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -326,24 +304,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -358,14 +318,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -403,9 +359,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >const Category = require('../models/category-model');</span>
-<span class="cstat-no" title="statement not covered" >const Feed = require('../models/feed-model');</span>
-<span class="cstat-no" title="statement not covered" >const Article = require('../models/article-model');</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >const { Category } = require('../models/category-model');</span>
+<span class="cstat-no" title="statement not covered" >const { Feed } = require('../models/feed-model');</span>
+<span class="cstat-no" title="statement not covered" >const { Article } = require('../models/article-model');</span>
 <span class="cstat-no" title="statement not covered" >const ObjectId = require('./database-connection.js').ObjectID;</span>
 &nbsp;
 class FeedData {
@@ -506,25 +462,7 @@ class FeedData {
     }
 &nbsp;
     getLatestArticles<span class="fstat-no" title="function not covered" >() {</span>
-        // const articles = [];
-        //             return this.db
-        //                 .collection('feeds')
-        //                 .find({})
-        //                 .forEach((feed) =&gt; {
-        //                     articles.push({
-        //                         category: feed.catName,
-        //                         feed: feed.name,
-        //                         url: feed.url,
-        //                         id: feed.articles[0].id,
-        //                         title: feed.articles[0].title,
-        //                         image: feed.articles[0].imageUrl,
-        //                         summary: feed.articles[0].summary,
-        //                     });
-        //                 }, () =&gt; {
-        //                     console.log(articles);
-        //                     return Promise.resolve(articles);
-        //                 });
-<span class="cstat-no" title="statement not covered" >        const promise = new Promise((resolve, reject) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        return new Promise((resolve, reject) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >            const articles = [];</span>
 <span class="cstat-no" title="statement not covered" >            this.db.collection('feeds')</span>
                         .find({})
@@ -535,17 +473,13 @@ class FeedData {
                                 url: feed.articles[0].feedUrl,
                                 id: feed.articles[0].id,
                                 title: feed.articles[0].title,
-                                image: feed.articles[0].imageUrl,
+                                imageUrl: feed.articles[0].imageUrl,
                                 summary: feed.articles[0].summary,
                             });
-<span class="cstat-no" title="statement not covered" >                            console.log(feed.articles[0].feedUrl);</span>
                         }, () =&gt; {
-<span class="cstat-no" title="statement not covered" >                            console.log(articles);</span>
 <span class="cstat-no" title="statement not covered" >                            resolve(articles);</span>
                         });
         });
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        return promise;</span>
     }
 &nbsp;
     deleteItem<span class="fstat-no" title="function not covered" >(itemId, subItemId) {</span>
@@ -589,7 +523,7 @@ class FeedData {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 26 2017 14:58:26 GMT+0300 (FLE Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 30 2017 00:07:32 GMT-0200 (UTC-02)
 </div>
 </div>
 <script src="../prettify.js"></script>

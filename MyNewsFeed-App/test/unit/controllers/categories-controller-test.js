@@ -6,11 +6,11 @@ let mocha = require('mocha'),
 
 let expect = chai.expect;
 
-describe('Categories controller test', function() {
-    let feedDataStub,
+let feedDataStub,
         dataStub, 
         categoriesController;
 
+describe('Categories controller test', function() {
     beforeEach(function() {
         feedDataStub = sinon.createStubInstance(FeedData);
         dataStub = { feeds: feedDataStub };
@@ -27,5 +27,37 @@ describe('Categories controller test', function() {
 
     it('Expect to have all functions', function() {
         expect(categoriesController.loadCategoryPage).to.be.a('function');
+    });
+
+    describe('loadCategoryPage()', function() {
+        it('Expect to call this.feedData.findCategoryByName() function once', function() {
+            let promise = new Promise((resolve, reject) => { resolve({}) }),
+                req = { 
+                    params: { 
+                        category: ''
+                    },
+                    isAuthenticated: () => {},
+                    user: {
+                        admin: true
+                    }
+                },
+                res = {
+                    render: () => {}
+                };
+
+            feedDataStub = {
+                findCategoryByName: () => {}
+            };
+
+            let findCategoryByNameStub = sinon.stub(feedDataStub, 'findCategoryByName')
+            dataStub = { feeds: feedDataStub };
+            categoriesController = new CategoriesController(dataStub);
+
+            findCategoryByNameStub.returns(promise);
+
+            categoriesController.loadCategoryPage(req, res);
+
+            sinon.assert.calledOnce(findCategoryByNameStub);
+        });
     });
 });
