@@ -112,6 +112,7 @@ class FeedData {
                                 feed: feed.name,
                                 url: feed.articles[0].feedUrl,
                                 id: feed.articles[0].id,
+                                date: feed.articles[0].date,
                                 title: feed.articles[0].title,
                                 imageUrl: feed.articles[0].imageUrl,
                                 summary: feed.articles[0].summary,

@@ -1,3 +1,5 @@
+const itemsInRows = require('../utils/itemsToRows.js')
+
 class HomeController {
   constructor(data) {
     this.feedData = data.feeds;
@@ -13,7 +15,7 @@ class HomeController {
               return req.user.admin;
             },
             message: req.flash(),
-            articles,
+            rows: itemsInRows(articles, 2),
             });
         });
       }

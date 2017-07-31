@@ -1,24 +1,33 @@
 extends ./shared/_layout
 
 block content
-    if articles.length > 0
-        each article in articles
-            //- - const date = article.date.toString().slice(0,11);
-            div.feed-article
-                img.feed-article-image(src=article.imageUrl)
-                a.feed-article-title(href='/category/' + article.category + '/' + article.feed + '/' + article.url + '/' + article.id)
-                    h5
-                        =article.title
-                p.article-date
-                    =article.date
-                p.feed-article-summary
-                    !=article.summary
-                //- .feed-article-content.hidden
-                    !=article.description
-                br
-                a.btn(href='/category/' + article.category + '/' + article.feed + '/' + article.url + '/' + article.id)  Read Article
-                br
-                hr
-                //- button.btn.btn-primary.btn-md.read-artcile(type='button') Read full article
+    .row
+        h3 Latest articles from our channels
+        .devider
+    if rows.length > 0
+        each row in rows
+            .row
+                .col.l1
+                each article in row
+                    .col.s12.m5.l3.feed-article
+                        - const summaryImg = article.summary.search('<img')
+                        - const date = article.date.toString().slice(0,11);
+                        p.article-feed
+                            =article.feed
+                            |  / 
+                            strong= date
+                        a.feed-article-title(href='/category/' + article.category + '/' + article.feed + '/' + article.url + '/' + article.id)
+                            h5
+                                =article.title
+                        if summaryImg === -1
+                            img.feed-article-image(src=article.imageUrl)
+                        br
+                        p.feed-article-summary
+                            !=article.summary
+                        br
+                        a.btn(href='/category/' + article.category + '/' + article.feed + '/' + article.url + '/' + article.id)  Read Article
+                        br
+                        hr
+                        //- button.btn.btn-primary.btn-md.read-artcile(type='button') Read full article
     else
-        h2 There are no articles to display
+        h3 There are no articles to display
