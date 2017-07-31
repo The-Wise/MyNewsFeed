@@ -93,23 +93,22 @@ describe('Integration tests', () => {
                     .send(user)
                     .expect(302)
                     .expect('Location', '/login')
-                    .end(done)
+                    .end(done);
             
             });
             it('POST /login should return status 302 when logging in with valid account', (done) => {
                 
-                var user = {email: 'test@email.com', password: 'password'};
+                var user = {username: 'username', password: 'password'};
                 server
                     .post('/login')
                     .send(user)
-                    .end((err,res) => {
-                        expect(res.statusCode).to.equal(302);
-                        done();
-                    });
+                    .expect(302)
+                    .expect('Location', '')
+                    .end(done);
             });
             it('POST /login should return status 302  when logging in with invalid account', (done) => {
                 
-                var user = {email: 'invalid@email.com', password: 'password'};
+                var user = {username: 'username-invalid', password: 'password'};
                 server
                     .post('/login')
                     .send(user)
@@ -118,9 +117,9 @@ describe('Integration tests', () => {
                         done();
                     });
             });
-            it('POST /login should return status 302  when logging in with blank email parameter', (done) => {
+            it('POST /login should return status 302  when logging in with blank username parameter', (done) => {
                 
-                var user = {email: '', password: 'password'};
+                var user = {username: '', password: 'password'};
                 server
                     .post('/login')
                     .send(user)
@@ -131,7 +130,7 @@ describe('Integration tests', () => {
             });
             it('POST /login should return status 302  when logging in with blank password parameter', (done) => {
                 
-                var user = {email: 'test@email.com', password: ''};
+                var user = {username: 'username', password: ''};
                 server
                     .post('/login')
                      .send(user)
@@ -142,7 +141,7 @@ describe('Integration tests', () => {
             });
             it('POST /login should return status 302  when logging in with invalid password', (done) => {
                 
-                var user = {email: 'test@email.com', password: 'invalid.password'};
+                var user = {username: 'username', password: 'invalid.password'};
                 server
                     .post('/login')
                      .send(user)
