@@ -50,7 +50,7 @@ block content
         .col.s12.m8.l9
             each category in categories
                 h4.admin-cat-name= category.name
-                a.btn.btn-danger.btn-sm(href='/admin/edit/deletecategory/' + category._id) delete category
+                a.btn.btn-delete(href='/admin/edit/deletecategory/' + category._id) delete category
                 br
                 br
                 table.table.table-hover.table-responsive
@@ -71,5 +71,5 @@ block content
                             td
                                 .td-inner= feed.description
                             td 
-                                a.btn.btn-danger.btn-sm(href='/admin/edit/deletefeed/' + category._id + '/' + feed.id) delete feed
+                                a.btn.btn-delete(href='/admin/edit/deletefeed/' + category._id + '/' + feed.id) delete feed
                 br

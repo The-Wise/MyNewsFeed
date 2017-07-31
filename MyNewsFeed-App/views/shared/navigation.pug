@@ -3,7 +3,7 @@ mixin nav()
       .nav-wrapper
         a.brand-logo(href='/')
           i.material-icons rss_feed
-          strong My News App
+          | MyNews
         a.button-collapse(href='#', data-activates='mobile-demo')
           i.material-icons menu
         ul.right.hide-on-med-and-down
@@ -15,7 +15,7 @@ mixin nav()
               a(href='/' + user.username + '/myfeeds') 
                 strong MY FEEDS
             else
-              a.not-active(href='/myfeeds') 
+              a.tooltipped(href='#', data-position="bottom", data-delay="50", data-tooltip="Login to see your feeds")
                 strong MY FEEDS
           li
             a(href='/category/news/')
@@ -34,8 +34,7 @@ mixin nav()
               a.btn.btn-default.btn-success.btn-round.btn-round-login(href="/login") Log In
               a.btn.btn-default.btn-info.btn-round(href="/signup") Sing up
           else
-              //- a.btn.btn-primary.username(href='#') 
-                = user.username
+
               ul#user-menu.dropdown-content
                 li
                   a(href='/' + user.username + '/profile') Profile
@@ -54,13 +53,14 @@ mixin nav()
         ul#mobile-demo.side-nav
           li
             a(href='/') 
-              strong HOME
+              i.material-icons rss_feed
+              | MyNews
           li
             if user
               a(href='/' + user.username + '/myfeeds') 
                 strong MY FEEDS
             else
-              a.not-active(href='/myfeeds') 
+              a.not-active.tooltipped(href='#', data-position="bottom", data-delay="50", data-tooltip="Login to see your feeds")
                 strong MY FEEDS
           li
             a(href='/category/news')
@@ -79,8 +79,6 @@ mixin nav()
               a.btn.btn-default.btn-success.btn-round.btn-round-login(href="/login") Log In
               a.btn.btn-default.btn-info.btn-round(href="/signup") Sing up
           else
-              //- a.btn.btn-primary.username(href='#') 
-                = user.username
               ul#user-menu-mobile.dropdown-content
                 li
                   a(href='/' + user.username + '/profile') Profile

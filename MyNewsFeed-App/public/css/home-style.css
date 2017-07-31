@@ -150,7 +150,7 @@ nav {
 h3 {
     background-color: black;
     padding: 5px 50px 10px 50px;
-    display: inline;
+    display: inline-block;
     /* margin-right: 50px; */
     font-family: Open Sans, sans-serif;
     font-weight: 800;
@@ -194,5 +194,23 @@ p {
 }
 .brand-logo {
     font-family: 'Monoton', cursive;
-    margin-left: 100px;
+    /* margin-left: 100px; */
+    color: black;
+    display: inline-block;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+.btn-delete {
+    background-color: red;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+a.btn-delete:hover {
+    background-color: red;
+}
+
+h4 {
+    color: black;
+    font-weight: bold;
 }

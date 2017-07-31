@@ -11,8 +11,8 @@ $( document ).ready(function() {
     $('.btn-follow').on('click', (event) => {
         followFeed(event);
     });
-    // if (typeof message != 'undefined') {
-    //     toaster(message);
+    // if ($toastContent) {
+    //     Materialize.Toater(message);
     // }
     });
 
