@@ -106,6 +106,7 @@ class FeedData {
             this.db.collection('feeds')
                         .find({})
                         .forEach((feed) => {
+                            if(feed) {
                             articles.push({
                                 category: feed.catName,
                                 feed: feed.name,
@@ -115,6 +116,7 @@ class FeedData {
                                 imageUrl: feed.articles[0].imageUrl,
                                 summary: feed.articles[0].summary,
                             });
+                            }
                         }, () => {
                             resolve(articles);
                         });

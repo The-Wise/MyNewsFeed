@@ -24,7 +24,7 @@ class Article {
            throw new Error('title can not be empty!');
         }
 
-        this._title = title.toLowerCase();
+        this._title = title;
     }
     get date() {
         return this._date;

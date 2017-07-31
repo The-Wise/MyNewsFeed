@@ -1,7 +1,7 @@
 extends ./shared/_layout
 
 block content
-    if articles
+    if articles.length > 0
         each article in articles
             //- - const date = article.date.toString().slice(0,11);
             div.feed-article
@@ -9,11 +9,11 @@ block content
                 a.feed-article-title(href='/category/' + article.category + '/' + article.feed + '/' + article.url + '/' + article.id)
                     h5
                         =article.title
-                p.feed-date
-                    =date
+                p.article-date
+                    =article.date
                 p.feed-article-summary
                     !=article.summary
-                .feed-article-content.hidden
+                //- .feed-article-content.hidden
                     !=article.description
                 br
                 a.btn(href='/category/' + article.category + '/' + article.feed + '/' + article.url + '/' + article.id)  Read Article

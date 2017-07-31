@@ -10,9 +10,8 @@ gulp.task('pre-test', () => {
 // !!! Not clear why, if required files are more than 13 or 14,others stays not included in test coverage
 
     './controllers/**/*.js',
-//     './routes/**/*.js',
        './models/**/*.js',
-        // './data/**/*.js',
+        './data/**/*.js',
 //     './config/**/*.js',
 //     './utils/validator.js',
     ])
