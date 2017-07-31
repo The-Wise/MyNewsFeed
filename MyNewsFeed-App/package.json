@@ -46,8 +46,12 @@
     "gulp-mocha": "^3.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
+    "selenium-webdriver": "^3.5.0",
     "sinon": "2.3.8",
     "supertest": "^3.0.0",
+    "wdio-dot-reporter": "0.0.8",
+    "wdio-json-reporter": "^0.2.1",
+    "wdio-mocha-framework": "^0.5.10",
     "webdriverio": "^4.8.0"
   }
 }
