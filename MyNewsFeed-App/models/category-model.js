@@ -28,6 +28,5 @@ class Category {
 }
 
 module.exports = {
-    Category
+    Category,
 };
- 

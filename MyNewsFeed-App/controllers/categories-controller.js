@@ -5,10 +5,8 @@ class CategoriesController {
 
     loadCategoryPage(req, res) {
         const name = req.params.category;
-        // console.log(name);
         this.feedData.findCategoryByName(name)
             .then((category) => {
-                // console.log(category);
                 res.render('./feed/category-page.pug', {
                     name: category.name,
                     feeds: category.feeds,

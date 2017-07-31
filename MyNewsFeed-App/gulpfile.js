@@ -9,10 +9,10 @@ gulp.task('pre-test', () => {
 // To be included in test coverage all files should be required in the array
 // !!! Not clear why, if required files are more than 13 or 14,others stays not included in test coverage
 
-//     './controllers/**/*.js',
+    './controllers/**/*.js',
 //     './routes/**/*.js',
        './models/**/*.js',
-//     './data/**/*.js',
+        './data/**/*.js',
 //     './config/**/*.js',
 //     './utils/validator.js',
     ])
@@ -29,7 +29,7 @@ gulp.task('test', ['pre-test'], () => {
         './test/unit/routes/**/*.js',
         './test/unit/data/**/*.js',
         './test/unit/controllers/**/*.js',
-       // './test/integration/**/*.js',
+       './test/integration/**/*.js',
     ])
     .pipe(mocha())
     .pipe(istanbul.writeReports());

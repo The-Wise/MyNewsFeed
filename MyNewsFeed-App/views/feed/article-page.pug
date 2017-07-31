@@ -8,7 +8,7 @@ block content
             h4 
                 =article.title
             if isAuthenticated
-                button.btn.btn-save-article(type='button', data-title=articleTitle, data-url= articleUrl, data-username=user.username) Save article
+                button.btn.btn-save-article(type='button', data-title=articleTitle, data-url= articleUrl, data-image=article.imageUrl, data-username=user.username) Save article
             else 
                 button.btn(type='button') Log in to save article
             a.btn.btn-primary.btn-med(href=article.articleUrl, target='_blanc') Read original article

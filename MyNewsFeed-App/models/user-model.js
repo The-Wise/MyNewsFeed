@@ -75,10 +75,10 @@ class User {
   }
 
   set userJoined(date) {
-    if(date === null) {
+    if (date === null) {
         throw "date can not be null!"; 
     }
-    if(date === '') {
+    if (date === '') {
         throw "date can not be empty!"; 
     }
     this._userJoined = date;
@@ -139,5 +139,5 @@ class User {
 }
 
 module.exports = {
-  User
+  User,
 };

@@ -33,22 +33,23 @@ mixin nav()
               a.btn.btn-default.btn-success.btn-round.btn-round-login(href="/login") Log In
               a.btn.btn-default.btn-info.btn-round(href="/signup") Sing up
           else
-              if isAdmin()
-                a.btn.btn-default.username(href="/admin/edit") Add feed
-              .btn-group
-                  if isAdmin() 
-                      a.btn.btn-default.username Admin
-                  a.btn.btn-primary.username(href='/') 
-                    = user.username
-                  a.btn.btn-primary.dropdown-toggle.user-toggle(href='#', data-toggle='dropdown')
-                    span.caret
-                  ul.dropdown-menu
-                    li
-                      a(href='/' + user.username + '/profile') Profile
-                    li.divider
-                    li
-                      a(href='/logout') Log out  
-          
+              //- a.btn.btn-primary.username(href='#') 
+                = user.username
+              ul#user-menu.dropdown-content
+                li
+                  a(href='/' + user.username + '/profile') Profile
+                .divider
+                if isAdmin
+                  li
+                    a(href="/admin/edit") Add Feed
+                  .divider
+                li
+                  a(href='/logout') Log out
+              li
+                a.btn.dropdown-button.user-toggle(data-activates='user-menu')
+                  | #{user.username}
+                  i.material-icons.right menu
+                
         ul#mobile-demo.side-nav
           li
             a(href='/') 
@@ -77,18 +78,19 @@ mixin nav()
               a.btn.btn-default.btn-success.btn-round.btn-round-login(href="/login") Log In
               a.btn.btn-default.btn-info.btn-round(href="/signup") Sing up
           else
-              if isAdmin()
-                a.btn.btn-default.username(href="/admin/edit") Add feed
-              .btn-group
-                  if isAdmin() 
-                      a.btn.btn-default.username Admin
-                  a.btn.btn-primary.username(href='#') 
-                    = user.username
-                  a.btn.btn-primary.dropdown-toggle.user-toggle(href='#', data-toggle='dropdown')
-                    span.caret
-                  ul.dropdown-menu
-                    li
-                      a(href='/' + user.username + '/profile') Profile
-                    li.divider
-                    li
-                      a(href='/logout') Log out
+              //- a.btn.btn-primary.username(href='#') 
+                = user.username
+              ul#user-menu-mobile.dropdown-content
+                li
+                  a(href='/' + user.username + '/profile') Profile
+                .divider
+                if isAdmin
+                  li
+                    a(href="/admin/edit") Add Feed
+                  .divider
+                li
+                  a(href='/logout') Log out
+              li
+                a.btn.dropdown-button.user-toggle(data-activates='user-menu-mobile')
+                  | #{user.username}
+                  i.material-icons.right menu

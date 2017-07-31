@@ -4,6 +4,7 @@ $( document ).ready(function() {
     $('.button-collapse').sideNav();
     $('.collapsible').collapsible();
     $('select').material_select();
+    $('.dropdown-button').dropdown();
     $('.btn-save-article').on('click', (event) => {
         saveArticle(event);
     });
@@ -21,6 +22,7 @@ function saveArticle(event) {
         data.username = event.target.getAttribute('data-username');
         data.articleTitle = event.target.getAttribute('data-title');
         data.articleUrl = event.target.getAttribute('data-url');
+        data.imageUrl = event.target.getAttribute('data-image');
         const url = '/' + data.username + '/addarticle';
         $.ajax({
             url,
@@ -35,6 +37,7 @@ function followFeed(event) {
         data.username = event.target.getAttribute('data-username');
         data.feedName = event.target.getAttribute('data-name');
         data.feedUrl = event.target.getAttribute('data-url');
+        data.imageUrl = event.target.getAttribute('data-image');
         const url = '/' + data.username + '/followfeed';
         $.ajax({
             url,

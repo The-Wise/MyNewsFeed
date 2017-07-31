@@ -1,5 +1,6 @@
 const FeedParser = require('feedparser');
 const request = require('request');
+const itemsToRows = require('../utils/itemsToRows');
 
 class FeedController {
   constructor(data) {
@@ -17,7 +18,7 @@ class FeedController {
           isAdmin: () => {
           return req.user.admin;
         },
-          articles,
+          rows: itemsToRows(articles, 3),
           originalurl,
           feedname });
       });
@@ -43,10 +44,8 @@ class FeedController {
     const url = req.params.feedurl;
     const urlenc = encodeURIComponent(req.params.feedurl);
     const name = req.params.feedname;
-    console.log(urlenc);
     this.getFeed(url)
     .then((feed) => {
-      console.log(url + ' feed_controller');
       this.feedData.addNewArticles(name, urlenc, feed);
     })
     .then(() => {

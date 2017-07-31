@@ -1,23 +1,26 @@
 extends ../shared/_layout
 
 block content
-    .container
+    .row
+        .col.l1
         if feeds.length > 0
             each feed in feeds
                 - const feedurl = encodeURIComponent(feed.feedUrl)
                 - const feedtitle = encodeURIComponent(feed.title)
                 - const originalurl = '/category/' + name + '/' + feedtitle + '/' + feedurl
-                div.feed
+                .col.s12.m5.l3.feed
                     img.feed-image(src=feed.imageUrl)
                     a.feed-title(href=originalurl)
-                        h4
+                        h5
                             =feed.title
+                    br
+                    br
                     p.feed-description
-                        !=feed.description
+                        =feed.description
                     if isAuthenticated
-                        button.btn.btn-md.btn-follow(type='button', data-name=feed.title, data-url= originalurl, data-username=user.username) Follow feed
+                        button.btn.btn-follow(type='button', data-name=feed.title, data-url= originalurl, data-image=feed.imageUrl, data-username=user.username) Follow feed
                     else
-                        a.btn.btn-primary.btn-md(href='/login') Log in to Follow feed
+                        a.btn.btn-follow(href='/login') Log in to Follow feed
                     br
                     hr
                     br

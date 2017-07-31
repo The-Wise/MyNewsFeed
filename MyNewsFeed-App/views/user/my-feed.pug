@@ -4,28 +4,33 @@ extends ../shared/_layout
 block content
     if isAuthenticated
         .row
-            #sidebar.col.s12.m4.l3.no-padding
-                h4 My feeds 
+            #sidebar.col.s12.m4.l3
+                h5 My feeds 
                 br
                 if feeds
                     ul
                         each feed in feeds
                             li
                                 a(href=feed.feedUrl) 
-                                    h5
+                                    h6
                                         =feed.feedName
                 else
                     p You are not following any feeds yet
 
             .col.s12.m8.l9
-                h4 My saved articles
-                if articles
-                    each article in articles
-                        a(href=article.articleUrl, target='_blanc')
-                            h5
-                                =article.articleTitle
-                else
-                    h4 You have no saved articles yet
+                ul.collection.with-header
+                    li.collection-header 
+                        h5 My saved articles
+                    if articles
+                        each article in articles
+                            - const title = decodeURIComponent(article.articleTitle);
+                            a.collection-item(href=article.articleUrl, target='_blanc')
+                                li.collection-item.avatar
+                                    img(src=article.imageUrl, alt="", class="circle")
+                                    p
+                                        =title
+                    else
+                        h4 You have no saved articles yet
 
     else
         h4 You have to be loged in to use this functionality
