@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,800');
+@import url('https://fonts.googleapis.com/css?family=Monoton|Open+Sans:300,300i,400,800');
 
 body {
     background-color: white;
@@ -179,7 +179,7 @@ p {
     display: inline;
     padding: 10px;
     font-size: 20px;
-    font-family: Open Sans, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 800;
 }
 
@@ -191,4 +191,8 @@ p {
     background-color: #FFC107;
     color: black;
     padding: 2px 0px 2px 10px;
+}
+.brand-logo {
+    font-family: 'Monoton', cursive;
+    margin-left: 100px;
 }
