@@ -70,8 +70,7 @@ a:link {
 
 /*buttons style  */
 
-.feed-article .btn, .article .btn, .btn-refresh, .btn-follow,
-.btn-cancel, .btn-submit {
+.feed-buttons .btn, .feed-article .btn, .article .btn, .btn-refresh, .btn-follow {
     margin-right: 10px;
     margin-bottom: 10px;
     border: 1px solid #26a69a;
@@ -81,9 +80,13 @@ a:link {
     padding-right: 10px;
 }
 
-.cancel-button {
-     margin-left: 50px;
-     border-radius: 20px;
+.btn-cancel, .btn-submit {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #26a69a;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .btn-login {

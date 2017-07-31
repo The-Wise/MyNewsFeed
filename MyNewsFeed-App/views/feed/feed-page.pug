@@ -10,7 +10,7 @@ block content
                 if isAuthenticated
                     button.btn.btn-follow(type='button', data-name=feedname, data-url= originalurl, data-username=user.username) Follow feed
                 else
-                    a.btn.btn-follow(href='/login') Log in to Follow feed 
+                    a.btn(href='/login') Log in to Follow feed 
     br
     br
     hr
@@ -22,14 +22,16 @@ block content
                     - const date = article.date.toString().slice(0,11);
                     - const articleUrl = article.articleUrl
                     - const articleTitle = article.title
+                    - const summaryImg = article.summary.search('<img')
                     .col.s12.m4.l3.feed-article
-                        img.feed-article-image(src=article.imageUrl)
                         p.date
                             =date
                             //- i.material-icons add
                         a.feed-article-title(href=originalurl + '/' + article.id)
                             h5
                                 =article.title
+                        if summaryImg === -1
+                            img.feed-article-image(src=article.imageUrl)
                         .feed-article-summary
                             !=article.summary
                         //- .feed-article-content
