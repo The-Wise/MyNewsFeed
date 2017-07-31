@@ -81,58 +81,58 @@ describe('Integration tests', () => {
                     .expect({success:true}, done);
                         
             });
-            it('POST /login should return status 200 when logging in with valid account', (done) => {
+            it('POST /login should return status 302 when logging in with valid account', (done) => {
                 
                 var user = {email: 'test@email.com', password: 'password'};
                 server
                     .post('/login')
                     .send(user)
                     .end((err,res) => {
-                        expect(res.statusCode).to.equal(200);
+                        expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
-            it('POST /login should return status 404  when logging in with invalid account', (done) => {
+            it('POST /login should return status 302  when logging in with invalid account', (done) => {
                 
                 var user = {email: 'invalid@email.com', password: 'password'};
                 server
                     .post('/login')
                     .send(user)
                     .end((err,res) => {
-                        expect(res.statusCode).to.equal(404);
+                        expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
-            it('POST /login should return status 404  when logging in with blank email parameter', (done) => {
+            it('POST /login should return status 302  when logging in with blank email parameter', (done) => {
                 
                 var user = {email: '', password: 'password'};
                 server
                     .post('/login')
                     .send(user)
                     .end((err,res) => {
-                        expect(res.statusCode).to.equal(404);
+                        expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
-            it('POST /login should return status 404  when logging in with blank password parameter', (done) => {
+            it('POST /login should return status 302  when logging in with blank password parameter', (done) => {
                 
                 var user = {email: 'test@email.com', password: ''};
                 server
                     .post('/login')
                      .send(user)
                     .end((err,res) => {
-                        expect(res.statusCode).to.equal(404);
+                        expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
-            it('POST /login should return status 404  when logging in with invalid password', (done) => {
+            it('POST /login should return status 302  when logging in with invalid password', (done) => {
                 
                 var user = {email: 'test@email.com', password: 'invalid.password'};
                 server
                     .post('/login')
                      .send(user)
                      .end((err,res) => {
-                        expect(res.statusCode).to.equal(404);
+                        expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
