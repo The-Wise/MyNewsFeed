@@ -78,7 +78,10 @@ describe('Integration tests', () => {
                 server
                     .post('/signup')
                     .send(user)
-                    .expect({success:true}, done);
+                    .end((err,res) => {
+                        expect(res.statusCode).to.equal(302);
+                        done();
+                    });
                         
             });
             it('POST /login should return status 302 when logging in with valid account', (done) => {
