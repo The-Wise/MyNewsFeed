@@ -71,18 +71,30 @@ describe('Integration tests', () => {
                         expect(res.statusCode).to.equal(200);
                         done();
                      });
+                     
             });
-            it('POST /signup should return status 200 when all required fields are filled', (done) => {
+            // it('POST /signup should return status 302 when all required fields are filled', (done) => {
+                
+            //     var user = {username: 'username', fullname: 'Fullname', email: 'test@email.com', password: 'password'};
+            //     server
+            //         .post('/signup')
+            //         .send(user)
+            //         .end((err,res) => {
+            //             expect(res.statusCode).to.equal(302);
+            //             done();
+            //         });
+                        
+            // });
+            it('POST /signup should return status 302 when all required fields are filled and redirects to login', (done) => {
                 
                 var user = {username: 'username', fullname: 'Fullname', email: 'test@email.com', password: 'password'};
                 server
                     .post('/signup')
                     .send(user)
-                    .end((err,res) => {
-                        expect(res.statusCode).to.equal(302);
-                        done();
-                    });
-                        
+                    .expect(302)
+                    .expect('Location', '/login')
+                    .end(done)
+            
             });
             it('POST /login should return status 302 when logging in with valid account', (done) => {
                 
