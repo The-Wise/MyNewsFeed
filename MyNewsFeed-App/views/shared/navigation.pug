@@ -39,7 +39,7 @@ mixin nav()
                 li
                   a(href='/' + user.username + '/profile') Profile
                 .divider
-                if isAdmin
+                if isAdmin()
                   li
                     a(href="/admin/edit") Add Feed
                   .divider
@@ -84,7 +84,7 @@ mixin nav()
                 li
                   a(href='/' + user.username + '/profile') Profile
                 .divider
-                if isAdmin
+                if isAdmin()
                   li
                     a(href="/admin/edit") Add Feed
                   .divider

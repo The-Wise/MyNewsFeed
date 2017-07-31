@@ -13,9 +13,9 @@ block content
                         - const summaryImg = article.summary.search('<img')
                         - const date = article.date.toString().slice(0,11);
                         p.article-feed
+                            span.article-date= date
+                            | / 
                             =article.feed
-                            |  / 
-                            strong= date
                         a.feed-article-title(href='/category/' + article.category + '/' + article.feed + '/' + article.url + '/' + article.id)
                             h5
                                 =article.title
