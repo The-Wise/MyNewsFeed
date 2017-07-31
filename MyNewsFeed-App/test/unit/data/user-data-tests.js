@@ -1,5 +1,8 @@
-// const { expect } = require('chai');
-// const sinon = require('sinon');
+const chai = require('chai');
+const sinon = require('sinon'),
+      expect = chai.expect,
+      UserData = require('../../../data/user-data'),
+      DBConn = require('../../../data/database-connection');
 
 // const UserData = require('../../../data/user-data');
 //     const db = {
@@ -37,55 +40,35 @@
 //     //         .callsFake(() => {
 //     //             findOne('username', 'name');
 //     //         });
-//     const user = class {};
-//     let findOne;
+//     const user
 
-//     // afterEach(() => {
-//     //             sinon.restore();
-//     //         });
+describe('User data tests', function() {
+    let ObjectIdStub,
+        userData,
+        dbStub = {};
 
-// describe('DataUser tests', () => {
-//     describe('createUser', () => {
-//     });
+    beforeEach(function() {
+        ObjectIdStub = sinon.stub(DBConn, 'ObjectID');
+        userData = new UserData(dbStub);
+    });
 
-//     describe('findUserByID', () => {
+    afterEach(function() {
+        ObjectIdStub.restore();
+    });
 
-//     });
+    it('Expect UserData class to exist', function() {
+        expect(UserData).to.exist;
+    });
 
-//     describe('findUserByName', () => {
-//         beforeEach(() => {
-//         sinon.stub(db, 'collection');
-//             // .callsFake(() => {
-//             //     return findOne('username', 'name');
-//             //     });
-//         findOne = sinon.stub(newUserData.db.collection, 'findOne').resolves('Promise.resolve()');
-//         userData = new UserData(newUserData.db);
-//             });
+    it('Expect expect to set correctly the property db', function() {
+        chai.assert.deepEqual(userData.db, dbStub);
+    });
 
-//         afterEach(() => {
-//                 db.collection.restore();
-//                 db.findOne.restore();
-//             });
-
-//         it('findOne method called once', (done) => {
-//           userData.findUserByUsername('username')
-//             .then(
-//                 // expect(findOne).to.have.been.calledOnce
-//                 sinon.assert.calledOnce(findOne)
-//             );
-//             done();
-//         });
-//     });
-
-//     describe('addFeedToUser', () => {
-
-//     });
-
-//     describe('addFeedToUser', () => {
-
-//     });
-
-//     describe('addArticleToUser', () => {
-
-//     });
-// });
+    it('Expect to have all functions', function() {
+        expect(userData.createUser).to.be.a('function');
+        expect(userData.findUserById).to.be.a('function');
+        expect(userData.findUserByUsername).to.be.a('function');
+        expect(userData.addFeedToUser).to.be.a('function');
+        expect(userData.addArticleToUser).to.be.a('function');
+    });
+});
