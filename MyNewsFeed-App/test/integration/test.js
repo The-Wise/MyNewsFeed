@@ -52,6 +52,7 @@ describe('Integration tests', () => {
                 });
             });
     describe('Authentication routes', () => {
+
             it('GET /signup should return status 200 ', (done) => {
 
                 server
@@ -77,10 +78,7 @@ describe('Integration tests', () => {
                 server
                     .post('/signup')
                     .send(user)
-                    .end((err,res) => {
-                        expect(res.statusCode).to.equal(200);
-                        done();
-                    });
+                    .expect({success:true}, done);
                         
             });
             it('POST /login should return status 200 when logging in with valid account', (done) => {
@@ -141,7 +139,7 @@ describe('Integration tests', () => {
       });
     
 
-          });
+  });
  });
 });
 
