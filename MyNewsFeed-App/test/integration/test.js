@@ -51,14 +51,16 @@ describe('Integration tests', () => {
                         done();
                 });
             });
-     describe('Authentication routes', () => {
+    describe('Authentication routes', () => {
             it('GET /signup should return status 200 ', (done) => {
+
                 server
                     .get('/signup')
                     .expect(200)
                     .end((err, res) => {
                         expect(res.statusCode).to.equal(200);
                         done();
+                    });
             });
             it('GET /login should return status 200 ', (done) => {
                 server
@@ -67,6 +69,7 @@ describe('Integration tests', () => {
                     .end((err, res) => {
                         expect(res.statusCode).to.equal(200);
                         done();
+                     });
             });
             it('POST /signup should return status 200 when all required fields are filled', (done) => {
                 
@@ -136,8 +139,9 @@ describe('Integration tests', () => {
                     });
             });
       });
+    
 
-   });
+          });
  });
 });
 
