@@ -7,7 +7,7 @@ let mocha = require('mocha'),
 let expect = chai.expect;
 
 let feedDataStub,
-        dataStub, 
+        dataStub,
         categoriesController;
 
 describe('Categories controller test', function() {
@@ -31,25 +31,25 @@ describe('Categories controller test', function() {
 
     describe('loadCategoryPage()', function() {
         it('Expect to call this.feedData.findCategoryByName() function once', function() {
-            let promise = new Promise((resolve, reject) => { resolve({}) }),
-                req = { 
-                    params: { 
-                        category: ''
+            let promise = new Promise((resolve, reject) => { resolve({}); }),
+                req = {
+                    params: {
+                        category: '',
                     },
                     isAuthenticated: () => {},
                     user: {
-                        admin: true
-                    }
+                        admin: true,
+                    },
                 },
                 res = {
-                    render: () => {}
+                    render: () => {},
                 };
 
             feedDataStub = {
-                findCategoryByName: () => {}
+                findCategoryByName: () => {},
             };
 
-            let findCategoryByNameStub = sinon.stub(feedDataStub, 'findCategoryByName')
+            let findCategoryByNameStub = sinon.stub(feedDataStub, 'findCategoryByName');
             dataStub = { feeds: feedDataStub };
             categoriesController = new CategoriesController(dataStub);
 

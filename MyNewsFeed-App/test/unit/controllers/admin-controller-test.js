@@ -61,7 +61,7 @@ describe('Admin controller test', function() {
 
         it('Expect to call this.feedData.getAllCategories() function once', function() {
             let getAllCategoriesStub = sinon.stub(feedDataStub, 'getAllCategories'),
-                promise = new Promise((resolve, reject) => { resolve({}) });
+                promise = new Promise((resolve, reject) => { resolve({}); });
 
             adminController = new AdminController(dataStub);
 
@@ -128,12 +128,12 @@ describe('Admin controller test', function() {
     });
 
     describe('addNewFeed()', function() {
-        let promise = new Promise((resolve, reject) => { resolve({}) });
+        let promise = new Promise((resolve, reject) => { resolve({}); });
 
         beforeEach(function() {
             feedDataStub = {
                 findCategoryByName: () => {},
-                addNewFeed: () => {}
+                addNewFeed: () => {},
             };
 
             req = {
@@ -142,9 +142,9 @@ describe('Admin controller test', function() {
                     title: '',
                     url: '',
                     image: '',
-                    description: ''
+                    description: '',
                 },
-                flash: () => {}
+                flash: () => {},
             };
 
             dataStub = { feeds: feedDataStub };
@@ -166,19 +166,19 @@ describe('Admin controller test', function() {
     });
 
     describe('deleteCategoryFeed()', function() {
-        let promise = new Promise((resolve, reject) => { resolve({}) });
+        let promise = new Promise((resolve, reject) => { resolve({}); });
 
         beforeEach(function() {
             feedDataStub = {
-                deleteItem: () => {}
+                deleteItem: () => {},
             };
 
             req = {
                 params: {
                     categoryif: '',
-                    feedid: ''
+                    feedid: '',
                 },
-                flash: () => {}
+                flash: () => {},
             };
 
             dataStub = { feeds: feedDataStub };

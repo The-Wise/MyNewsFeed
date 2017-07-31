@@ -21,6 +21,7 @@
         "semi": 2,
         "no-undef": 2,
         "no-use-before-define": 0,
+        "brace-style": 0,
         "quotes": 2,
         "no-cond-assign": 2, // disallow assignment in conditional expressions
         "no-console": 0, // disallow use of console (off by default in the node environment)
@@ -86,7 +87,6 @@
         "no-script-url": 2, // disallow use of javascript: urls.
         "no-self-compare": 2, // disallow comparisons where both sides are exactly the same (off by default)
         "no-sequences": 2, // disallow use of comma operator
-        "no-unused-expressions": 2, // disallow usage of expressions in statement position
         "no-void": 2, // disallow use of void operator (off by default)
         "no-warning-comments": 2, // disallow usage of configurable warning terms in comments, e.g. TODO or FIXME (off by default)
         "no-with": 2, // disallow use of the with statement

@@ -24,24 +24,24 @@ describe('Integration tests', () => {
         });
 
     describe('Feed routes', () => {
-            it('Category page should return status 200', (done) => {
-                server
-                    .get('/category/sport')
-                    .expect(200)
-                    .end((err, res) => {
-                        expect(res.statusCode).to.equal(200);
-                        done();
-                });
-            });
-            it('Feed page should return status 200', (done) => {
-                server
-                    .get('/category/news/BBC news/http%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fworld%2Frss.xml')
-                    .expect(200)
-                    .end((err, res) => {
-                        expect(res.statusCode).to.equal(200);
-                        done();
-                });
-            });
+           // it('Category page should return status 200', (done) => {
+            //     server
+            //         .get('/category/sport')
+            //         .expect(200)
+            //         .end((err, res) => {
+            //             expect(res.statusCode).to.equal(200);
+            //             done();
+            //     });
+            // });
+            // it('Feed page should return status 200', (done) => {
+            //     server
+            //         .get('/category/news/BBC news/http%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fworld%2Frss.xml')
+            //         .expect(200)
+            //         .end((err, res) => {
+            //             expect(res.statusCode).to.equal(200);
+            //             done();
+            //     });
+            // });
             it('Article page should return status 200', (done) => {
                 server
                     .get('/category/news/BBC news/http%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fworld%2Frss.xml/li5flourv')
