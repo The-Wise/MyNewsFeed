@@ -4,18 +4,28 @@ const User = require('../../../models/user-model').User;
 //fullname can be null
 //urlProfilePicture can be null
 
-describe('articleModel', function () {
+describe('user model', function () {
 
     let  fullName = 'fullName',
          username = 'username',
          email = 'email',
          password = 'password',
+         
          urlProfilePicture = 'urlProfilePicture',
-         userJoined = '01.01.1000',
          admin = false;
 
     let user = new User(
-            fullName, username, email,password, urlProfilePicture, userJoined, admin); 
+            fullName, username, email, password, urlProfilePicture, admin); 
+
+    let name = 'name';
+    let userName = 'username';
+    let emailTest = 'test@email.com';
+    let passwordTest = 'password';
+    let picture = 'url';
+    let adminTest = true;
+
+    let adminUser = new User(name, userName, emailTest, passwordTest, picture,adminTest)
+
 
     it('Expect User to exist', function () {
         expect(User).to.exist;
@@ -49,8 +59,12 @@ describe('articleModel', function () {
        expect(user.urlProfilePicture).to.equal(urlProfilePicture);
        
     });
-    it('Expect User get userJoined to return valid userJoined', function () {
-       expect(user.userJoined).to.equal(userJoined);
+    it('Expect User constructor to set userJoined', function () {
+       expect(user.userJoined).to.exist;
+       
+    });
+    it('Expect User userJoined to be set correctly from constructor', function () {
+       expect(user.userJoined).not.to.be.undefined;
        
     });
     it('Expect User get admin to return valid admin param', function () {
@@ -60,7 +74,7 @@ describe('articleModel', function () {
     it('Should create User when passing valid params', function () {  
          function createUser() {
              let createUser = new User(
-                 fullName, username, email,password, urlProfilePicture, userJoined, admin);  
+                 fullName, username, email,password, urlProfilePicture, admin);  
         };
 
         expect(createUser).to.not.throw();

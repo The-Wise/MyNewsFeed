@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/27</span>
+        <span class='fraction'>0/21</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>0/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/27</span>
+        <span class='fraction'>0/21</span>
       </div>
     </div>
   </div>
@@ -106,29 +106,7 @@
 61
 62
 63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+64</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,9 +116,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -191,29 +169,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >const User = require('../models/user-model.js');</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >const User = require('../models/user-model.js').User;</span>
 <span class="cstat-no" title="statement not covered" >const ObjectId = require('./database-connection.js').ObjectID;</span>
 &nbsp;
 class UserData {
@@ -222,10 +178,10 @@ class UserData {
     }
 &nbsp;
     createUser<span class="fstat-no" title="function not covered" >(fullName, username, email, password, urlProfilePicture) {</span>
-<span class="cstat-no" title="statement not covered" >        const currentDate = new Date().toDateString();</span>
 <span class="cstat-no" title="statement not covered" >        const user = new User(fullName, username,</span>
-            email, password, urlProfilePicture, currentDate)
+            email, password, urlProfilePicture)
                   .toObject();
+<span class="cstat-no" title="statement not covered" >        console.log('HERE');</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        return this.db.collection('users')</span>
             .save(user)
@@ -266,45 +222,23 @@ class UserData {
 &nbsp;
     addArticleToUser<span class="fstat-no" title="function not covered" >(username, article) {</span>
 <span class="cstat-no" title="statement not covered" >          return this.db</span>
-          .collection('users')
-          .updateOne({ username }, { $addToSet: { userArticles: article } })
-          .then((result) =&gt; {
-<span class="cstat-no" title="statement not covered" >              return result.nModified;</span>
-          })
-          .catch((err) =&gt; <span class="cstat-no" title="statement not covered" >console.log(err))</span>;
-    }
-&nbsp;
-    removeFeedFromUser<span class="fstat-no" title="function not covered" >(username, feed) {</span>
-<span class="cstat-no" title="statement not covered" >          return this.db</span>
             .collection('users')
-            .updateOne({ username }, { $pull: { userFeeds: feed } } )
+            .updateOne({ username }, { $addToSet: { userArticles: article } })
             .then((result) =&gt; {
-<span class="cstat-no" title="statement not covered" >              return result.nModified;</span>
+<span class="cstat-no" title="statement not covered" >                return result.nModified;</span>
             })
             .catch((err) =&gt; <span class="cstat-no" title="statement not covered" >console.log(err))</span>;
     }
-&nbsp;
-    removeArticleFromUser<span class="fstat-no" title="function not covered" >(username, article) {</span>
-<span class="cstat-no" title="statement not covered" >          return this.db</span>
-          .collection('users')
-          .updateOne({ username }, { $pull: { userArticles: article } })
-          .then((result) =&gt; {
-<span class="cstat-no" title="statement not covered" >              return result.nModified;</span>
-          })
-          .catch((err) =&gt; <span class="cstat-no" title="statement not covered" >console.log(err))</span>;
-    }
-&nbsp;
 }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >module.exports = UserData;</span>
-&nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 26 2017 14:58:26 GMT+0300 (FLE Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 30 2017 00:07:32 GMT-0200 (UTC-02)
 </div>
 </div>
 <script src="../prettify.js"></script>

@@ -53,7 +53,7 @@ class AdminController {
         // validate
         this.feedData.findCategoryByName(category)
         .then((cat) => {
-            feedData.addNewFeed(cat.name, cat._id, title, url, image, description)
+            this.feedData.addNewFeed(cat.name, cat._id, title, url, image, description)
                 .then((result) => {
                     req.flash('success', 'Feed added');
                     res.redirect('/admin/edit');

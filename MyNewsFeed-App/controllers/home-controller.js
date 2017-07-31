@@ -1,4 +1,3 @@
-
 class HomeController {
   constructor(data) {
     this.feedData = data.feeds;

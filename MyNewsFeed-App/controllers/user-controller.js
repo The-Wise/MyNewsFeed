@@ -1,4 +1,3 @@
-
 class UserController {
     constructor(data) {
         this.feedData = data.feeds;
@@ -20,8 +19,8 @@ loadMyFeedsPage(req, res) {
 	this.userData.findUserByUsername(username)
     .then((user) => {
 		const articles = user.userArticles;
-		const feeds = user.userFeeds;
-		console.log(feeds);
+        const feeds = user.userFeeds;
+
 		res.render('./user/my-feed.pug', {
 		isAuthenticated: req.isAuthenticated(),
 		user: req.user,
