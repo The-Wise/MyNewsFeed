@@ -11,12 +11,13 @@ describe('Authentication controller test', function() {
         dataStub,
         req,
         res,
-        authenticationController;
+        authenticationController,
+        validator;
 
     beforeEach(function() {
-        userDataStub = sinon.createStubInstance(UserData),
-        dataStub = { users: userDataStub },
-        req = { 
+        userDataStub = sinon.createStubInstance(UserData);
+        dataStub = { users: userDataStub };
+        req = {
             flash: () => {},
             logout: () => {},
             body: {
@@ -24,16 +25,16 @@ describe('Authentication controller test', function() {
                 email: '',
                 password: '',
                 urlProfilePicture: '',
-                name: ''
-            }
-        },
+                name: '',
+            },
+        };
         res = {
             render: () => {},
-            redirect: () => {}
-        },
-        validator =  {
-            validateRegisterForm: () => {}
-        },
+            redirect: () => {},
+        };
+        validator = {
+            validateRegisterForm: () => {},
+        };
         authenticationController = new AuthenticationController(dataStub, null);
     });
 
@@ -124,11 +125,11 @@ describe('Authentication controller test', function() {
             validatorStub;
 
         beforeEach(function() {
-            userData = { createUser: () => {} },
+            userData = { createUser: () => {} };
             data = { users: userData };
 
-            validatorStub = sinon.stub(validator, 'validateRegisterForm'),
-            promise = new Promise((resolve, reject) => { resolve({}) });
+            validatorStub = sinon.stub(validator, 'validateRegisterForm');
+            promise = new Promise((resolve, reject) => { resolve({}); });
             userDataStub = sinon.stub(data.users, 'createUser');
         });
 
@@ -158,7 +159,7 @@ describe('Authentication controller test', function() {
 
                 sinon.assert.calledOnce(userDataStub);
         });
-            
+
         it('Should call res.render() function once', function() {
             let resStub = sinon.stub(res, 'render');
 

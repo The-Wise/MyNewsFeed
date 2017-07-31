@@ -10,7 +10,7 @@ let expect = chai.expect,
 
 describe('Home-controller test', function() {
     before(function() {
-        feedDataStub = sinon.createStubInstance(FeedData),
+        feedDataStub = sinon.createStubInstance(FeedData);
         dataStub = { feeds: feedDataStub };
     });
 
@@ -21,7 +21,7 @@ describe('Home-controller test', function() {
     it('Expect expect to set correctly the property feedData', function() {
         let homeController = new HomeController(dataStub);
 
-        chai.assert.deepEqual(homeController.feedData, feedDataStub);//(userController.feedData).to.be.equal(feedDataStub);
+        chai.assert.deepEqual(homeController.feedData, feedDataStub);// (userController.feedData).to.be.equal(feedDataStub);
     });
 
     it('Expect to have all functions', function() {
@@ -35,16 +35,16 @@ describe('Home-controller test', function() {
             let data = {
                     users: '',
                     feeds: {
-                        getLatestArticles: () => {}
-                    }
+                        getLatestArticles: () => {},
+                    },
                 },
                 res = { render: () => {} },
                 req = {
                     isAuthenticated: () => {},
                     flash: () => {},
                     user: {
-                        username: 'asd'
-                    }
+                        username: 'asd',
+                    },
                 },
                 promise = new Promise((resolve, reject) => resolve({})),
                 getLatestArticlesStub = sinon.stub(data.feeds, 'getLatestArticles');

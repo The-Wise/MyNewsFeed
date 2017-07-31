@@ -16,23 +16,25 @@ describe('Feed controller test', function() {
 
     beforeEach(function() {
         feedDataStub = sinon.createStubInstance(FeedController);
-        promise = new Promise((resolve, reject) => { resolve({}); });
+        promise = new Promise((resolve, reject) => {
+ resolve({});
+});
         dataStub = { feeds: feedDataStub };
         req = {
             originalUrl: '',
             params: {
                 feedname: '',
-                feedurl: ''
+                feedurl: '',
             },
-            isAuthenticated: () => {}
+            isAuthenticated: () => {},
         };
-        res = { 
-            render: () => {}
+        res = {
+            render: () => {},
         };
 
         feedController = new FeedController(dataStub);
     });
-    
+
     it('Expect FeedController class to exist', function() {
         expect(FeedController).to.exist;
     });
@@ -51,10 +53,10 @@ describe('Feed controller test', function() {
     describe('loadFeedPage()', function() {
         it('Expect to call this.feedData.findFeedByName() function once', function() {
             feedDataStub = {
-                findFeedByName: () => {}
+                findFeedByName: () => {},
             };
 
-            dataStub = { feeds: feedDataStub }
+            dataStub = { feeds: feedDataStub };
 
             let findFeedByNameStub = sinon.stub(feedDataStub, 'findFeedByName');
 
@@ -71,10 +73,10 @@ describe('Feed controller test', function() {
     describe('loadArticlePage()', function() {
         it('Expect to call this.feedData.findArticleById() function once', function() {
             feedDataStub = {
-                findArticleById: () => {}
+                findArticleById: () => {},
             };
 
-            dataStub = { feeds: feedDataStub }
+            dataStub = { feeds: feedDataStub };
 
             let findArticleByIdStub = sinon.stub(feedDataStub, 'findArticleById');
 
@@ -110,4 +112,4 @@ describe('Feed controller test', function() {
     //         sinon.assert.calledOnce(getFeedStub);
     //     });
     // });
-}); 
+});
