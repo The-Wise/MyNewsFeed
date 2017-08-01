@@ -52,6 +52,7 @@
     "wdio-dot-reporter": "0.0.8",
     "wdio-json-reporter": "^0.2.1",
     "wdio-mocha-framework": "^0.5.10",
+    "wdio-spec-reporter": "^0.1.0",
     "webdriverio": "^4.8.0"
   }
 }

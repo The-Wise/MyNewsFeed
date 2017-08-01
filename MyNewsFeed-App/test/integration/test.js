@@ -73,17 +73,22 @@ describe('Integration tests', () => {
                      });
             });
             it('POST /signup should return status 200 when all required fields are filled', (done) => {
-                
-                var user = {username: 'username', fullname: 'Fullname', email: 'test@email.com', password: 'password'};
+                let user = { username: 'username', fullname: 'Fullname', email: 'test@email.com', password: 'password' };
                 server
                     .post('/signup')
                     .send(user)
+<<<<<<< Updated upstream
                     .expect({success:true}, done);
                         
+=======
+                    .end((err, res) => {
+                        expect(res.statusCode).to.equal(200);
+                        done();
+                    });
+>>>>>>> Stashed changes
             });
             it('POST /login should return status 200 when logging in with valid account', (done) => {
-                
-                var user = {email: 'test@email.com', password: 'password'};
+                let user = {email: 'test@email.com', password: 'password'};
                 server
                     .post('/login')
                     .send(user)
@@ -93,53 +98,48 @@ describe('Integration tests', () => {
                     });
             });
             it('POST /login should return status 404  when logging in with invalid account', (done) => {
-                
-                var user = {email: 'invalid@email.com', password: 'password'};
+                let user = { email: 'invalid@email.com', password: 'password' };
                 server
                     .post('/login')
                     .send(user)
-                    .end((err,res) => {
+                    .end((err, res) => {
                         expect(res.statusCode).to.equal(404);
                         done();
                     });
             });
             it('POST /login should return status 404  when logging in with blank email parameter', (done) => {
-                
-                var user = {email: '', password: 'password'};
+                let user = { email: '', password: 'password' };
                 server
                     .post('/login')
                     .send(user)
-                    .end((err,res) => {
+                    .end((err, res) => {
                         expect(res.statusCode).to.equal(404);
                         done();
                     });
             });
             it('POST /login should return status 404  when logging in with blank password parameter', (done) => {
-                
-                var user = {email: 'test@email.com', password: ''};
+                let user = { email: 'test@email.com', password: '' };
                 server
                     .post('/login')
                      .send(user)
-                    .end((err,res) => {
+                    .end((err, res) => {
                         expect(res.statusCode).to.equal(404);
                         done();
                     });
             });
             it('POST /login should return status 404  when logging in with invalid password', (done) => {
-                
-                var user = {email: 'test@email.com', password: 'invalid.password'};
+                let user = { email: 'test@email.com', password: 'invalid.password' };
                 server
                     .post('/login')
                      .send(user)
-                     .end((err,res) => {
+                     .end((err, res) => {
                         expect(res.statusCode).to.equal(404);
                         done();
                     });
             });
       });
-    
-
-  });
+    });
  });
 });
-
+    });
+});

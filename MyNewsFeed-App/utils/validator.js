@@ -1,8 +1,8 @@
 const constants = require('./constants.js');
 
 const validateRegisterForm = (req, res) => {
-        var haveAnyErrors;
-        var errors;
+        let haveAnyErrors;
+        let errors;
 
         req.checkBody('name', constants.emptyNameMessage).notEmpty();
         req.checkBody('username', constants.emptyUsernameMessage).notEmpty();
@@ -11,7 +11,7 @@ const validateRegisterForm = (req, res) => {
         req.checkBody('password', constants.emptyPasswordMessage).notEmpty();
 
         req.getValidationResult().then((results) => { 
-            if(results.array().length === 0) {
+            if (results.array().length === 0) {
                 haveAnyErrors = false;
             } else {
                 errors = results.array();
@@ -31,5 +31,5 @@ const checkUsername = (username) => {
 };
 
 module.exports = {
-    validateRegisterForm
-}
+    validateRegisterForm,
+};
