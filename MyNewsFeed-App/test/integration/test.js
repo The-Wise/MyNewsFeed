@@ -151,6 +151,29 @@ describe('Integration tests', () => {
                     });
             });
       });
+      describe('User routes', () => {
+          it('GET /:username/profile should return status 500  when user is not authenticated', (done) => {
+                
+                var user = {username: 'username', password: 'invalid.password'};
+                server
+                     .get('/:username/profile')
+                     .end((err,res) => {
+                        expect(res.statusCode).to.equal(500);
+                        done();
+                    });
+            });
+            it('GET /:username/myfeeds should return status 500  when user is not authenticated', (done) => {
+                
+                var user = {username: 'username', password: 'invalid.password'};
+                server
+                     .get('/:username/myfeeds')
+                     .end((err,res) => {
+                        expect(res.statusCode).to.equal(500);
+                        done();
+                    });
+            });
+
+      });
     
 
   });
