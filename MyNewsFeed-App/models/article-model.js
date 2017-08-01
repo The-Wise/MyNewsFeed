@@ -92,7 +92,7 @@ class Article {
     }
 
     toObject() {
-        console.log(this.feedUrl + ' Model');
+        // console.log(this.feedUrl + ' Model');
         return {
             id: this.id,
             title: this.title,

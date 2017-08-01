@@ -106,7 +106,7 @@ class FeedData {
             this.db.collection('feeds')
                         .find({})
                         .forEach((feed) => {
-                            if(feed) {
+                            if (feed) {
                             articles.push({
                                 category: feed.catName,
                                 feed: feed.name,

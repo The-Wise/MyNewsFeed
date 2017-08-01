@@ -5,7 +5,7 @@ module.exports = function(Router, app, data) {
     if (req.isAuthenticated()) {
       next();
     } else {
-      throw new Error('Not Authenticated');
+      res.sendStatus(401);
     }
   }
 

@@ -152,10 +152,6 @@ describe('feedModel', function () {
 
         let generatedId = feed.id;
         let secondGeneratedId = feedSecond.id;
-
-
-        console.log ('generatedId: {0}', generatedId);
-        console.log('secondGeneratedId: {0}', secondGeneratedId);
      
         expect(generatedId).to.be.not.equal(secondGeneratedId);
 

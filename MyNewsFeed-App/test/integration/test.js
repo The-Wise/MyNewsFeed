@@ -9,7 +9,6 @@ describe('Integration tests', () => {
                 server
                     .get('/')
                     .end((err, res) => {
-                        // console.log(res);
                         expect(res.statusCode).to.equal(200);
                         done();
                 });
@@ -69,66 +68,106 @@ describe('Integration tests', () => {
                         expect(res.statusCode).to.equal(200);
                         done();
                      });
+                     
             });
-            it('POST /signup should return status 200 when all required fields are filled', (done) => {
-                let user = { username: 'username', fullname: 'Fullname', email: 'test@email.com', password: 'password' };
+            // it('POST /signup should return status 302 when all required fields are filled', (done) => {
+                
+            //     let user = {username: 'username', fullname: 'Fullname', email: 'test@email.com', password: 'password'};
+            //     server
+            //         .post('/signup')
+            //         .send(user)
+            //         .end((err,res) => {
+            //             expect(res.statusCode).to.equal(302);
+            //             done();
+            //         });
+                        
+            // });
+            it('POST /signup should return status 302 when all required fields are filled and redirects to login', (done) => {
+                
+                let user = {username: 'username', fullname: 'Fullname', email: 'test@email.com', password: 'password'};
                 server
                     .post('/signup')
                     .send(user)
-                    .expect('Location', /\/login/, done);
+                    .expect(302)
+                    .expect('Location', '/login')
+                    .end(done);
+            
             });
             it('POST /login should return status 302 when logging in with valid account', (done) => {
-                let user = { email: 'test@email.com', password: 'password' };
+                
+                let user = {username: 'username', password: 'password'};
                 server
                     .post('/login')
                     .send(user)
-                    .end((err, res) => {
-                        expect(res.statusCode).to.equal(302);
-                        done();
-                    });
+                    .expect(302)
+                    .expect('Location', '/')
+                    .end(done);
             });
             it('POST /login should return status 302  when logging in with invalid account', (done) => {
-                let user = { email: 'invalid@email.com', password: 'password' };
+                
+                let user = {username: 'username-invalid', password: 'password'};
                 server
                     .post('/login')
                     .send(user)
-                    .end((err, res) => {
+                    .end((err,res) => {
                         expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
-            it('POST /login should return status 302  when logging in with blank email parameter', (done) => {
-                let user = { email: '', password: 'password' };
+            it('POST /login should return status 302  when logging in with blank username parameter', (done) => {
+                
+                let user = {username: '', password: 'password'};
                 server
                     .post('/login')
                     .send(user)
-                    .end((err, res) => {
+                    .end((err,res) => {
                         expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
             it('POST /login should return status 302  when logging in with blank password parameter', (done) => {
-                let user = { email: 'test@email.com', password: '' };
+                
+                let user = {username: 'username', password: ''};
                 server
                     .post('/login')
                      .send(user)
-                    .end((err, res) => {
+                    .end((err,res) => {
                         expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
             it('POST /login should return status 302  when logging in with invalid password', (done) => {
-                let user = { email: 'test@email.com', password: 'invalid.password' };
+                
+                let user = {username: 'username', password: 'invalid.password'};
                 server
                     .post('/login')
                      .send(user)
-                     .end((err, res) => {
+                     .end((err,res) => {
                         expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
       });
-    });
+      describe('User routes', () => {
+          it('GET /:username/profile should return status 401  when user is not authenticated', () => {
+                
+                let user = {username: 'username', password: 'invalid.password'};
+                server
+                     .get('/:username/profile')
+                     .expect(401);
+            });
+            it('GET /:username/myfeeds should return status 401  when user is not authenticated', () => {
+                
+                let user = {username: 'username', password: 'invalid.password'};
+                server
+                     .get('/:username/myfeeds')
+                     .expect(401);
+            });
+
+      });
+    
+
+  });
  });
 });
 

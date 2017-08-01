@@ -223,11 +223,7 @@ describe('articleModel', function () {
 
         let generatedId = article.id;
         let secondGeneratedId = articleSecond.id;
-
-
-        console.log ('generatedId: {0}', generatedId);
-        console.log('secondGeneratedId: {0}', secondGeneratedId);
-     
+   
         expect(generatedId).to.be.not.equal(secondGeneratedId);
 
     });
