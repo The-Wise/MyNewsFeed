@@ -52,9 +52,7 @@ describe('Integration tests', () => {
                 });
             });
     describe('Authentication routes', () => {
-
             it('GET /signup should return status 200 ', (done) => {
-
                 server
                     .get('/signup')
                     .expect(200)
@@ -77,63 +75,55 @@ describe('Integration tests', () => {
                 server
                     .post('/signup')
                     .send(user)
-<<<<<<< Updated upstream
-                    .expect({success:true}, done);
-                        
-=======
-                    .end((err, res) => {
-                        expect(res.statusCode).to.equal(200);
-                        done();
-                    });
->>>>>>> Stashed changes
+                    .expect('Location', /\/login/, done);
             });
-            it('POST /login should return status 200 when logging in with valid account', (done) => {
-                let user = {email: 'test@email.com', password: 'password'};
+            it('POST /login should return status 302 when logging in with valid account', (done) => {
+                let user = { email: 'test@email.com', password: 'password' };
                 server
                     .post('/login')
                     .send(user)
-                    .end((err,res) => {
-                        expect(res.statusCode).to.equal(200);
+                    .end((err, res) => {
+                        expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
-            it('POST /login should return status 404  when logging in with invalid account', (done) => {
+            it('POST /login should return status 302  when logging in with invalid account', (done) => {
                 let user = { email: 'invalid@email.com', password: 'password' };
                 server
                     .post('/login')
                     .send(user)
                     .end((err, res) => {
-                        expect(res.statusCode).to.equal(404);
+                        expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
-            it('POST /login should return status 404  when logging in with blank email parameter', (done) => {
+            it('POST /login should return status 302  when logging in with blank email parameter', (done) => {
                 let user = { email: '', password: 'password' };
                 server
                     .post('/login')
                     .send(user)
                     .end((err, res) => {
-                        expect(res.statusCode).to.equal(404);
+                        expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
-            it('POST /login should return status 404  when logging in with blank password parameter', (done) => {
+            it('POST /login should return status 302  when logging in with blank password parameter', (done) => {
                 let user = { email: 'test@email.com', password: '' };
                 server
                     .post('/login')
                      .send(user)
                     .end((err, res) => {
-                        expect(res.statusCode).to.equal(404);
+                        expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
-            it('POST /login should return status 404  when logging in with invalid password', (done) => {
+            it('POST /login should return status 302  when logging in with invalid password', (done) => {
                 let user = { email: 'test@email.com', password: 'invalid.password' };
                 server
                     .post('/login')
                      .send(user)
                      .end((err, res) => {
-                        expect(res.statusCode).to.equal(404);
+                        expect(res.statusCode).to.equal(302);
                         done();
                     });
             });
@@ -141,5 +131,4 @@ describe('Integration tests', () => {
     });
  });
 });
-    });
-});
+

@@ -1,38 +1,26 @@
 /* globals browser, $, $$ */
 const { expect } = require('chai');
 
-const waitSeconds = (seconds) => {
-    return new Promise((resolve) => {
-        setTimeout(resolve, seconds * 1000);
-    });
-};
+// const waitSeconds = (seconds) => {
+//     return new Promise((resolve) => {
+//         setTimeout(resolve, seconds * 1000);
+//     });
+// };
 
 describe('Functional tests', () => {
     beforeEach(() => {
         browser.url('http://localhost:3006');
+        // waitSeconds(1);
     });
     describe('Home page tests', () => {
         it('should have the correct logo name', () => {
-            // waitSeconds(1)
-            // .then(() => {
                 const logo = $('.brand-logo').getText();
-                logo.waitForExist(2000);
-                    // .then((logo) => {
-                        console.log('Logo ' + logo);
-                        expect(logo).to.be.equal('BLABLA');
-                        // done();
-            // });
+                        expect(logo).to.be.equal('rss_feed\nMyNews');
         });
-        // it('shoul have the correct heading message', () => {
-        //     setTimeout(() => {
-        //         browser
-        //             .getValue('h3')
-        //             .then((heading) => {
-        //                 console.log('Heading ' + heading);
-        //                 expect(heading).to.be.equial('Latest articles from our channels 123');
-        //         });
-        //     }, 1000);
-        // });
+        it('shoul have the correct heading message', () => {
+                const heading = $('h3').getText();
+                        expect(heading).to.be.equal('Latest articles from our channels');
+        });
     });
 
     // describe('Main menu tests', () => {
