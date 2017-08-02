@@ -30,7 +30,7 @@ class Feed {
         if(feedUrl === '') {
            throw "feedUrl can not be empty!"; 
         }
-        this._feedUrl = escape(feedUrl);
+        this._feedUrl = feedUrl;
     }
     get imageUrl() {
         return this._imageUrl;

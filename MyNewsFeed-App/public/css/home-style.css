@@ -58,8 +58,13 @@ a.text-menu {
 
 /*article style  */
 
-.feed-article img, .article img {
+.feed-article img {
     max-width: 50%;
+    height: auto;
+    display: block;
+}
+
+.article img {
     height: auto;
     display: block;
 }

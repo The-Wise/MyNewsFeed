@@ -15,7 +15,7 @@ class HomeController {
               return req.user.admin;
             },
             message: req.flash(),
-            rows: itemsInRows(articles, 2),
+            rows: itemsInRows(articles, 3),
             });
         });
       }

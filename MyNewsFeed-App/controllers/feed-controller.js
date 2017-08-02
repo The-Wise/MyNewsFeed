@@ -19,6 +19,7 @@ class FeedController {
           return req.user.admin;
         },
           rows: itemsToRows(articles, 3),
+          message: req.flash(),
           originalurl,
           feedname });
       });
@@ -46,13 +47,12 @@ class FeedController {
     const name = req.params.feedname;
     this.getFeed(url)
     .then((feed) => {
-      this.feedData.addNewArticles(name, urlenc, feed);
-    })
-    .then(() => {
+      this.feedData.addNewArticles(name, urlenc, feed)
+        .then(() => {
       req.flash('success', 'Feed Refreshed');
       res.redirect(req.get('referer'));
-    }
-    );
+    });
+    });
   }
 
   getFeed(url) {

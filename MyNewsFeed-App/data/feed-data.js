@@ -66,7 +66,6 @@ class FeedData {
     }
 
     addNewArticles(feedname, feedurl, feed) {
-        console.log('Feedname ' + feedname);
         const articles = feed.map((a) => {
             if (!a['content:encoded']) {
                 return new Article(a.title, a.pubDate, a.link, feedurl,
