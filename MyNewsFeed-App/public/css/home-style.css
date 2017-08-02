@@ -4,26 +4,9 @@ body {
     background-color: white;
 }
 
-/* ul.nav.navbar-nav {
-    margin-left: 170px;
-} */
-
-/* a.navbar-brand.text-menu :hover {
-    color: #2ebd59;
-    font-size: 25px;
-} */
-
-.text-menu :hover {
-    color: #2ebd59;
-}
-
 .form-group {
     color: white;
 }
-
-/* .title {
-    color: white;
-} */
 
 .username {
     border-radius: 20px;
@@ -52,9 +35,9 @@ a.text-menu {
     margin-top: 20px;
 }
 
-.feed-article {
+/* .feed-article {
     width: 30%;
-}
+} */
 
 /*article style  */
 
@@ -71,6 +54,7 @@ a.text-menu {
 
 a:link {
     text-decoration: none;
+    cursor: pointer;
 }
 
 /*buttons style  */
@@ -110,6 +94,19 @@ a:link {
     margin-right: 5px;
 }
 
+.btn-delete {
+    background-color: red;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+a.btn-delete:hover {
+    background-color:#AA2200;
+}
+
+.feed-buttons {
+    margin-top: 20px;
+}
+
 /*form validation */
 .valid {
     font-size: 80%;
@@ -136,23 +133,22 @@ td, th {
 
 /*sidebar style  */
 #sidebar {
-    min-height: 700px;
-    background: grey;
+    height: 100%;
+    border-right: 1px dashed grey;
 }
 
-/* footer {
-    background:darkgrey;
-    padding-top: 20px;
-} */
+#sidebar ul {
+    margin-left: 20px;
+}
 
 /*navigation style  */
-.not-active {
-   pointer-events: none;
-   cursor: default;
-}
 
 nav {
     background-color: #FFC107;
+}
+
+li a:hover {
+    color: black;
 }
 
 h3 {
@@ -165,16 +161,14 @@ h3 {
     box-decoration-break: clone;
     font-size: 3rem;
     line-height: 130%;
-}
-
-li a:hover {
-    color: black;
+    color: white;
 }
 
 h5 {
     background-color: black;
     display: inline;
     padding-left: 10px;
+    color: white;
 }
 
 p {
@@ -191,10 +185,6 @@ p {
     font-weight: 800;
 }
 
-.feed-buttons {
-    margin-top: 20px;
-}
-
 .article-feed {
     background-color: #FFC107;
     color: black;
@@ -202,20 +192,10 @@ p {
 }
 .brand-logo {
     font-family: 'Monoton', cursive;
-    /* margin-left: 100px; */
     color: black;
     display: inline-block;
     margin-right: 0px;
     padding-right: 0px;
-}
-
-.btn-delete {
-    background-color: red;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-a.btn-delete:hover {
-    background-color: red;
 }
 
 h4 {
@@ -225,4 +205,15 @@ h4 {
 
 .hidden {
     display: none;
+}
+
+input {
+    color: black;
+}
+
+h6 {
+    color: #26a69a;
+    font-variant-caps: all-petite-caps;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
 }

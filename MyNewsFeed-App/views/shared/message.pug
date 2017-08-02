@@ -2,10 +2,8 @@ mixin message()
     if typeof message !== 'undefined'
         .message.hidden
             if message.success
-            -   console.log(message.success)
                 p.success-message
                     = message.success
-            if message.error
-            -   console.log(message.error)    
+            if message.error 
                 p.error-message
                     = message.error

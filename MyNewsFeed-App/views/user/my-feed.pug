@@ -5,8 +5,7 @@ block content
     if isAuthenticated
         .row
             #sidebar.col.s12.m4.l3
-                h5 My feeds 
-                br
+                h4 My feeds
                 if feeds
                     ul
                         each feed in feeds
@@ -18,17 +17,18 @@ block content
                     p You are not following any feeds yet
 
             .col.s12.m8.l9
-                ul.collection.with-header
-                    li.collection-header 
-                        h5 My saved articles
+                h4 My saved articles
+                ul.collection
                     if articles
                         each article in articles
                             - const title = decodeURIComponent(article.articleTitle);
-                            a.collection-item(href=article.articleUrl, target='_blanc')
-                                li.collection-item.avatar
-                                    img(src=article.imageUrl, alt="", class="circle")
-                                    p
+                            li.row.collection-item
+                                .col.s12.m10.l8
+                                    a.collection-item(href=article.articleUrl, target='_blanc')
                                         =title
+                                .col.s12.m2.l4
+                                    a.secondary-content.btn-floating.btn-delete.no-padding(href="#!")
+                                        i.material-icons delete
                     else
                         h4 You have no saved articles yet
 

@@ -4,9 +4,6 @@ include message
 doctype html
 html(lang='en')
   head
-    link(rel='stylesheet', href='https://bootswatch.com/cyborg/bootstrap.min.css')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css')
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
     link(rel='stylesheet', href="https://fonts.googleapis.com/icon?family=Material+Icons")
     link(rel="stylesheet", type="text/css",  href="/static/css/materialize.min.css",  media="screen,projection")
     link(rel='stylesheet', href='/static/css/home-style.css')
@@ -15,13 +12,13 @@ html(lang='en')
     +message()
     block content
     br
-    footer.footer.text-center.footer-body
-      .container
-        .footer-header
-          p.navbar-center
+    footer.footer
+      .row
+        .col.s12.m8.l6.offset-m2.offset-l3.center-align
+          p
             | Web Applications with Node.js © 2017 
             a(href='https://telerikacademy.com/') Telerik Academy
-          p.navbar-center
+          p
             | Application by 
             a(href='https://github.com/The-Wise', target='_blanc') The Wise Team
   
