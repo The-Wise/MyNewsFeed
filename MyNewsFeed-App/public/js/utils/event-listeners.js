@@ -11,9 +11,14 @@ $( document ).ready(function() {
     $('.btn-follow').on('click', (event) => {
         followFeed(event);
     });
-    // if ($toastContent) {
-    //     Materialize.Toater(message);
-    // }
+    if ($('.error-message')) {
+        const message = $('.error-message').text();
+        Materialize.toast(message, 2000, 'red');
+    }
+    if ($('.success-message')) {
+        const message = $('.success-message').text();
+        Materialize.toast(message, 2000, 'green');
+    }
     });
 
 
@@ -28,7 +33,8 @@ function saveArticle(event) {
             url,
             method: 'PUT',
             data,
-            success: Materialize.toast('Success, article saved!', 4000),
+            success: Materialize.toast('Success, article saved!', 2000, 'green'),
+            error: Materialize.toast('Error!', 2000, 'red'),
         });
 }
 
@@ -43,7 +49,8 @@ function followFeed(event) {
             url,
             method: 'PUT',
             data,
-            success: Materialize.toast('Success, feed saved!', 4000),
+            success: Materialize.toast('Success, feed saved!', 2000, 'green'),
+            error: Materialize.toast('Error!', 2000, 'red'),
         });
 }
 

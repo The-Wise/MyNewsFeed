@@ -1,14 +1,13 @@
-mixin message()
-    .message
-        if typeof message != 'undefined'
+//- script(src="../../public/js/materialize.min.js")
 
+mixin message()
+    if typeof message !== 'undefined'
+        .message.hidden
             if message.success
-                .alert.alert-success.alert-dismissable
-                    a.close(href='#', data-dismiss='alert', aria-label='close') &times;
-                    strong Success!
-                    span= " " + message.success
+            -   console.log(message.success)
+                p.success-message
+                    = message.success
             if message.error
-                .alert.alert-danger.alert-dismissable
-                    a.close(href='#', data-dismiss='alert', aria-label='close') &times;
-                    strong Error!
-                    span= " " + message.error
+            -   console.log(message.error)    
+                p.error-message
+                    = message.error

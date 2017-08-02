@@ -217,3 +217,7 @@ h4 {
     color: black;
     font-weight: bold;
 }
+
+.hidden {
+    display: none;
+}
