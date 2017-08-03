@@ -6,7 +6,7 @@ block content
         .row
             #sidebar.col.s12.m4.l3
                 h4 My feeds
-                if feeds
+                if feeds.length > 0
                     ul
                         each feed in feeds
                             li
@@ -18,19 +18,17 @@ block content
 
             .col.s12.m8.l9
                 h4 My saved articles
-                ul.collection
-                    if articles
+                if articles.length > 0
+                    ul.collection
                         each article in articles
                             - const title = decodeURIComponent(article.articleTitle);
                             li.row.collection-item
-                                .col.s12.m10.l8
+                                
+                                .col.s10.m8.l8
                                     a.collection-item(href=article.articleUrl, target='_blanc')
                                         =title
-                                .col.s12.m2.l4
-                                    a.secondary-content.btn-floating.btn-delete.no-padding(href="#!")
+                                .col.s22.m4.l4
+                                    a.secondary-content.btn-floating.btn-delete.no-padding.tooltipped(href='#!', data-position="bottom", data-delay="50", data-tooltip="Remove article")
                                         i.material-icons delete
-                    else
-                        h4 You have no saved articles yet
-
-    else
-        h4 You have to be loged in to use this functionality
+                else
+                    p You have not saved any articles yet

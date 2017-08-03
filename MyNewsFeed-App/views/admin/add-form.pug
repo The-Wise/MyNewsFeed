@@ -4,14 +4,14 @@ block content
     .row
         .col.s12.m4.l3
             h4 Add category
-            form#admin-add-category.form-horizontal(method='post', action='/admin/edit/addcategory')
+            form#admin-add-category(method='post', action='/admin/edit/addcategory')
                 .form-group
                 label(for="category-title") Category title
                 br
                 input#category-title(type='text', name='category')
                 br
                 br
-                button.btn.btn-primary.btn-sm(type='submit') Submit
+                button.btn.btn-submit(type='submit') Submit
             br
             br
             h4 Add feed
@@ -19,9 +19,9 @@ block content
                 .form-group
                 label(for="feed-category") Feed Category
                 br
-                select#feed-category.browser-default(name='category')
+                select#feed-category(name='category')
                     if categories
-                        option(value='', disabled='', selected='') Choose your option 
+                        option(value='', disabled, selected) Choose your option 
                         each category in categories
                             option(value=category.name)= category.name
                         else
@@ -45,31 +45,37 @@ block content
                 input#feed-description(name="description")
                 br
                 br
-                button.btn.btn-primary.btn-sm(type='submit') Submit
+                button.btn.btn-submit(type='submit') Submit
             
         .col.s12.m8.l9
             each category in categories
-                h4.admin-cat-name= category.name
-                a.btn.btn-delete(href='/admin/edit/deletecategory/' + category._id) delete category
-                br
-                br
-                table.table.table-hover.table-responsive
-                    tr.active
-                        th Feed name
-                        th Feed url
-                        th Feed image
-                        th Feed description
-                        th delete
-                    each feed in category.feeds
+                .row.admin-cat-head
+                    .col.s4.m3.l2
+                        h4.admin-cat-name= category.name
+                    .col.s2.m1.l1    
+                        a.btn.btn-floating.btn-delete.tooltipped.no-padding(href='/admin/edit/deletecategory/' + category._id, data-position="bottom", data-delay="50", data-tooltip="Delete category")
+                            i.material-icons delete
+                table.highlight.bordered
+                    thead
                         tr
-                            td
-                                .td-inner= feed.title
-                            td
-                                .td-inner= feed.feedUrl
-                            td
-                                .td-inner= feed.imageUrl
-                            td
-                                .td-inner= feed.description
-                            td 
-                                a.btn.btn-delete(href='/admin/edit/deletefeed/' + category._id + '/' + feed.id) delete feed
-                br
+                            th Feed name
+                            th Feed url
+                            th Feed image
+                            th Feed description
+                            th.options Options
+                    tbody
+                        each feed in category.feeds
+                            tr
+                                td
+                                    .td-inner= feed.title
+                                td
+                                    .td-inner= feed.feedUrl
+                                td
+                                    .td-inner= feed.imageUrl
+                                td
+                                    .td-inner= feed.description
+                                td.options 
+                                    a.btn.btn-delete.btn-floating.tooltipped.no-padding(href='/admin/edit/deletefeed/' + category._id + '/' + feed.id, data-position="bottom", data-delay="50", data-tooltip="Delete feed")
+                                        i.material-icons delete
+                                    a.btn.btn-edit.btn-floating.tooltipped.no-padding(href='#!', data-position="bottom", data-delay="50", data-tooltip="Edit feed")
+                                        i.material-icons edit

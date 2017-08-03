@@ -120,15 +120,26 @@ a.btn-delete:hover {
 /*admin table styles  */
 table {
     table-layout: fixed;
-    max-width: 10%;
+}
+thead {
+    background-color: black;
+    color: white;
 }
 td, th {
-    padding:10px; 
+    padding:10px;
+
 }
 .td-inner {
     height: 60px;
     max-height: 60px;
     overflow: hidden;
+}
+th.options {
+    width: 15%;
+}
+
+td.options a{
+    margin-right: 10px;
 }
 
 /*sidebar style  */
@@ -149,6 +160,14 @@ nav {
 
 li a:hover {
     color: black;
+}
+
+.brand-logo {
+    font-family: 'Monoton', cursive;
+    color: black;
+    display: inline-block;
+    margin-right: 0px;
+    padding-right: 0px;
 }
 
 h3 {
@@ -173,6 +192,7 @@ h5 {
 
 p {
     font-family: Open Sans,sans-serif;
+    font-weight: 300;
 }
 
 .date {
@@ -189,13 +209,6 @@ p {
     background-color: #FFC107;
     color: black;
     padding: 2px 0px 2px 10px;
-}
-.brand-logo {
-    font-family: 'Monoton', cursive;
-    color: black;
-    display: inline-block;
-    margin-right: 0px;
-    padding-right: 0px;
 }
 
 h4 {
@@ -216,4 +229,20 @@ h6 {
     font-variant-caps: all-petite-caps;
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
+}
+
+h4.admin-cat-name {
+    display: inline;
+}
+
+.admin-cat-head {
+    margin-top: 30px;
+}
+
+.circle {
+    height: 50px;
+    clip-path: circle();
+} 
+li.collection-item {
+    padding: 10px;
 }
