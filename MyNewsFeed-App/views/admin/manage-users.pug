@@ -1,0 +1,28 @@
+extends ../shared/_layout
+
+block content
+  h1 Manage Users
+  
+  table.table.table-striped
+    thead
+      tr
+        th Id
+        th Username
+        th Fullname
+        th Email
+        th Admin
+    tbody
+      each user in users
+        tr
+            td 
+             = user._id 
+            td 
+             = user.username
+            td 
+             = user.fullName
+            td 
+             = user.email
+            td 
+             = user.admin
+            td
+             a.btn.btn-small Edit
