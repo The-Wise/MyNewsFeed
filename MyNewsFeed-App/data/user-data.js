@@ -57,6 +57,13 @@ class UserData {
             })
             .catch((err) => console.log(err));
     }
+
+    getAllUsers() {
+      return this.db
+                 .collection('users')
+                 .find({})
+                 .toArray();
+    }
 }
 
 module.exports = UserData;

@@ -1,6 +1,7 @@
 class AdminController {
     constructor(data) {
         this.feedData = data.feeds;
+        this.usersData = data.users;
     }
 
     loadAddForm(req, res) {
@@ -18,6 +19,22 @@ class AdminController {
                        });
         });
     }
+
+    loadManageUsersPage(req, res) {
+       this.usersData
+           .getAllUsers()
+           .then((users) => {
+                res.render('./admin/manage-users.pug', {
+                    isAuthenticated: req.isAuthenticated(),
+                    user: req.user,
+                    isAdmin: () => {
+                        return req.user.admin;
+                    },
+                    users: users,
+                });
+           });
+    }
+
 
     addNewCategory(req, res) {
         const name = req.body.category;

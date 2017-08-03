@@ -9,6 +9,8 @@ module.exports = function(router, isAuthenticated, data) {
       (req, res) => controller.deleteCategoryFeed(req, res))
     .get('/admin/edit/deletefeed/:categoryid/:feedid', isAuthenticated,
       (req, res) => controller.deleteCategoryFeed(req, res))
+    .get('/admin/manage/users', isAuthenticated,
+      (req, res) => controller.loadManageUsersPage(req, res))
     .post('/admin/edit/addcategory', isAuthenticated,
       (req, res) => controller.addNewCategory(req, res))
     .post('/admin/edit/addfeed', isAuthenticated,
