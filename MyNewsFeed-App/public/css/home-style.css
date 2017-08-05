@@ -237,10 +237,11 @@ input {
 }
 
 h6 {
-    color: #26a69a;
+    color: black;
     font-variant-caps: all-petite-caps;
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
+    display: inline;
 }
 
 h4.admin-cat-name {
@@ -257,4 +258,12 @@ h4.admin-cat-name {
 } 
 li.collection-item {
     padding: 10px;
+}
+
+.collection a.collection-item {
+    color: black;
+}
+
+.remove {
+    padding-top: 10px;
 }

@@ -11,6 +11,12 @@ $( document ).ready(function() {
     $('.btn-follow').on('click', (event) => {
         followFeed(event);
     });
+    $('.btn-delete-article').on('click', (event) => {
+        removeArticle(event);
+    });
+    $('.btn-unfollow').on('click', (event) => {
+        unfollowFeed(event);
+    });
     if ($('.error-message')) {
         const message = $('.error-message').text();
         Materialize.toast(message, 2000, 'red');
@@ -33,8 +39,8 @@ function saveArticle(event) {
             url,
             method: 'PUT',
             data,
-            success: Materialize.toast('Success, article saved!', 2000, 'green'),
-            error: Materialize.toast('Error!', 2000, 'red'),
+            success: () => Materialize.toast('Article saved', 2000, 'green'),
+            error: () => Materialize.toast('Article already saved', 2000, 'yellow'),
         });
 }
 
@@ -49,18 +55,41 @@ function followFeed(event) {
             url,
             method: 'PUT',
             data,
-            success: Materialize.toast('Success, feed saved!', 2000, 'green'),
-            error: Materialize.toast('Error!', 2000, 'red'),
+            success: () => Materialize.toast('Success, feed saved!', 2000, 'green'),
+            error: () => Materialize.toast('You already follow this feed', 2000, 'yellow'),
         });
 }
 
-// function toaster(message) {
-//     if (message.success) {
-//             if (message.success) {
-//                 Materialize.toast('Success ' + message.success, 4000);
-//             }
-//             if (message.error) {
-//                 Materialize.toast('Error ' + message.error, 4000);
-//             }
-//     }
-// }
+function removeArticle(event) {
+    const data = {};
+        data.username = event.target.getAttribute('data-username');
+        data.articleTitle = event.target.getAttribute('data-title');
+        const url = '/' + data.username + '/myfeeds/removearticle';
+        $.ajax({
+            url,
+            method: 'PUT',
+            data,
+            success: () => {
+                Materialize.toast('Article removed', 2000, 'green');
+                location.reload(true);
+            },
+            error: () => Materialize.toast('No such article', 2000, 'yellow'),
+        });
+}
+
+function unfollowFeed(event) {
+    const data = {};
+        data.username = event.target.getAttribute('data-username');
+        data.feedName = event.target.getAttribute('data-name');
+        const url = '/' + data.username + '/myfeeds/unfollowfeed';
+        $.ajax({
+            url,
+            method: 'PUT',
+            data,
+            success: () => {
+                Materialize.toast('Success, feed unfollowed!', 2000, 'green');
+                location.reload(true);
+            },
+            error: () => Materialize.toast('No such feed', 2000, 'yellow'),
+        });
+}

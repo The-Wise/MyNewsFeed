@@ -1,4 +1,4 @@
-const itemsInRows = require('../utils/itemsToRows.js')
+const itemsInRows = require('../utils/itemsToRows.js');
 
 class HomeController {
   constructor(data) {

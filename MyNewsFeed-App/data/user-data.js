@@ -43,9 +43,19 @@ class UserData {
             .collection('users')
             .updateOne({ username }, { $addToSet: { userFeeds: feed } } )
             .then((result) => {
-              return result.nModified;
+              return result.result.nModified;
             })
             .catch((err) => console.log(err));
+    }
+
+    removeFeedFromUser(username, feedname) {
+      return this.db
+        .collection('users')
+        .updateOne({ username }, { $pull: { userFeeds: { feedName: feedname } } })
+        .then((result) => {
+          return result.result.nModified;
+        })
+        .catch((error) => console.log(error));
     }
 
     addArticleToUser(username, article) {
@@ -53,9 +63,19 @@ class UserData {
             .collection('users')
             .updateOne({ username }, { $addToSet: { userArticles: article } })
             .then((result) => {
-                return result.nModified;
+                return result.result.nModified;
             })
             .catch((err) => console.log(err));
+    }
+
+    removeArticleFromUser(username, articletitle) {
+      return this.db
+        .collection('users')
+        .findOneAndUpdate({ username }, { $pull: { userArticles: { articleTitle: articletitle } } }, { projection: { '_id': 0, 'userFeeds': 1, 'userArticles': 1 }, returnOriginal: false } )
+        .then((user) => {
+          return user.value;
+        })
+        .catch((error) => console.log(error));
     }
 
     getAllUsers() {

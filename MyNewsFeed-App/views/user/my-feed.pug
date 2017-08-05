@@ -9,10 +9,14 @@ block content
                 if feeds.length > 0
                     ul
                         each feed in feeds
-                            li
-                                a(href=feed.feedUrl) 
-                                    h6
-                                        =feed.feedName
+                            li.row
+                                .col.s10.m10.l10
+                                    a(href=feed.feedUrl) 
+                                        h6
+                                            =feed.feedName
+                                .col.s2.m2.l2
+                                    a.secondary-content.tooltipped(href='javascript:void(0)', data-position="bottom", data-delay="50", data-tooltip="Unfollow feed")
+                                        i.btn-unfollow.material-icons(data-name=feed.feedName, data-username=user.username) clear
                 else
                     p You are not following any feeds yet
 
@@ -22,13 +26,12 @@ block content
                     ul.collection
                         each article in articles
                             - const title = decodeURIComponent(article.articleTitle);
-                            li.row.collection-item
-                                
-                                .col.s10.m8.l8
+                            li.row.collection-item 
+                                .col.s10.m10.l10
                                     a.collection-item(href=article.articleUrl, target='_blanc')
                                         =title
-                                .col.s22.m4.l4
-                                    a.secondary-content.btn-floating.btn-delete.no-padding.tooltipped(href='#!', data-position="bottom", data-delay="50", data-tooltip="Remove article")
-                                        i.material-icons delete
+                                .col.s2.m2.l2
+                                    a.secondary-content.tooltipped(href='javascript:void(0)', data-delay="50", data-position="bottom", data-tooltip="Remove article")
+                                        i.btn-delete-article.material-icons(data-title=article.articleTitle, data-username=user.username) clear
                 else
                     p You have not saved any articles yet
