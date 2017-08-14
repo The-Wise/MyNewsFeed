@@ -10,7 +10,7 @@ const validateRegisterForm = (req, res) => {
         req.checkBody('email', constants.wrongEmailMessage).isEmail();
         req.checkBody('password', constants.emptyPasswordMessage).notEmpty();
 
-        req.getValidationResult().then((results) => { 
+        req.getValidationResult().then((results) => {
             if (results.array().length === 0) {
                 haveAnyErrors = false;
             } else {

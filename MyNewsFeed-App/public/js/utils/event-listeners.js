@@ -25,6 +25,7 @@ $( document ).ready(function() {
         const message = $('.success-message').text();
         Materialize.toast(message, 2000, 'green');
     }
+    $('.progress').fadeOut();
     });
 
 

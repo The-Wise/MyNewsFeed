@@ -7,13 +7,20 @@ class UserData {
     }
 
     createUser(fullName, username, email, password, urlProfilePicture) {
-        const user = new User(fullName, username,
+      return this.findUserByUsername(username)
+        .then((user) => {
+          if (user) {
+            return Promise.reject(new Error('Username already exists!'));
+          }
+          const newuser = new User(fullName, username,
             email, password, urlProfilePicture, false)
                   .toObject();
 
-        return this.db.collection('users')
-            .save(user)
+          return this.db
+            .collection('users')
+            .save(newuser)
             .catch((err) => console.log(err));
+        });
     }
 
     findUserById(id) {
@@ -25,7 +32,7 @@ class UserData {
           .then((user) => {
             return user;
           })
-          .catch((err) => console.log('User not found'));
+          .catch((err) => console.log(err));
   }
 
     findUserByUsername(username) {
@@ -35,7 +42,7 @@ class UserData {
             .then((user) => {
               return user;
             })
-            .catch((err) => console.log('User not found'));
+            .catch((err) => console.log(err));
     }
 
     addFeedToUser(username, feed) {

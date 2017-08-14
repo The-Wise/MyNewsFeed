@@ -12,7 +12,7 @@ block content
         strong Warning!
         span= " " + errors.msg 
     .main-login.main-center
-      form.form-horizontal(method='post', action='/signup')
+      form#signup.form-horizontal(method='post', action='/signup')
         .form-group
           label.cols-sm-2.control-label(for='name') First Name, Second Name
           .cols-sm-10

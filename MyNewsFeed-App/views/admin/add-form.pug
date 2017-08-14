@@ -21,11 +21,9 @@ block content
                 br
                 select#feed-category(name='category')
                     if categories
-                        option(value='', disabled, selected) Choose your option 
+                        option(value='', disabled, selected) Choose a category 
                         each category in categories
                             option(value=category.name)= category.name
-                        else
-                            option you need to add a category first
                     
                 br
                 label(for="feed-title") Feed Title
@@ -48,34 +46,36 @@ block content
                 button.btn.btn-submit(type='submit') Submit
             
         .col.s12.m8.l9
-            each category in categories
-                .row.admin-cat-head
-                    .col.s4.m3.l2
-                        h4.admin-cat-name= category.name
-                    .col.s2.m1.l1    
-                        a.btn.btn-floating.btn-delete.tooltipped.no-padding(href='/admin/edit/deletecategory/' + category._id, data-position="bottom", data-delay="50", data-tooltip="Delete category")
-                            i.material-icons delete
-                table.highlight.bordered
-                    thead
-                        tr
-                            th Feed name
-                            th Feed url
-                            th Feed image
-                            th Feed description
-                            th.options Options
-                    tbody
-                        each feed in category.feeds
+            if categories
+                each category in categories
+                    .row.admin-cat-head
+                        .col.s4.m3.l2
+                            h4.admin-cat-name= category.name
+                        .col.s2.m1.l1    
+                            a.btn.btn-floating.btn-delete.tooltipped.no-padding(href='/admin/edit/deletecategory/' + category._id, data-position="bottom", data-delay="50", data-tooltip="Delete category")
+                                i.material-icons delete
+                    table.highlight.bordered
+                        thead
                             tr
-                                td
-                                    .td-inner= feed.title
-                                td
-                                    .td-inner= feed.feedUrl
-                                td
-                                    .td-inner= feed.imageUrl
-                                td
-                                    .td-inner= feed.description
-                                td.options 
-                                    a.btn.btn-delete.btn-floating.tooltipped.no-padding(href='/admin/edit/deletefeed/' + category._id + '/' + feed.id, data-position="bottom", data-delay="50", data-tooltip="Delete feed")
-                                        i.material-icons delete
-                                    a.btn.btn-edit.btn-floating.tooltipped.no-padding(href='#!', data-position="bottom", data-delay="50", data-tooltip="Edit feed")
-                                        i.material-icons edit
+                                th Feed name
+                                th Feed url
+                                th Feed image
+                                th Feed description
+                                th.options Options
+                        tbody
+                            if category.feeds
+                                each feed in category.feeds
+                                    tr
+                                        td
+                                            .td-inner= feed.title
+                                        td
+                                            .td-inner= feed.feedUrl
+                                        td
+                                            .td-inner= feed.imageUrl
+                                        td
+                                            .td-inner= feed.description
+                                        td.options 
+                                            a.btn.btn-delete.btn-floating.tooltipped.no-padding(href='/admin/edit/deletefeed/' + category._id + '/' + feed.id, data-position="bottom", data-delay="50", data-tooltip="Delete feed")
+                                                i.material-icons delete
+                                            a.btn.btn-edit.btn-floating.tooltipped.no-padding(href='#!', data-position="bottom", data-delay="50", data-tooltip="Edit feed")
+                                                i.material-icons edit

@@ -36,14 +36,14 @@ saveArticle(req, res) {
     const article = req.body;
     const username = req.user.username;
     this.userData.addArticleToUser(username, article)
-    .then((result) => {
-        if (result === 1) {
-            res.sendStatus(200);
-        }
-        if (result === 0) {
-            res.sendStatus(418);
-        }
-    });
+        .then((result) => {
+            if (result === 1) {
+                res.sendStatus(200);
+            }
+            if (result === 0) {
+                res.sendStatus(418);
+            }
+        });
 }
 
 removeArticle(req, res) {

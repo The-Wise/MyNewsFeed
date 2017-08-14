@@ -7,16 +7,17 @@ class Category {
         return this._name;
     }
     set name(name) {
-        if(name === null)
+        if (name === null)
         {
-            throw 'Name can not be null!';
+            throw new Error('Name can not be null!');
         }
-        if(name === '')
+        if (name === '')
         {
-            throw 'Name can not be empty!'
+            throw new Error('Name can not be empty!');
         }
-        
+        console.log(name);
         this._name = name.toLowerCase();
+        console.log(this._name);
     }
 
     toObject() {
