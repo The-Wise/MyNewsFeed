@@ -10,7 +10,6 @@ class FeedData {
 
     addNewCategory(name) {
         const category = new Category(name).toObject();
-        console.log(category);
         return this.db.collection('categories')
                 .insertOne(category)
                 .then((result) => {
@@ -94,8 +93,8 @@ class FeedData {
         return this.db
             .collection('feeds')
             .findOne({ name: feedname }, { articles: { $elemMatch: { id } } } )
-            .then((article) => {
-                return article;
+            .then((feed) => {
+                return feed.articles[0];
             })
             .catch((err) => console.log(err));
     }
@@ -106,7 +105,7 @@ class FeedData {
             this.db.collection('feeds')
                         .find({})
                         .forEach((feed) => {
-                            if (feed) {
+                            if (feed.articles.length > 0) {
                             articles.push({
                                 category: feed.catName,
                                 feed: feed.name,

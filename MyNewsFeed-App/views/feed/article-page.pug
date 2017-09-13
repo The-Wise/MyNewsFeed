@@ -4,12 +4,14 @@ block content
     if article
         .row
             .col.l2
-            - const articleUrl = encodeURIComponent(article.articleUrl)
-            - const articleTitle = encodeURIComponent(article.title)
+            - const articleUrl = article.articleUrl
+            - const articleTitle = article.title
+            - console.log(articleUrl);
             .col.s12.m8.l6.article
                 h3 
                     =article.title
                 if isAuthenticated
+                    //- button.btn.btn-save-article(type='button', data-title=articleTitle, data-url= articleUrl, data-image=article.imageUrl, data-username=user.username) Save article
                     button.btn.btn-save-article(type='button', data-title=articleTitle, data-url= articleUrl, data-image=article.imageUrl, data-username=user.username) Save article
                 else 
                     a.btn(href='/login') Log in to save article
