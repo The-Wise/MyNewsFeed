@@ -35,7 +35,7 @@ loadMyFeedsPage(req, res) {
 saveArticle(req, res) {
     const article = req.body;
     const username = req.user.username;
-    this.userData.addArticleToUser(username, article)
+    return this.userData.addArticleToUser(username, article)
         .then((result) => {
             if (result === 1) {
                 res.sendStatus(200);
@@ -49,7 +49,7 @@ saveArticle(req, res) {
 removeArticle(req, res) {
     const articletitle = req.body.articleTitle;
     const username = req.user.username;
-    this.userData.removeArticleFromUser(username, articletitle)
+    return this.userData.removeArticleFromUser(username, articletitle)
         .then((result) => {
         if (result) {
             res.sendStatus(200);
@@ -77,7 +77,7 @@ removeArticle(req, res) {
 followFeed(req, res) {
     const feed = req.body;
     const username = req.user.username;
-    this.userData.addFeedToUser(username, feed)
+    return this.userData.addFeedToUser(username, feed)
     .then((result) => {
         if (result === 1) {
             res.sendStatus(200);
@@ -91,7 +91,7 @@ followFeed(req, res) {
 unfollowFeed(req, res) {
     const feedname = req.body.feedName;
     const username = req.user.username;
-    this.userData.removeFeedFromUser(username, feedname)
+    return this.userData.removeFeedFromUser(username, feedname)
     .then((result) => {
         if (result === 1) {
             res.sendStatus(200);
