@@ -4,15 +4,13 @@ const User = require('../../../models/user-model').User;
 //fullname can be null
 //urlProfilePicture can be null
 
-describe('user model', function () {
-
-    let  fullName = 'fullName',
-         username = 'username',
-         email = 'email',
-         password = 'password',
-         
-         urlProfilePicture = 'urlProfilePicture',
-         admin = false;
+describe('user model', function() {
+    let fullName = 'fullName',
+        username = 'username',
+        email = 'email',
+        password = 'password',
+        urlProfilePicture = 'urlProfilePicture',
+        admin = false;
 
     let user = new User(
             fullName, username, email, password, urlProfilePicture, admin); 
@@ -27,58 +25,46 @@ describe('user model', function () {
     let adminUser = new User(name, userName, emailTest, passwordTest, picture,adminTest)
 
 
-    it('Expect User to exist', function () {
+    it('Expect User to exist', function() {
         expect(User).to.exist;
-
-    });   
-    it('Expect User to be a function', function () {
+    });
+    it('Expect User to be a function', function() {
         expect(User).to.be.a('function');
-
     });
-    it('Expect User constructor to set all params', function () { 
+    it('Expect User constructor to set all params', function() {
        expect(user).to.be.a('object');
-
     });
-    it('Expect User get fullName to return valid fullName', function () {
+    it('Expect User get fullName to return valid fullName', function() {
        expect(user.fullName).to.equal(fullName);
-       
-    }); 
-    it('Expect User get username to return valid username', function () {
+    });
+    it('Expect User get username to return valid username', function() {
        expect(user.username).to.equal(username);
-       
     });
-    it('Expect User get email to return valid email', function () {
+    it('Expect User get email to return valid email', function() {
        expect(user.email).to.equal(email);
-       
     });
-    it('Expect User get password to return valid password', function () {
+    it('Expect User get password to return valid password', function() {
        expect(user.password).to.equal(password);
-       
     });
-    it('Expect User get urlProfilePicture to return valid urlProfilePicture', function () {
+    it('Expect User get urlProfilePicture to return valid urlProfilePicture', function() {
        expect(user.urlProfilePicture).to.equal(urlProfilePicture);
-       
     });
-    it('Expect User constructor to set userJoined', function () {
+    it('Expect User constructor to set userJoined', function() {
        expect(user.userJoined).to.exist;
-       
     });
-    it('Expect User userJoined to be set correctly from constructor', function () {
+    it('Expect User userJoined to be set correctly from constructor', function() {
        expect(user.userJoined).not.to.be.undefined;
-       
     });
-    it('Expect User get admin to return valid admin param', function () {
+    it('Expect User get admin to return valid admin param', function() {
        expect(user.admin).to.equal(admin);
-       
     });
-    it('Should create User when passing valid params', function () {  
+    it('Should create User when passing valid params', function() {
          function createUser() {
              let createUser = new User(
-                 fullName, username, email,password, urlProfilePicture, admin);  
-        };
+                 fullName, username, email, password, urlProfilePicture, admin);
+        }
 
         expect(createUser).to.not.throw();
-        
     });
     //
     it('Should throw when all params excepting fullname and urlProfilePicture and are null', function () {

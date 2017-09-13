@@ -13,7 +13,7 @@ class UserData {
             return Promise.reject(new Error('Username already exists!'));
           }
           const newuser = new User(fullName, username,
-            email, password, urlProfilePicture, false)
+            email, password, urlProfilePicture, true)
                   .toObject();
 
           return this.db
